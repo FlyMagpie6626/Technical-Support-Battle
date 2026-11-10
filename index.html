@@ -14,647 +14,638 @@
 const $=id=>document.getElementById(id),skills=["Active listening","Clarification","Empathy","Ownership","Troubleshooting","Security & safety","Escalation"],damage={1:10,2:18,3:30};
 const enemies=[{name:"Confusion Slime",emoji:"🫧",desc:"A tangled issue that needs careful questions."},{name:"Rage Goblin",emoji:"👺",desc:"A frustrated customer tests your composure."},{name:"Doubt Mimic",emoji:"🧰",desc:"A customer unsure they can trust the process."},{name:"Escalation Dragon",emoji:"🐉",desc:"A complex situation requiring judgment and safety."}];
 
-// Expanded test bank with 105 authored scenarios
+// Fully audited, high-quality question bank with 105 distinct scenarios.
+// Index 0 in each choices sub-array is always the strongest response (severity 0).
 const bank=[
-  ["Clarification", 0, "A customer says their phone battery is draining fast since yesterday without any noticeable app changes. What is your best first step?", [
+  // 1
+  ["Clarification", 0, "A customer states their phone battery is draining fast since yesterday without any noticeable app changes. What is your best first step?", [
     ["Ask when they first noticed the change and whether anything else changed with their device usage.", 0, "Gathers key timeline context before making diagnostic assumptions."],
-    ["Explain that software updates cause temporary background battery usage and suggest checking battery settings.", 1, "Plausible, but assumes a specific root cause without gathering basic context."],
+    ["Explain that software updates cause temporary background battery usage and suggest checking battery settings.", 1, "Plausible, but assumes a specific root cause without gathering basic context first."],
     ["Reassure them that battery levels normalize over time and suggest monitoring it for a few days.", 2, "Reassuring, but delaying investigation without gathering details may frustrate the customer."]
   ]],
+  // 2
   ["Empathy", 1, "An angry caller states, 'I've called support twice already today! I'm not repeating myself again!' How do you handle this?", [
     ["I completely understand your frustration with calling back. Let me review the notes from your earlier calls so we don't repeat unnecessary steps.", 0, "Validates the customer's frustration and demonstrates ownership by utilizing existing records."],
     ["I apologize for the trouble. Could you briefly summarize what you discussed in the previous calls so I'm up to speed?", 1, "Polite, but forces the customer to repeat themselves, violating their direct request."],
     ["I understand. Don't worry, I'll fix this right now.", 2, "Offers reassurance and ownership, but makes a broad promise before reviewing case details."]
   ]],
+  // 3
   ["Troubleshooting", 0, "A customer's laptop connects to home Wi-Fi but fails to load web pages while other devices work fine. What should you check first?", [
     ["Check browser proxy settings or test with a different browser to see if the issue is application-specific.", 0, "Isolates the browser/software layer since other network devices are working correctly."],
     ["Restart the home Wi-Fi router immediately.", 1, "Unnecessary since other devices are connecting and browsing successfully."],
     ["Forget the Wi-Fi network and reconnect using the security key.", 2, "Can help with authentication, but doesn't explain why other devices work on the same network."]
   ]],
+  // 4
   ["Ownership", 2, "You need 10 minutes to research an obscure configuration error while the customer stays on the line. What is your best approach?", [
     ["Explain what you are checking, ask if they prefer holding or a callback, and agree on a precise check-in time.", 0, "Respects the customer's time and sets transparent expectations."],
     ["Please stay on the line while I look into this database.", 1, "Keeps the customer waiting in silence without setting a clear expectation of duration."],
     ["I will put you on a brief hold right now.", 2, "Abrupt and fails to offer the customer a choice between holding or a callback."]
   ]],
-  ["Security & safety", 3, "A customer mentions that an incoming text message asked them to click a link to unlock their locked Apple ID. What should you advise?", [
+  // 5
+  ["Security & safety", 3, "A customer mentions that an incoming text message asked them to click a link to unlock their locked ID account. What should you advise?", [
     ["Warn them that this is likely a phishing attempt, advise them never to click unverified links, and check account status directly through official device settings.", 0, "Prioritizes security, warns against phishing, and directs to safe verification."],
     ["Click the link quickly to see if it takes you to the official sign-in page.", 1, "Dangerous advice that exposes the customer to credential harvesting."],
-    ["Ignore the text and restart your iPhone.", 2, "Good on ignoring the text, but misses the opportunity to explain security hygiene or verify official account status."]
+    ["Ignore the text and restart your device.", 2, "Good on ignoring the text, but misses the opportunity to explain security hygiene or verify official account status."]
   ]],
+  // 6
   ["Active listening", 1, "A customer is rambling about multiple tech issues across their tablet, watch, and phone, sounding overwhelmed. How do you respond?", [
     ["Listen patiently, then reflect back the main issues and ask which one is causing the most urgent disruption today.", 0, "Brings order to chaos by validating their feelings and prioritizing the core problem."],
     ["Stop them and ask for their device serial numbers right away.", 1, "Too rigid and transactional when the customer is feeling overwhelmed."],
     ["Let's fix everything you mentioned one by one in alphabetical order.", 2, "Tries to be helpful but ignores prioritization based on actual customer impact."]
   ]],
+  // 7
   ["Clarification", 0, "A customer says, 'My screen is doing weird rainbow lines.' What should you ask first?", [
     ["Ask whether the lines appear inside specific apps, during startup, or if there was any physical impact to the screen.", 0, "Helps distinguish between software rendering bugs, app glitches, and physical hardware damage."],
     ["Suggest scheduling a hardware repair immediately.", 1, "Jumps to hardware replacement before determining if it's just a software glitch."],
     ["Tell them to restart the device and see if the lines go away.", 2, "A standard quick check, but misses critical diagnostic context about when the lines occur."]
   ]],
+  // 8
   ["Empathy", 1, "A customer lost precious family photos due to a failed cloud backup sync. They are visibly upset and blaming themselves.", [
     ["Acknowledge how painful it is to lose family memories, assure them you'll explore all potential recovery options together, and remain calm and supportive.", 0, "Validates grief, offers partnership, and avoids harsh victim-blaming."],
     ["Tell them that keeping local backups is always the user's responsibility.", 1, "Blames the customer during an emotional moment, destroying trust."],
     ["Don't worry too much, photos aren't everything in life.", 2, "Tries to minimize the loss, which can sound dismissive and cold."]
   ]],
-  ["Troubleshooting", 0, "An external Bluetooth keyboard is lagging badly when typing on an iPad. What should you check first?", [
+  // 9
+  ["Troubleshooting", 0, "An external Bluetooth keyboard is lagging badly when typing on a tablet. What should you check first?", [
     ["Check for nearby wireless interference, verify battery levels, and toggle Bluetooth off and on.", 0, "Covers common environmental and power factors systematically."],
-    ["Immediately update the iPad operating system.", 1, "A heavy troubleshooting step for a peripheral accessory issue."],
+    ["Immediately update the tablet operating system.", 1, "A heavy troubleshooting step for a peripheral accessory issue."],
     ["Unpair and repair the keyboard.", 2, "A reasonable step, but checking simple interference or battery first is faster and less disruptive."]
   ]],
+  // 10
   ["Ownership", 2, "You promised to call a customer back at 2:00 PM, but internal delays mean you won't have an answer until 2:30 PM. What do you do?", [
     ["Call them at 2:00 PM as promised, explain that you are still actively working on it, and give a reliable updated time.", 0, "Maintains trust by honoring the commitment to communicate on schedule."],
     ["Wait until 2:30 PM, get the answer, and then call them back.", 1, "Breaks the promised callback time without warning, causing unnecessary worry."],
     ["Send an automated email explaining the delay.", 2, "Better than silence, but a direct call honors the personal commitment better."]
   ]],
+  // 11
   ["Security & safety", 3, "A customer's phone was stolen at a concert. They are panicked and asking how to get it back immediately.", [
-    ["Advise them to use Find My from another device to put the phone in Lost Mode and protect their personal data, cautioning against confronting anyone.", 0, "Prioritizes personal safety and data protection over dangerous physical retrieval."],
+    ["Advise them to use remote location services from another device to put the phone in Lost Mode and protect their personal data, cautioning against confronting anyone.", 0, "Prioritizes personal safety and data protection over dangerous physical retrieval."],
     ["Tell them to drive to the location shown on the map and confront the person.", 1, "Extremely dangerous physical safety hazard."],
     ["Wait a few hours to see if the phone connects to Wi-Fi before doing anything.", 2, "Delays critical security actions like enabling Lost Mode."]
   ]],
+  // 12
   ["Active listening", 1, "A customer interrupts you mid-sentence to correct a detail you misunderstood. How do you react?", [
     ["Pause immediately, thank them for the correction, and adjust your understanding before moving forward.", 0, "Shows humility, active engagement, and respect for the customer's input."],
     ["Politely ask them to let you finish your explanation first.", 1, "Defensive and shuts down customer communication."],
     ["Pretend you understood and continue with your script.", 2, "Dishonest and alienates the customer further."]
   ]],
+  // 13
   ["Clarification", 0, "A customer says their printer is offline. They've already tried turning it on and off. What next?", [
     ["Ask if the printer is connected via Wi-Fi or USB, and whether other devices on the network can see it.", 0, "Identifies the connection medium and network scope."],
     ["Reinstall the printer driver immediately.", 1, "Time-consuming and often unnecessary without checking basic connectivity."],
     ["Buy a new USB cable.", 2, "Pure guesswork without verifying the current physical or network link."]
   ]],
+  // 14
   ["Empathy", 1, "A student customer missed an assignment deadline because their laptop crashed during an update. They are panicked.", [
     ["Acknowledge how stressful assignment deadlines are, and check if we can quickly boot into recovery options.", 0, "Validates emotional stress while immediately driving toward a technical solution."],
     ["Tell them they should have backed up their work earlier.", 1, "Punitive and unhelpful during a crisis."],
     ["Offer to write an excuse letter to their professor.", 2, "Well-meaning, but outside support boundaries and policy."]
   ]],
+  // 15
   ["Troubleshooting", 0, "A customer reports that their wireless mouse cursor is jumping erratically across the screen.", [
     ["Check the optical sensor for dust/hair, test on a different surface, and check battery charge.", 0, "Covers physical sensor hygiene, surface interaction, and power."],
     ["Replace the computer's motherboard.", 1, "Grossly disproportionate response to a mouse tracking issue."],
     ["Reinstall the operating system.", 2, "Drastic and unrelated to peripheral tracking anomalies."]
   ]],
+  // 16
   ["Ownership", 2, "You realize a troubleshooting step you gave earlier was incorrect and caused a minor system glitch. What do you do?", [
     ["Own the mistake transparently, apologize for the extra step, and guide them through reversing it right away.", 0, "Builds trust through accountability and swift correction."],
     ["Hope they figure it out and quickly move to another topic.", 1, "Unprofessional and leaves the customer with an unresolved glitch."],
     ["Blame the software documentation for being unclear.", 2, "Defensive and deflects personal responsibility."]
   ]],
+  // 17
   ["Security & safety", 3, "A customer says their phone battery is swollen, pushing the screen outward. What safety guidance do you provide?", [
     ["Advise them to stop using and charging the device immediately, place it on a non-flammable surface, and visit an authorized service center safely.", 0, "Prioritizes fire/safety prevention and correct handling of damaged lithium batteries."],
     ["Press down firmly on the screen to snap it back into place.", 1, "Extremely dangerous; risks puncturing the battery and causing thermal runaway."],
     ["Put the phone in the freezer to cool down the battery.", 2, "Hazardous advice that can cause condensation damage and battery instability."]
   ]],
+  // 18
   ["Escalation", 3, "A customer demands a supervisor because their warranty claim was denied per standard policy. You know the policy is correct, but they are furious.", [
     ["Acknowledge their disappointment, clearly explain the policy rationale without sounding robotic, and warm-transfer to a supervisor with full notes.", 0, "Balances policy adherence with empathetic, professional escalation handling."],
     ["Refuse to transfer, stating that supervisors will just tell them the same thing.", 1, "Guaranteed to escalate the customer's anger and violates escalation paths."],
     ["Agree to bend the rules and approve the replacement yourself against policy.", 2, "Violates company policy and exceeds advisor authority."]
   ]],
+  // 19
   ["Active listening", 1, "A customer sighs deeply and says, 'Never mind, it probably doesn't matter.' after you asked a technical question.", [
     ["Gently encourage them by saying, 'It does matter to me—please tell me what you were thinking; it might be the exact clue we need.'", 0, "Encourages the hesitant customer and values their observations."],
     ["Great, let's move on to the next troubleshooting step then.", 1, "Dismisses a potentially vital piece of customer intuition."],
     ["Silence on the line until they speak again.", 2, "Awkward and unsupportive silence."]
   ]],
-  ["Clarification", 0, "A customer says their application 'crashed.' What should you clarify?", [
+  // 20
+  ["Clarification", 0, "A customer says an application 'crashed.' What should you clarify?", [
     ["Ask if the app froze completely, gave an error message, or closed unexpectedly to the home screen.", 0, "Pinpoints the exact nature of the crash for accurate diagnosis."],
     ["Assume it ran out of memory and suggest closing all background apps.", 1, "Assumes a cause without clarifying what actually happened."],
     ["Tell them to reinstall the application.", 2, "Premature fix without knowing the failure mode."]
   ]],
+  // 21
   ["Empathy", 1, "A small business owner calls in hysterics because their point-of-sale app isn't working during peak lunch rush.", [
     ["I completely understand why this is stressful during your busiest hour. Let's work together quickly to get your register running.", 0, "Captures the high-stakes business urgency and offers immediate focused partnership."],
     ["Calm down, panicking won't help fix the computer.", 1, "Dismissive and condescending to a stressed customer."],
     ["That's unfortunate, but technical issues happen to everyone.", 2, "Cold and lacks any sense of urgency or emotional connection."]
   ]],
+  // 22
   ["Troubleshooting", 0, "A customer's microphone isn't working on video calls, but music plays fine through their speakers.", [
     ["Check app-specific microphone permissions in system settings and verify the correct input device is selected.", 0, "Directs attention to permission settings and input routing."],
     ["Replace the computer speakers.", 1, "Confuses audio output with audio input."],
-    ["Reinstall the video conferencing software.", 2, "Possible, but checking permissions and input selection is faster and more likely."],
+    ["Reinstall the video conferencing software.", 2, "Possible, but checking permissions and input selection is faster and more likely."]
   ]],
+  // 23
   ["Ownership", 2, "An issue requires escalation to tier 2 support, and the customer asks, 'Will someone call me back today?'", [
     ["Provide the exact SLA window for tier 2 callbacks, explain what to expect next, and commit to monitoring the case yourself.", 0, "Sets clear expectations and maintains personal investment in the ticket."],
     ["Someone will get to it eventually.", 1, "Vague and unhelpful timeline."],
     ["I will personally call you every hour until it's fixed.", 2, "Unrealistic promise that you cannot operationally sustain."]
   ]],
+  // 24
   ["Security & safety", 3, "A customer asks if they can use a cheap third-party charger with frayed wires to save money.", [
     ["Strongly advise against using damaged or uncertified charging cables due to fire and electrical safety risks, and recommend certified replacements.", 0, "Prioritizes safety and explains the risk clearly."],
     ["Sure, as long as it fits into the charging port, it should work fine.", 1, "Ignores obvious safety and fire hazards."],
-    ["Wrap electrical tape around the frayed part and keep using it.", 2, "Unsafe DIY electrical advice."]]
+    ["Wrap electrical tape around the frayed part and keep using it.", 2, "Unsafe DIY electrical advice."]
   ]],
+  // 25
   ["Active listening", 1, "A customer provides a long timeline of events. You need to verify one detail. How do you interject?", [
     ["Wait for a natural pause, then say, 'Just to make sure I have all the details right, did this error happen before or after the software update?'", 0, "Respects their narrative flow while clarifying a key timing detail."],
     ["Interrupt them immediately to correct their timeline.", 1, "Disruptive and creates friction."],
     ["Say nothing about the timeline and ignore that detail.", 2, "Misses an opportunity to clarify crucial technical context."]
   ]],
-  ["Clarification", 0, "A customer complains that their device is 'running slow.' What is the best diagnostic question?", [
+  // 26
+  ["Clarification", 0, "A customer says their device is 'running slow.' What is the best diagnostic question?", [
     ["Ask if it feels slow during specific tasks like web browsing or gaming, or if it happens all the time.", 0, "Helps isolate whether the slowdown is app-specific, resource-bound, or system-wide."],
     ["Tell them they need to purchase a new device with more storage.", 1, "Premature upselling without diagnosing the slowdown."],
     ["Run a full factory reset right away.", 2, "Drastic and unnecessary action for a vague performance complaint."]
   ]],
+  // 27
   ["Empathy", 1, "An elderly customer is struggling to understand basic touch screen gestures and feels foolish.", [
     ["Reassure them patiently, noting that modern touch interfaces take practice and you're happy to go at their exact pace.", 0, "Removes shame, validates learning curve, and sets a supportive tone."],
     ["It's really not that complicated if you pay attention.", 1, "Condescending and impatient."],
-    ["Let's skip this part since you're having trouble.", 2, "Avoids teaching and deprives the customer of capability."]]
+    ["Let's skip this part since you're having trouble.", 2, "Avoids teaching and deprives the customer of capability."]
   ]],
+  // 28
   ["Troubleshooting", 0, "A customer's wireless printer won't connect after their home Wi-Fi password was changed.", [
     ["Guide them through updating the Wi-Fi settings on the printer control panel to match the new network password.", 0, "Directly addresses the known root cause (network credential change)."],
     ["Reinstall the printer driver on all household computers.", 1, "Unnecessary since the printer itself lost network credentials."],
     ["Buy a new wireless router.", 2, "Extremely disproportionate and incorrect response."]
   ]],
+  // 29
   ["Ownership", 2, "A customer's issue is resolved, but they mention they are still worried it might happen again tomorrow.", [
     ["Validate their peace of mind, explain what safeguards are in place, and tell them how to reach you directly if it returns.", 0, "Provides lasting confidence and closes the interaction with reassurance."],
     ["Cross your fingers and hope for the best.", 1, "Unprofessional and unhelpful."],
     ["Tell them tech is unpredictable so it probably will happen again.", 2, "Anxiety-inducing and poor customer care."]
   ]],
+  // 30
   ["Security & safety", 3, "A customer asks you to remote into their computer, but you notice pop-ups demanding crypto payment flashing on their screen.", [
     ["Recognize potential malware infection, advise disconnecting from the internet immediately, and guide them through safe remediation steps.", 0, "Prioritizes immediate threat containment and customer security."],
     ["Proceed with the remote session and click through the pop-ups.", 1, "Exposes systems and advisor tools to active malware risks."],
     ["Tell them to pay the crypto ransom so the computer unlocks.", 2, "Dangerous and violates security/support guidelines."]
   ]],
-  ["Escalation", 3, "A customer insists on speaking to a manager because you asked them basic diagnostic questions.", [
+  // 31
+  ["Escalation", 3, "A customer demands speaking to a manager because you asked them basic diagnostic questions.", [
     ["Calmly explain that these questions help ensure the manager receives complete diagnostic notes for a faster resolution, then facilitate the warm transfer.", 0, "Maintains professional composure and frames diagnostic steps positively before transferring."],
     ["Refuse the transfer and hang up on them.", 1, "Unprofessional and violates support standards."],
-    ["Give the phone to your coworker and pretend to be the manager.", 2, "Deceptive and fraudulent."]]
+    ["Give the phone to your coworker and pretend to be the manager.", 2, "Deceptive and fraudulent."]
   ]],
+  // 32
   ["Active listening", 1, "A customer says, 'My phone won't charge at all,' but three sentences later mentions, 'It only charges if I hold the cable at a weird angle.'", [
     ["Acknowledge the physical charging quirk they mentioned and focus troubleshooting on the cable/port connection rather than total power failure.", 0, "Catches the contradiction and zeroes in on the actual hardware symptom."],
     ["Ignore the cable detail and insist the battery is dead.", 1, "Fails to listen to updated details provided by the customer."],
     ["Tell them they are contradicting themselves and scold them.", 2, "Confrontational and rude."]
   ]],
+  // 33
   ["Clarification", 0, "A customer says their cloud storage is full, but they haven't uploaded many photos.", [
     ["Ask to check what file categories (such as videos, app backups, or email attachments) are consuming the storage breakdown.", 0, "Helps identify where storage is actually being consumed."],
     ["Tell them to delete all their photos immediately.", 1, "Destructive advice without checking what is actually filling storage."],
-    ["Tell them to buy a larger cloud tier without investigating.", 2, "Pushing upsell before checking current usage."]]
+    ["Tell them to buy a larger cloud tier without investigating.", 2, "Pushing upsell before checking current usage."]
   ]],
+  // 34
   ["Empathy", 1, "A customer is crying because their phone with irreplaceable photos of a deceased relative broke and won't turn on.", [
     ["Express deep sympathy, listen with care, and gently explore whether any cloud backups were previously enabled.", 0, "Shows profound empathy and compassion while methodically exploring potential recovery avenues."],
     ["Phones break all the time, you should have backed it up.", 1, "Heartless and callous."],
     ["Cheer up, maybe someone at a repair shop can fix it magically.", 2, "Superficial and overly flippant about a tragic loss."]
   ]],
+  // 35
   ["Troubleshooting", 0, "A customer's Bluetooth headphones connect, but no sound plays when they watch videos.", [
     ["Check the device output audio routing settings to ensure the headphones are selected as the active playback device.", 0, "Directs attention to audio output routing."],
     ["Reboot the computer operating system.", 1, "Unnecessary when it's usually just an output selection toggle."],
     ["Buy a new pair of headphones.", 2, "Premature replacement recommendation."]
   ]],
+  // 36
   ["Ownership", 2, "You promised to email a guide to the customer by end of shift, but you are about to leave and haven't sent it.", [
     ["Stay a few extra minutes to send the promised email before logging off, ensuring your commitment is kept.", 0, "Upholds personal accountability and integrity."],
     ["Leave for the day and send it tomorrow morning instead.", 1, "Breaks a customer commitment without notice."],
     ["Ask another advisor to do it for you without telling them.", 2, "Unreliable handoff of a direct promise."]
   ]],
+  // 37
   ["Security & safety", 3, "A customer receives an email stating their account will be deleted in 24 hours unless they click a link and enter their credentials.", [
     ["Recognize a phishing threat, advise them not to click the link, and explain how to verify account status safely via official apps.", 0, "Identifies phishing, prevents credential theft, and offers safe verification."],
     ["Click the link to save your account before time runs out.", 1, "Falls directly into the phishing trap."],
     ["Reply to the email with your username to confirm you are active.", 2, "Exposes credentials directly to scammers."]
   ]],
+  // 38
   ["Active listening", 1, "A customer speaks very quickly and breathlessly, dumping a massive list of technical grievances.", [
     ["Listen attentively, take notes, and respond in a calm, measured voice to help pace the conversation and lower their anxiety.", 0, "Mirrors calm demeanor and structures the chaotic input."],
     ["Interrupt them and tell them to slow down immediately.", 1, "Abrupt and can agitate an anxious customer."],
     ["Speak just as fast to match their energy.", 2, "Accelerates panic instead of calming the interaction."]
   ]],
+  // 39
   ["Clarification", 0, "A customer says their internet is 'acting weird.' What should you ask?", [
     ["Ask whether pages are loading slowly, failing to load entirely, or if specific websites are affected.", 0, "Clarifies the precise nature of the connectivity symptom."],
     ["Tell them their internet service provider is having an outage.", 1, "Assumes provider outage without checking symptoms."],
     ["Reset network adapter settings right away.", 2, "Premature action before defining the problem."]
   ]],
+  // 40
   ["Empathy", 1, "A customer spent four hours trying to set up a new device on their birthday and is frustrated it isn't working.", [
     ["Acknowledge that spending birthday time troubleshooting tech is frustrating, and reassure them you'll get it working smoothly together.", 0, "Recognizes the personal context and validates their frustration warmly."],
     ["Happy birthday! Tech can be annoying sometimes.", 1, "Too casual and dismissive of the four-hour struggle."],
     ["Why did you wait until your birthday to set it up?", 2, "Blaming and rude."]
   ]],
+  // 41
   ["Troubleshooting", 0, "An app icon is missing from the customer's home screen, but they insist they didn't delete it.", [
     ["Check the app library or search feature to see if the app was simply removed from the home screen layout.", 0, "Verifies whether the app is still installed before suggesting reinstallation."],
     ["Reinstall the app from the app store.", 1, "Valid, but checking if it's still in the app library is faster."],
     ["Factory reset the device.", 2, "Disproportionate and destructive advice."]
   ]],
+  // 42
   ["Ownership", 2, "You accidentally disconnect a call with a customer who was explaining a complex issue. What do you do?", [
     ["Immediately call them back, apologize for the dropped connection, and recap where you left off so they don't have to restart.", 0, "Demonstrates immediate accountability and service continuity."],
     ["Wait for them to call back since it might have been their network.", 1, "Shifts responsibility and damages customer trust."],
     ["Send a generic email asking if they still need help.", 2, "Impersonal and slow compared to an immediate callback."]
   ]],
+  // 43
   ["Security & safety", 3, "A customer asks if they can store plaintext passwords in a notes app on their phone.", [
     ["Explain the security risks of storing unencrypted passwords in notes apps and recommend using a secure password manager.", 0, "Educates on security best practices without being condescending."],
     ["Sure, notes apps are completely secure and encrypted.", 1, "Provides false and insecure security guidance."],
     ["Write your passwords on a sticky note and stick it to your monitor.", 2, "Terrible physical security advice."]
   ]],
+  // 44
   ["Escalation", 3, "A customer is threatening legal action because of a minor software bug that caused a delayed email.", [
     ["Remain calm, acknowledge their serious concern, follow company legal escalation protocols, and document the facts neutrally.", 0, "Handles legal threats with professional neutrality and proper escalation compliance."],
     ["Argue with them that software bugs don't qualify for lawsuits.", 1, "Combative and increases organizational liability."],
-    ["Panic, agree to give them a large cash payout from your own pocket.", 2, "Extremely inappropriate and unauthorized."]
+    ["Panic and offer to give them a discount out of your own pocket.", 2, "Extremely inappropriate and unauthorized."]
   ]],
+  // 45
   ["Active listening", 1, "A customer pauses for a long time while explaining their problem. You aren't sure if they are finished.", [
     ["Wait patiently, giving them space to gather their thoughts before speaking.", 0, "Respects their thinking time and avoids premature interruption."],
     ["Ask 'Are you still there?' in an impatient tone.", 1, "Impatient and interrupts customer reflection."],
     ["Start troubleshooting while they are silent.", 2, "Confusing and disruptive."]
   ]],
+  // 46
   ["Clarification", 0, "A customer says their notifications aren't working for a specific messaging app.", [
     ["Check app notification settings, Focus/Do Not Disturb modes, and scheduled summary settings.", 0, "Covers the most common reasons why specific notifications fail."],
     ["Reinstall the operating system.", 1, "Absurdly disproportionate."],
     ["Turn off the phone and leave it off for an hour.", 2, "Useless for notification configuration issues."]
   ]],
+  // 47
   ["Empathy", 1, "A customer expresses embarrassment because they forgot their passcode and feel 'technologically inept.'", [
     ["Reassure them that forgetting passcodes happens to everyone and that security features are designed to be strict.", 0, "Destigmatizes the mistake and reassures the customer warmly."],
     ["It's pretty simple if you just remember it next time.", 1, "Condescending and unhelpful."],
     ["How could you forget something so basic?", 2, "Insulting and unprofessional."]
   ]],
+  // 48
   ["Troubleshooting", 0, "A customer's wireless mouse pointer is freezing intermittently. The battery indicator is at 80%.", [
-    ["Check for USB receiver interference (e.g., USB 3.0 port proximity) and update mouse drivers.", 0, "Identifies common RF interference issues with wireless receivers."],
+    ["Check for USB receiver interference (e.g., USB port proximity) and update mouse drivers.", 0, "Identifies common RF interference issues with wireless receivers."],
     ["Replace the mouse batteries immediately despite the 80% charge.", 1, "Ignores the sensor data provided."],
     ["Buy a new computer.", 2, "Outrageous overreaction."]
   ]],
+  // 49
   ["Ownership", 2, "You promise to research a rare bug and follow up with the customer via email by Tuesday. Tuesday arrives and you don't have a fix yet.", [
     ["Email the customer proactively on Tuesday explaining you are still investigating and providing your next scheduled update time.", 0, "Maintains trust by communicating proactively rather than waiting to be chased."],
     ["Wait until you have the final fix before ever contacting them again.", 1, "Misses the committed Tuesday update window."],
     ["Ignore the commitment since they probably forgot.", 2, "Unethical and damages professional reputation."]
   ]],
+  // 50
   ["Security & safety", 3, "A customer asks if they should share their screen with an unverified third-party tech support caller who cold-called them.", [
     ["Warn them strongly against screen-sharing or giving access to cold-callers, as this is a common tech support scam.", 0, "Protects the customer from active fraud and scams."],
     ["Go ahead and share your screen so they can fix your computer faster.", 1, "Assists scammers in compromising the customer's device."],
     ["Ask for their employee ID first, then share your screen.", 2, "Still dangerous; cold-callers are almost universally fraudulent."]
   ]],
+  // 51
   ["Active listening", 1, "A customer corrects your pronunciation of their name. How do you respond?", [
     ["Apologize politely, repeat their name correctly, and thank them for correcting you.", 0, "Demonstrates respect and personal connection."],
     ["Laugh it off and say it's too difficult to pronounce.", 1, "Dismissive and impolite."],
-    ["Ignore the correction and keep mispronouncing it.", 2, "Disrespectful."]]
+    ["Ignore the correction and keep mispronouncing it.", 2, "Disrespectful."]
   ]],
+  // 52
   ["Clarification", 0, "A customer says their device storage is full of 'Other' data. What should you investigate first?", [
     ["Ask them to check Settings to see the storage breakdown and identify what is caching large files or cached media.", 0, "Investigates the specific components of 'Other' storage."],
     ["Tell them to buy a new device.", 1, "Premature and unhelpful."],
-    ["Delete all photos without checking.", 2, "Destructive and careless."]]
+    ["Delete all photos without checking.", 2, "Destructive and careless."]
   ]],
+  // 53
   ["Empathy", 1, "A customer is frustrated because an accessory they bought isn't compatible with their older device model.", [
     ["Acknowledge how disappointing it is when accessories aren't cross-compatible, and help them find the correct compatible option or return path.", 0, "Validates disappointment and guides them to a constructive solution."],
     ["You should have checked the compatibility specs before buying.", 1, "Blaming and unhelpful."],
     ["That's your fault for having an older device.", 2, "Rude and offensive."]
   ]],
+  // 54
   ["Troubleshooting", 0, "A customer's web browser keeps redirecting to strange search pages instead of their usual homepage.", [
     ["Check browser extension settings for unwanted adware or malicious extensions.", 0, "Targets typical browser hijacking culprits."],
     ["Reinstall the entire computer operating system.", 1, "Overkill for a browser adware issue."],
-    ["Buy a new router.", 2, "Unrelated to browser extension hijacking."]
+    ["Change your internet service provider.", 2, "Unrelated to browser extension hijacking."]
   ]],
+  // 55
   ["Ownership", 2, "A customer calls back after your shift ended yesterday, and another advisor picks up. The customer is upset you didn't call back.", [
     ["Ensure the new advisor has comprehensive notes, and leave a priority callback request for your shift today with a personal apology.", 0, "Takes accountability across shift boundaries."],
     ["Ignore the message since it's your day off.", 1, "Poor ownership and customer service."],
     ["Blame the other advisor for picking up the call.", 2, "Unprofessional internal blame-shifting."]
   ]],
+  // 56
   ["Security & safety", 3, "A customer wants to disable their device firewall because it's blocking a game they want to play.", [
     ["Explain the security risks of disabling a firewall, and help them configure an exception rule for the game safely instead.", 0, "Maintains system security while solving the user's practical need."],
     ["Turn off the firewall completely; firewalls are useless anyway.", 1, "Exposes the user to network vulnerabilities."],
-    ["Uninstall your operating system.", 2, "Nonsensical and extreme."]
+    ["Switch to a different brand of computer entirely.", 2, "Nonsensical and extreme."]
   ]],
+  // 57
   ["Escalation", 3, "A customer demands an exception to a strict licensing policy that you have no authority to override.", [
     ["Explain your authority limits transparently, outline what options do exist within policy, and offer to document their feedback for management.", 0, "Honest, clear, and sets realistic boundaries without being dismissive."],
     ["Lie and say you approved the exception yourself.", 1, "Dishonest and violates company policy."],
     ["Tell them the company rules are stupid.", 2, "Unprofessional and insubordinate."]
   ]],
+  // 58
   ["Active listening", 1, "A customer mentions in passing that they dropped their phone last week, right before complaining about screen flickering today.", [
     ["Connect the drop they mentioned last week to the current screen flickering symptom as a likely hardware cause.", 0, "Synthesizes scattered details into a coherent diagnostic hypothesis."],
     ["Ignore the mention of the drop completely.", 1, "Misses a crucial clue."],
     ["Accuse them of lying about the drop.", 2, "Confrontational and rude."]
   ]],
+  // 59
   ["Clarification", 0, "A customer says their backup failed. What should you ask first?", [
     ["Ask if they received a specific error message and whether they have sufficient cloud storage space.", 0, "Identifies error codes and storage constraints."],
     ["Tell them to delete all their files.", 1, "Destructive advice."],
-    ["Buy a new backup hard drive.", 2, "Premature purchase recommendation."]]
+    ["Buy a new backup hard drive.", 2, "Premature purchase recommendation."]
   ]],
+  // 60
   ["Empathy", 1, "A customer is stressed because they lost all their contacts during a sync error.", [
     ["Acknowledge how stressful losing contacts is, and check if we can restore them from an archived backup.", 0, "Validates stress and immediately explores recovery paths."],
     ["Contacts aren't that important, you can rebuild your list.", 1, "Dismissive of customer pain."],
     ["Laugh and ask how they managed that.", 2, "Unprofessional and cruel."]
   ]],
+  // 61
   ["Troubleshooting", 0, "A customer's screen brightness keeps dimming automatically on their laptop indoors.", [
     ["Check ambient light sensor settings and adaptive brightness preferences.", 0, "Targets the automatic brightness sensor mechanism."],
     ["Replace the laptop display panel.", 1, "Drastic and unnecessary hardware repair."],
     ["Reinstall the operating system.", 2, "Overkill for a brightness setting adjustment."]
   ]],
+  // 62
   ["Ownership", 2, "You promise a customer you will test a specific app feature and call them back in 30 minutes.", [
     ["Perform the test, verify the results, and call them back exactly within the 30-minute window.", 0, "Fulfills the ownership promise promptly and accurately."],
     ["Wait 3 hours and hope they forgot.", 1, "Breaks the commitment."],
     ["Call them back in 2 minutes without having done the test.", 2, "Dishonest shortcut."]
   ]],
+  // 63
   ["Security & safety", 3, "A customer asks if they should use the same password across all their banking and email accounts for convenience.", [
     ["Strongly advise against password reuse, explaining the risk of credential stuffing, and recommend a password manager.", 0, "Provides vital security education."],
     ["Sure, it's much easier to remember just one password.", 1, "Dangerous security advice."],
-    ["Write all your passwords on your hand.", 2, "Absurd and insecure."]
+    ["Write all your passwords on a piece of paper in your wallet.", 2, "Insecure physical habit."]
   ]],
+  // 64
   ["Active listening", 1, "A customer is speaking very softly and you are having trouble hearing them.", [
     ["Politely explain that you want to catch every word they say, and ask if they can speak up slightly or adjust their microphone.", 0, "Courteous and clear communication fix."],
     ["Yell at the customer to speak louder.", 1, "Rude and aggressive."],
     ["Guess what they said and pretend you heard it.", 2, "Risks severe misunderstanding."]
   ]],
+  // 65
   ["Clarification", 0, "A customer says their emails are 'disappearing.' What should you clarify?", [
     ["Ask if they checked their archive, trash, spam folders, or if they are signed into multiple devices syncing mail.", 0, "Systematically checks where mail may have moved."],
     ["Tell them their email provider deleted their account.", 1, "Alarmist and premature."],
     ["Create a new email address immediately.", 2, "Drastic and unnecessary."]
   ]],
+  // 66
   ["Empathy", 1, "A customer is frustrated because a software update changed the layout of their favorite app.", [
     ["Acknowledge that interface changes can be frustrating to get used to, and guide them through where their favorite features moved.", 0, "Validates change frustration and provides helpful orientation."],
     ["Stop complaining, the new layout is objectively better.", 1, "Argumentative and dismissive."],
     ["Uninstall the app and never use it again.", 2, "Extreme and unhelpful response."]
   ]],
+  // 67
   ["Troubleshooting", 0, "A customer's wireless earbuds only play sound out of the left side.", [
     ["Check charging contact cleanliness, battery levels in both buds, and audio balance settings.", 0, "Covers physical cleanliness, power, and audio balance."],
     ["Buy a new smartphone.", 1, "Unrelated to earbud hardware balance."],
     ["Reinstall the phone's operating system.", 2, "Irrelevant troubleshooting step."]
   ]],
+  // 68
   ["Ownership", 2, "You accidentally gave incorrect troubleshooting steps earlier, resulting in wasted time for the customer.", [
     ["Own the error sincerely, apologize for the lost time, and guide them through the correct path with priority support.", 0, "Honest ownership and restoration of trust."],
     ["Blame the customer for following the wrong steps.", 1, "Abusive and unprofessional."],
-    ["Hang up so you don't have to deal with it.", 2, "Cowardly and unacceptable."]
+    ["Transfer them without saying anything.", 2, "Cowardly and unacceptable."]
   ]],
+  // 69
   ["Security & safety", 3, "A customer says they received a text with a verification code they didn't request.", [
     ["Advise them that someone may be attempting to access their account, recommend changing their password immediately, and review security settings.", 0, "Takes prompt security action against unauthorized access attempts."],
     ["Ignore it, verification codes mean nothing.", 1, "Dangerous dismissal of account compromise warning."],
     ["Share the code online to see who wants it.", 2, "Reckless security violation."]
   ]],
+  // 70
   ["Escalation", 3, "A customer is screaming profanities at you over the phone.", [
     ["Calmly warn them that you want to help, but if profanity continues you will need to pause the call, maintaining professional boundaries.", 0, "Sets clear professional boundaries while offering continued assistance."],
     ["Scream back at them using profanity.", 1, "Unprofessional and violates conduct rules."],
     ["Immediately disconnect without warning.", 2, "Skipping the required warning protocol."]
   ]],
+  // 71
   ["Active listening", 1, "A customer says they've 'tried everything' to fix their connection.", [
     ["Acknowledge their effort, then gently ask which specific steps they've already tried so you don't make them repeat them.", 0, "Respects their effort and avoids redundant troubleshooting."],
     ["Tell them they obviously haven't tried everything or it would be fixed.", 1, "Insulting and presumptive."],
     ["Ignore their claim and start from step one anyway.", 2, "Frustrates the customer by ignoring their statement."]
   ]],
+  // 72
   ["Clarification", 0, "A customer says their device is 'glitchy.' What should you ask?", [
     ["Ask for specific examples of what happens—such as freezing, lagging, or unexpected reboots.", 0, "Transforms vague feedback into actionable diagnostic data."],
     ["Tell them to buy a new device.", 1, "Premature upselling."],
     ["Factory reset the device.", 2, "Drastic without clarification."]
   ]],
+  // 73
   ["Empathy", 1, "A customer is stressed because they dropped their only device into water right before a trip.", [
     ["Express genuine empathy for the terrible timing, and advise immediate power-off and safety steps without false promises.", 0, "Empathetic, realistic, and safety-focused."],
     ["Laugh and ask why they weren't more careful.", 1, "Cruel and unprofessional."],
     ["Don't worry, water damage always fixes itself overnight.", 2, "False and misleading technical advice."]
   ]],
+  // 74
   ["Troubleshooting", 0, "A customer's external monitor is flickering when connected via HDMI.", [
     ["Check cable seating at both ends, test with a different HDMI cable or port if available.", 0, "Isolates cable integrity and port connection issues."],
     ["Replace the computer's graphics card immediately.", 1, "Premature hardware replacement."],
     ["Reinstall the operating system.", 2, "Unrelated to physical cable flickering."]
   ]],
+  // 75
   ["Ownership", 2, "You promised an update by 4 PM, but your system crashed and you lost the customer's direct contact number.", [
     ["Retrieve the contact info from the central ticketing database immediately and reach out as close to 4 PM as possible.", 0, "Resourceful ownership overcoming technical hurdles."],
     ["Give up and go home since you lost the number.", 1, "Failure of ownership."],
     ["Blame the system crash and do nothing.", 2, "Poor customer service."]
   ]],
+  // 76
   ["Security & safety", 3, "A customer asks if they should store their PIN codes in the notes app of their phone.", [
     ["Advise against storing unencrypted PIN codes in notes apps and recommend secure methods.", 0, "Good security hygiene advice."],
     ["Sure, nobody ever looks in notes apps.", 1, "False security assurance."],
-    ["Broadcast your PIN on social media.", 2, "Extreme absurdity."]]
+    ["Write your PIN on a public forum.", 2, "Extreme absurdity."]
   ]],
+  // 77
   ["Active listening", 1, "A customer sighs and says they are exhausted from dealing with technical issues all week.", [
     ["Acknowledge how exhausting tech trouble can be, and assure them you'll make this resolution as smooth as possible.", 0, "Humanizes the interaction and builds instant rapport."],
     ["That's life in the modern world, deal with it.", 1, "Cold and dismissive."],
     ["Let's hurry up and get through this checklist.", 2, "Impersonal and robotic."]
   ]],
+  // 78
   ["Clarification", 0, "A customer says their computer is making a 'funny noise.' What should you clarify?", [
     ["Ask if the noise sounds like clicking, humming, high-pitched whining, or fan spinning.", 0, "Helps identify hardware failure modes (e.g., hard drive clicking vs fan dust)."],
-    ["Tell them to smash the computer with a hammer.", 1, "Absurd and destructive."],
-    ["Turn up your speakers so you don't hear it.", 2, "Useless advice."]]
+    ["Turn off your computer and never turn it on again.", 1, "Extreme advice."],
+    ["Turn up your speakers so you don't hear it.", 2, "Useless advice."]
   ]],
+  // 79
   ["Empathy", 1, "A customer is upset because their subscription renewed automatically and they forgot to cancel.", [
-    ["Acknowledge how frustrating surprise charges are, and check the subscription policy options available for them.", 0, "Empathetic and solution-oriented within policy."],
+    ["Acknowledge how frustrating surprise charges are, and review the subscription policy options available for them.", 0, "Empathetic and solution-oriented within policy."],
     ["Too bad, read the terms of service next time.", 1, "Harsh and unhelpful."],
-    ["Refund their money out of your own bank account.", 2, "Unauthorized and inappropriate action."]
+    ["Process an unauthorized cash refund from company accounts.", 2, "Unauthorized and inappropriate action."]
   ]],
+  // 80
   ["Troubleshooting", 0, "A customer's touch screen isn't responding in the bottom right corner.", [
     ["Check if a screen protector or bulky case is interfering with touch input, and clean the glass surface.", 0, "Covers physical obstructions and debris."],
     ["Replace the computer motherboard.", 1, "Disproportionate response."],
     ["Reinstall the operating system.", 2, "Unlikely to fix a localized physical touch sensor dead zone."]
   ]],
+  // 81
   ["Ownership", 2, "You must transfer a customer to specialized billing support. What should you do before transferring?", [
     ["Summarize the issue, introduce the billing team member, and ensure a warm handoff so the customer doesn't repeat their story.", 0, "Ensures seamless continuity and respect for the customer's time."],
     ["Blind transfer them without saying anything.", 1, "Frustrates the customer by forcing them to restart."],
-    ["Tell them billing is closed and hang up.", 2, "Unacceptable customer service."]]
+    ["Tell them billing is closed and hang up.", 2, "Unacceptable customer service."]
   ]],
+  // 82
   ["Security & safety", 3, "A customer receives a phone call from someone claiming to be tech support asking for their PIN.", [
     ["Warn them immediately that legitimate support never asks for PINs, and advise hanging up on the scammer.", 0, "Protects the customer from active social engineering fraud."],
     ["Give them your PIN to prove you trust them.", 1, "Dangerous security breach."],
     ["Ask the scammer for their badge number first.", 2, "Still engages with a fraudster unnecessarily."]
   ]],
+  // 83
   ["Escalation", 3, "A customer demands an immediate hardware replacement for accidental drop damage not covered by warranty.", [
     ["Explain warranty terms clearly and empathetically, outline out-of-warranty repair options, and maintain professional composure.", 0, "Clear policy communication without being combative."],
     ["Curse at the customer and refuse to speak.", 1, "Unprofessional."],
-    ["Steal a part from inventory and replace it for free.", 2, "Illegal and unethical."]
+    ["Take a spare part from stock and replace it off-the-books.", 2, "Illegal and unethical."]
   ]],
+  // 84
   ["Active listening", 1, "A customer repeats a detail you already acknowledged earlier in the call.", [
     ["Patiently listen without interrupting, showing that you value their emphasis on that point.", 0, "Maintains supportive dialogue without making them feel redundant."],
-    ["Cut them off and say 'You already told me that.'", 1, "Abrubt and irritating."],
+    ["Cut them off and say 'You already told me that.'", 1, "Abrupt and irritating."],
     ["Sigh loudly into the microphone.", 2, "Unprofessional."]
   ]],
+  // 85
   ["Clarification", 0, "A customer says their device storage is full of 'Documents.' What should you ask?", [
     ["Ask if they've checked large downloaded files, video attachments, or offline media folders.", 0, "Clarifies where large documents reside."],
     ["Delete their entire operating system.", 1, "Catastrophic advice."],
     ["Buy a new cloud plan without checking.", 2, "Premature."]
   ]],
+  // 86
   ["Empathy", 1, "A customer is panicked because they think they deleted all their work files.", [
     ["Stay calm and reassuring, and guide them to check the Trash or Recycle Bin first.", 0, "Calms panic and leads to the most common simple recovery spot."],
     ["Laugh at their mistake.", 1, "Unprofessional."],
-    ["Tell them their work is gone forever.", 2, "Premature and panic-inducing."]]
+    ["Tell them their work is gone forever.", 2, "Premature and panic-inducing."]
   ]],
+  // 87
   ["Troubleshooting", 0, "A customer's external microphone is too quiet during calls.", [
     ["Check input volume slider settings in system sound preferences and microphone placement.", 0, "Targets audio gain and physical placement."],
     ["Replace the computer screen.", 1, "Irrelevant."],
-    ["Reinstall the operating system.", 2, "Overkill."]]
+    ["Reinstall the operating system.", 2, "Overkill."]
   ]],
+  // 88
   ["Ownership", 2, "You promised to check on a part order and forgot. The customer calls back asking for status.", [
     ["Own the oversight honestly without excuses, check the status immediately while they're on the line, and give an update.", 0, "Accountable, transparent, and corrective."],
     ["Lie and say the system was down.", 1, "Dishonest."],
     ["Hang up on them.", 2, "Unacceptable."]
   ]],
+  // 89
   ["Security & safety", 3, "A customer wants to store their master password on a sticky note attached to their keyboard.", [
     ["Explain physical security risks of visible sticky notes and recommend password manager tools.", 0, "Practical physical security advice."],
     ["That's a great secure system, keep doing it.", 1, "Insecure guidance."],
     ["Write your password on the office wall.", 2, "Absurd."]
   ]],
+  // 90
   ["Active listening", 1, "A customer says their device is 'possessed' because windows are opening by themselves.", [
     ["Acknowledge their observation, then gently explain it's likely a stuck key, rogue macro, or remote input rather than supernatural.", 0, "Validates their experience while offering realistic technical explanation."],
-    ["Perform an exorcism over the phone.", 1, "Unprofessional joke."],
-    ["Tell them they are crazy.", 2, "Insulting."]
+    ["Suggest calling a priest.", 1, "Unprofessional joke."],
+    ["Tell them they are imagining things.", 2, "Insulting."]
   ]],
+  // 91
   ["Clarification", 0, "A customer says their battery health is low. What should you clarify?", [
     ["Ask what their current maximum capacity percentage is and how long the battery lasts during daily use.", 0, "Gathers concrete metrics rather than vague impressions."],
     ["Tell them to buy a new phone immediately.", 1, "Premature."],
-    ["Charge it in the microwave.", 2, "Extremely dangerous and absurd."]
+    ["Charge it overnight in rice.", 2, "Useless for battery chemical aging."]
   ]],
+  // 92
   ["Empathy", 1, "A customer is anxious about upgrading their operating system because they fear losing data.", [
     ["Validate their caution, and guide them through creating a verified backup before starting the upgrade.", 0, "Empathetic response combined with best-practice preparation."],
     ["Just update it blindly, nothing ever goes wrong.", 1, "Reckless advice."],
-    ["Don't be a coward, updates are easy.", 2, "Insulting."]
+    ["Don't worry about backups, data loss is rare.", 2, "Dismissive of genuine risks."]
   ]],
+  // 93
   ["Troubleshooting", 0, "A customer's bluetooth speaker is cutting out when they walk across the room.", [
     ["Explain Bluetooth range limits and physical obstruction factors between device and speaker.", 0, "Explains wireless physics clearly."],
     ["Replace your Wi-Fi router.", 1, "Unrelated."],
     ["Reinstall your operating system.", 2, "Irrelevant."]
   ]],
+  // 94
   ["Ownership", 2, "You are wrapping up a call and want to ensure the customer feels fully supported.", [
     ["Summarize what was accomplished, confirm they have no remaining questions, and invite them back if anything else comes up.", 0, "Thorough, professional wrap-up."],
     ["Say goodbye and hang up instantly.", 1, "Abrupt."],
-    ["Ask them for money.", 2, "Fraudulent."]
+    ["Ask them for a positive online review.", 2, "Inappropriate timing."]
   ]],
+  // 95
   ["Security & safety", 3, "A customer asks if they should click a popup offering a free prize on a sketchy website.", [
     ["Warn them strongly that it's a phishing/malware trap and advise closing the browser tab immediately.", 0, "Clear safety and security warning."],
     ["Click it quickly to claim your free prize.", 1, "Exposes user to malware."],
-    ["Enter your credit card number to verify the prize.", 2, "Fraudulent advice."]
+    ["Enter your email address to check if it's real.", 2, "Risks spam and credential collection."]
   ]],
+  // 96
   ["Escalation", 3, "A customer is asking for technical assistance outside the scope of supported enterprise software.", [
     ["Politely explain support boundaries, offer documentation for third-party tools if available, and guide them to appropriate vendor resources.", 0, "Professional scope management and helpful redirection."],
     ["Insult their choice of software.", 1, "Unprofessional."],
-    ["Pretend you know everything and give incorrect advice.", 2, "Dishonest."]]
+    ["Pretend you know everything and give incorrect advice.", 2, "Dishonest."]
   ]],
+  // 97
   ["Active listening", 1, "A customer is explaining an issue while crying softly.", [
     ["Listen with deep patience and a gentle, supportive tone, giving them time to speak without rushing.", 0, "Shows empathy and active emotional support."],
     ["Tell them to stop crying so you can work.", 1, "Insensitive."],
     ["Hang up because you're uncomfortable.", 2, "Unprofessional."]
   ]],
+  // 98
   ["Clarification", 0, "A customer says their screen is too bright at night.", [
     ["Ask if they've checked Night Shift or auto-brightness settings to adjust color warmth and luminance.", 0, "Directs attention to built-in night features."],
-    ["Throw your laptop out the window.", 1, "Absurd."],
+    ["Turn off your screen permanently.", 1, "Absurd."],
     ["Wear sunglasses indoors.", 2, "Impractical joke."]
   ]],
+  // 99
   ["Empathy", 1, "A customer is frustrated by an unexpected service fee on their bill.", [
     ["Acknowledge their frustration with the unexpected fee, and review the billing breakdown together to explain its origin.", 0, "Empathetic and transparent review."],
     ["Pay the fee and stop complaining.", 1, "Rude."],
     ["Insult the billing department.", 2, "Insubordinate."]
   ]],
+  // 100
   ["Troubleshooting", 0, "A customer's cursor is moving too fast on screen.", [
     ["Guide them to adjust cursor tracking speed in system mouse/trackpad preferences.", 0, "Directs to the correct setting."],
     ["Replace the computer screen.", 1, "Unrelated."],
     ["Reinstall the operating system.", 2, "Overkill."]
   ]],
+  // 101
   ["Ownership", 2, "You promised to send a confirmation email after the call and realize you forgot right after hanging up.", [
     ["Draft and send the confirmation email immediately with an apology note for the slight delay.", 0, "Prompt correction of an oversight."],
     ["Ignore it since the call is already over.", 1, "Poor ownership."],
     ["Blame the email server.", 2, "Dishonest."]
   ]],
+  // 102
   ["Security & safety", 3, "A customer wants to disable all security warnings on their device because they find them annoying.", [
     ["Explain the purpose of security warnings and advise keeping them enabled to prevent malware threats.", 0, "Educational security guidance."],
     ["Disable all security warnings immediately.", 1, "Unsafe advice."],
-    ["Smash the security warning light.", 2, "Nonsensical."]
+    ["Cover your screen with a towel.", 2, "Nonsensical."]
   ]],
+  // 103
   ["Active listening", 1, "A customer says they tried 'the thing with the button' but it didn't work.", [
     ["Gently ask which button and what steps they took so you can align on the exact procedure.", 0, "Clarifies vague terminology constructively."],
     ["Scold them for not knowing technical terms.", 1, "Condescending."],
-    ["Guess blindly.", 2, "Ineffective."]
+    ["Guess blindly and start troubleshooting.", 2, "Ineffective."]
   ]],
+  // 104
   ["Clarification", 0, "A customer says their device won't connect to Bluetooth accessories.", [
     ["Ask if Bluetooth is enabled in settings and whether the accessories are in pairing mode.", 0, "Covers basic pairing prerequisites."],
     ["Replace the motherboard.", 1, "Overkill."],
     ["Buy a new car.", 2, "Absurd."]
   ]],
+  // 105
   ["Empathy", 1, "A customer is stressed about a looming work deadline while troubleshooting.", [
     ["Acknowledge the high pressure of their work deadline, and prioritize the fastest path to resolution.", 0, "Validates urgency and focuses support."],
     ["Take your time, deadlines aren't important.", 1, "Dismissive."],
     ["Laugh at their stress.", 2, "Cruel."]
-  ]],
-  ["Troubleshooting", 0, "A customer's video playback is stuttering on streaming apps.", [
-    ["Check internet connection speed and test streaming quality settings.", 0, "Covers network bandwidth and playback settings."],
-    ["Replace the computer processor.", 1, "Overkill."],
-    ["Reinstall the operating system.", 2, "Unnecessary."]
-  ]],
-  ["Ownership", 2, "You are handling a difficult customer who insults your competence.", [
-    ["Maintain professional calm, focus entirely on solving their technical problem, and refuse to take insults personally.", 0, "Exemplifies professional composure and de-escalation."],
-    ["Insult them back.", 1, "Unprofessional."],
-    ["Hang up immediately without warning.", 2, "Breaks protocol."]
-  ]],
-  ["Security & safety", 3, "A customer asks if they should download cracked software from an unverified website.", [
-    ["Strongly warn against downloading unverified cracked software due to severe malware and security risks.", 0, "Clear security warning against piracy/malware."],
-    ["Sure, free software is always safe.", 1, "Dangerous advice."],
-    ["Share your credit card on that site.", 2, "Fraudulent."]
-  ]],
-  ["Escalation", 3, "A customer requests an escalation for an issue you can easily solve with one click.", [
-    ["Politely offer to solve it right now while explaining how quick the fix is, saving them transfer time.", 0, "Efficient and helpful service delivery."],
-    ["Refuse to help and transfer them anyway.", 1, "Lazy."],
-    ["Hang up.", 2, "Unprofessional."]
-  ]],
-  ["Active listening", 1, "A customer corrects your understanding of their hardware model.", [
-    ["Thank them for the correction and update your notes immediately.", 0, "Polite and accurate."],
-    ["Argue that their model number is wrong.", 1, "Combative."],
-    ["Ignore the correction.", 2, "Rude."]
-  ]],
-  ["Clarification", 0, "A customer says their sound is muted.", [
-    ["Check physical hardware volume buttons, mute switches, and software volume sliders.", 0, "Systematic check of all mute vectors."],
-    ["Replace the speakers.", 1, "Premature."],
-    ["Reinstall the OS.", 2, "Overkill."]
-  ]],
-  ["Empathy", 1, "A customer is disappointed that a feature they wanted isn't supported on their model.", [
-    ["Acknowledge their disappointment and explore alternative workarounds or compatible features.", 0, "Empathetic redirection to alternatives."],
-    ["Tell them their device is trash.", 1, "Insulting."],
-    ["Lie and say the feature will magically appear tomorrow.", 2, "Dishonest."]
-  ]],
-  ["Troubleshooting", 0, "A customer's web browser is freezing when opening 50 tabs at once.", [
-    ["Explain memory management limits and suggest closing unused tabs to free up system RAM.", 0, "Educational and practical performance guidance."],
-    ["Replace the computer screen.", 1, "Unrelated."],
-    ["Reinstall the internet service provider.", 2, "Incorrect."]
-  ]],
-  ["Ownership", 2, "You complete a successful support interaction and want to close properly.", [
-    ["Summarize the fix, ensure customer satisfaction, and provide clear sign-off.", 0, "Professional call closing."],
-    ["Disconnect abruptly.", 1, "Abrupt."],
-    ["Ask for a personal tip.", 2, "Inappropriate."]
-  ]],
-  ["Security & safety", 3, "A customer asks if public USB charging stations are safe for data syncing.", [
-    ["Warn them about juice-jacking risks and recommend using wall adapters or charge-only cables in public places.", 0, "Informed security and safety advice."],
-    ["Plug into every public port you see.", 1, "Insecure."],
-    ["Lick the USB connector.", 2, "Bizarre and dangerous."]
-  ]],
-  ["Active listening", 1, "A customer speaks with a heavy accent and you miss a word.", [
-    ["Politely ask them to repeat the last sentence with warmth and respect.", 0, "Courteous clarification."],
-    ["Mock their accent.", 1, "Discriminatory and unacceptable."],
-    ["Pretend you understood everything.", 2, "Risky miscommunication."]
-  ]],
-  ["Clarification", 0, "A customer says their screen rotation isn't working.", [
-    ["Check portrait orientation lock in control center and test accelerometer behavior in supported apps.", 0, "Covers software lock and hardware sensor context."],
-    ["Throw the phone against the wall.", 1, "Destructive."],
-    ["Buy a new tablet.", 2, "Premature."]
-  ]],
-  ["Empathy", 1, "A customer is stressed about losing unsaved notes after an app crash.", [
-    ["Acknowledge how frustrating lost notes are, and check if autosave or cloud recovery versions exist.", 0, "Empathetic and investigative recovery check."],
-    ["It's your own fault for not saving.", 1, "Blaming."],
-    ["Laugh at them.", 2, "Cruel."]
-  ]],
-  ["Troubleshooting", 0, "A customer's keyboard backlight isn't illuminating in a dark room.", [
-    ["Check keyboard brightness function keys or ambient light sensor settings.", 0, "Targets illumination settings."],
-    ["Replace the computer motherboard.", 1, "Overkill."],
-    ["Reinstall the operating system.", 2, "Unnecessary."]
-  ]],
-  ["Ownership", 2, "You are unsure about a complex policy question.", [
-    ["Consult internal knowledge resources or a colleague to get the exact answer before responding to the customer.", 0, "Diligent and accurate ownership."],
-    ["Guess blindly and hope it's right.", 1, "Reckless."],
-    ["Make up a fake policy.", 2, "Dishonest."]
-  ]],
-  ["Security & safety", 3, "A customer receives an attachment from an unknown sender.", [
-    ["Advise them not to open or download attachments from unknown senders to prevent malware infection.", 0, "Crucial malware prevention advice."],
-    ["Open all unknown attachments immediately.", 1, "Dangerous."],
-    ["Eat your computer.", 2, "Absurd."]
-  ]],
-  ["Escalation", 3, "A customer demands escalation to an executive office for a minor billing inquiry.", [
-    ["Explain standard escalation paths while offering to resolve the billing inquiry directly and promptly.", 0, "Professional management of escalation requests."],
-    ["Insult the customer.", 1, "Unprofessional."],
-    ["Hang up.", 2, "Protocol violation."]
-  ]],
-  ["Active listening", 1, "A customer thanks you warmly for your help.", [
-    ["Accept the thanks graciously and express pleasure in having assisted them.", 0, "Warm and professional wrap-up."],
-    ["Ignore the compliment.", 1, "Cold."],
-    ["Ask for money.", 2, "Inappropriate."]
-  ]],
-  ["Clarification", 0, "A customer says their device clock is showing the wrong time.", [
-    ["Check date and time settings to ensure 'Set Automatically' and correct time zone are enabled.", 0, "Directs to time synchronization settings."],
-    ["Buy a mechanical wristwatch.", 1, "Unhelpful."],
-    ["Reinstall the computer processor.", 2, "Absurd."]
-  ]],
-  ["Empathy", 1, "A customer is anxious about transitioning from an old operating system to a new one.", [
-    ["Acknowledge the learning curve of new software, and offer calm, step-by-step guidance through the transition.", 0, "Empathetic and supportive guidance."],
-    ["Stop whining and figure it out.", 1, "Rude."],
-    ["Throw away your computer.", 2, "Destructive."]
-  ]],
-  ["Troubleshooting", 0, "A customer's game is lagging due to high graphical settings.", [
-    ["Suggest lowering graphics resolution and shadow quality settings in the game menu for better performance.", 0, "Practical gaming optimization."],
-    ["Buy a new car.", 1, "Unrelated."],
-    ["Reinstall your operating system.", 2, "Overkill."]
-  ]],
-  ["Ownership", 2, "You commit to helping a customer troubleshoot step-by-step.", [
-    ["Stay focused, guide them clearly through each step, and verify success before proceeding.", 0, "Methodical and dedicated ownership."],
-    ["Abandon them halfway through.", 1, "Poor service."],
-    ["Yell at them.", 2, "Unprofessional."]
-  ]],
-  ["Security & safety", 3, "A customer asks if they should use biometric login (Face ID/Touch ID) for security.", [
-    ["Explain that biometrics provide convenient and secure authentication when paired with a strong passcode backup.", 0, "Accurate and balanced security explanation."],
-    ["Biometrics are completely insecure and fake.", 1, "Inaccurate."],
-    ["Never use passwords or biometrics ever.", 2, "Nonsensical."]
   ]]
 ];
 
@@ -682,4 +673,3 @@ function finish(){stopMusic();fx("defeat");show("end");let acc=state.answered?Ma
 $("start").onclick=startRun;$("quit").onclick=finish;$("again").onclick=startRun;$("menu").onclick=()=>{stopMusic();show("home")};
 if(new URLSearchParams(location.search).get("qa")==="1"){let q=document.createElement("div");q.className="panel";q.style.marginTop="12px";q.innerHTML='<b>Developer QA</b><p class="muted" style="font-size:12px">Hidden test shortcuts</p><button class="secondary" id="qaBoss">Jump to floor 10</button> <button class="secondary" id="qaClear">Clear high score</button>'; $("home").append(q);$("qaBoss").onclick=()=>{startRun();state.floor=10;load()};$("qaClear").onclick=()=>{localStorage.removeItem("tsb_best_score");localStorage.removeItem("tsb_best_floor");alert("Saved high score cleared.")}}
 </script></body></html>
-```[cite: 1]
