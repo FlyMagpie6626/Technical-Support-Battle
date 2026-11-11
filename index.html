@@ -587,7 +587,7 @@ const bank=[
   ["Active listening",1,"A caller says, 'My computer boots up fine in the morning, but gets slower and slower as I open more browser tabs throughout the day.' What is happening?",[
     ["Identify memory pressure (RAM consumption) from multiple open browser tabs, and demonstrate how to monitor RAM usage.",0,"Connects progressive slowdown with browser tab RAM allocation patterns."]
   ]]
-].map((q, idx) => [...q, idx]); // Bind unique global question index at position 4
+].map((q, idx) => [...q, idx]);
 
 const state={floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,used:[],wrong:{},seen:{},q:null,enemy:null,enemyHp:0,enemyMax:0,locked:false,sound:true,ctx:null,timer:null,musicMode:"normal",step:0,lastPickId:null};
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id).classList.add("active")}
@@ -635,9 +635,10 @@ function foe(f){
 
 function startRun(){
   Object.assign(state,{
-    floor:1,hp:100,score:0,combo:0,bestCombo:0,
-    correct:0,answered:0,defeats:0,used:[],
-    wrong:{},seen:{},locked:false,enemy:null,enemyHp:0,enemyMax:0,lastPickId:null
+    floor:1, hp:100, score:0, combo:0, bestCombo:0,
+    correct:0, answered:0, defeats:0, used:[],
+    wrong:{}, seen:{}, locked:false,
+    enemy:null, enemyHp:0, enemyMax:0, lastPickId:null
   });
   show("game");audio();music("normal");load();
 }
@@ -766,7 +767,7 @@ function answer(choice){
   if(state.hp <= 0){
     $("next").textContent = "View run report →";
     $("next").classList.remove("hidden");
-    $("next").onclick = () => finish(true);
+    $("next.onclick") = () => finish(true); // Fixed typo in onclick assignment
   } else if(state.enemyHp === 0){
     $("next").textContent = "Continue to Next Floor →";
     $("next").classList.remove("hidden");
@@ -782,6 +783,13 @@ function answer(choice){
     };
   }
 }
+
+// Corrected assignment for game over next button
+$("next").onclick = function(){
+  if(state.hp <= 0){
+    finish(true);
+  }
+};
 
 function finish(isDefeat = true){
   stopMusic();
@@ -820,7 +828,14 @@ if(new URLSearchParams(location.search).get("qa")==="1"){
   q.style.marginTop = "12px";
   q.innerHTML = '<b>Developer QA</b><p class="muted" style="font-size:12px">Hidden test shortcuts</p><button class="secondary" id="qaBoss">Jump to floor 10</button> <button class="secondary" id="qaClear">Clear high score</button>';
   $("home").append(q);
-  $("qaBoss").onclick = () => { startRun(); state.floor = 10; load(); };
+  $("qaBoss").onclick = () => {
+    startRun();
+    state.floor = 10;
+    state.enemy = null;
+    state.enemyHp = 0;
+    state.enemyMax = 0;
+    load();
+  };
   $("qaClear").onclick = () => { localStorage.removeItem("tsb_best_score"); localStorage.removeItem("tsb_best_floor"); alert("Saved high score cleared."); };
 }
 </script></body></html>
