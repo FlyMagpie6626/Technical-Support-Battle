@@ -633,14 +633,29 @@ function foe(f){
   return {...template, elite: f%5===0 && f%10!==0, boss: f%10===0, baseHp: scaledHp};
 }
 
-function startRun(){
+function startRun(startFloor = 1){
   Object.assign(state,{
-    floor:1, hp:100, score:0, combo:0, bestCombo:0,
-    correct:0, answered:0, defeats:0, used:[],
-    wrong:{}, seen:{}, locked:false,
-    enemy:null, enemyHp:0, enemyMax:0, lastPickId:null
+    floor: startFloor,
+    hp: 100,
+    score: 0,
+    combo: 0,
+    bestCombo: 0,
+    correct: 0,
+    answered: 0,
+    defeats: 0,
+    used: [],
+    wrong: {},
+    seen: {},
+    enemy: null,
+    enemyHp: 0,
+    enemyMax: 0,
+    locked: false,
+    lastPickId: null
   });
-  show("game");audio();music("normal");load();
+  show("game");
+  audio();
+  music("normal");
+  load();
 }
 
 function load(){
@@ -813,9 +828,9 @@ function finish(isDefeat = true){
   }).join("");
 }
 
-$("start").onclick = startRun;
+$("start").onclick = () => startRun(1);
 $("quit").onclick = () => finish(false);
-$("again").onclick = startRun;
+$("again").onclick = () => startRun(1);
 $("menu").onclick = () => { stopMusic(); show("home"); };
 
 if(new URLSearchParams(location.search).get("qa")==="1"){
@@ -824,14 +839,7 @@ if(new URLSearchParams(location.search).get("qa")==="1"){
   q.style.marginTop = "12px";
   q.innerHTML = '<b>Developer QA</b><p class="muted" style="font-size:12px">Hidden test shortcuts</p><button class="secondary" id="qaBoss">Jump to floor 10</button> <button class="secondary" id="qaClear">Clear high score</button>';
   $("home").append(q);
-  $("qaBoss").onclick = () => {
-    startRun();
-    state.enemy = null;
-    state.enemyHp = 0;
-    state.enemyMax = 0;
-    state.floor = 10;
-    load();
-  };
+  $("qaBoss").onclick = () => startRun(10);
   $("qaClear").onclick = () => { localStorage.removeItem("tsb_best_score"); localStorage.removeItem("tsb_best_floor"); alert("Saved high score cleared."); };
 }
 </script></body></html>
