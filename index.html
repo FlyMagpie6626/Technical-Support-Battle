@@ -767,12 +767,15 @@ function answer(choice){
   if(state.hp <= 0){
     $("next").textContent = "View run report →";
     $("next").classList.remove("hidden");
-    $("next.onclick") = () => finish(true); // Fixed typo in onclick assignment
+    $("next").onclick = () => finish(true);
   } else if(state.enemyHp === 0){
     $("next").textContent = "Continue to Next Floor →";
     $("next").classList.remove("hidden");
     $("next").onclick = () => {
       state.floor++;
+      state.enemy = null;
+      state.enemyHp = 0;
+      state.enemyMax = 0;
       load();
     };
   } else {
@@ -783,13 +786,6 @@ function answer(choice){
     };
   }
 }
-
-// Corrected assignment for game over next button
-$("next").onclick = function(){
-  if(state.hp <= 0){
-    finish(true);
-  }
-};
 
 function finish(isDefeat = true){
   stopMusic();
