@@ -6,7 +6,7 @@
 @media(min-width:650px){.hero{grid-template-columns:1fr .8fr;align-items:center}.art{min-height:230px}}@media(max-width:430px){.hud{grid-template-columns:repeat(2,1fr)}.settings{grid-template-columns:1fr}.panel{padding:14px}}
 </style></head><body><main class="wrap">
 <div class="top"><div class="brand">⚔ TECHNICAL SUPPORT BATTLE</div><button class="sound" id="sound">♫ Sound: On</button></div>
-<section class="screen active" id="home"><div class="hero"><div><div class="kicker">AN ADVISOR SURVIVAL RPG</div><h1>Keep your cool.<br><span style="color:#ffd166">Save the day.</span></h1><p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p><div class="stats"><div class="stat"><b>100</b><span>Starting HP</span></div><div class="stat"><b>3</b><span>Choices</span></div><div class="stat"><b>108</b><span>Scenarios</span></div></div><button class="primary" id="start">ENTER THE DUNGEON →</button><p class="muted" style="font-size:11px">*108 individually authored scenarios cycling with spaced repetition.</p></div><div class="art">🛡️⚔️</div></div><div class="panel" style="margin-top:14px"><div class="kicker">AUDIO SETTINGS</div><div class="settings"><label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label><label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label></div><p class="muted" style="font-size:12px">Retro-inspired interface sounds with dynamic fantasy battle music.</p></div></section>
+<section class="screen active" id="home"><div class="hero"><div><div class="kicker">AN ADVISOR SURVIVAL RPG</div><h1>Keep your cool.<br><span style="color:#ffd166">Save the day.</span></h1><p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p><div class="stats"><div class="stat"><b>100</b><span>Starting HP</span></div><div class="stat"><b>3</b><span>Choices</span></div><div class="stat"><b>112</b><span>Scenarios</span></div></div><button class="primary" id="start">ENTER THE DUNGEON →</button><p class="muted" style="font-size:11px">*112 individually authored scenarios cycling with spaced repetition.</p></div><div class="art">🛡️⚔️</div></div><div class="panel" style="margin-top:14px"><div class="kicker">AUDIO SETTINGS</div><div class="settings"><label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label><label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label></div><p class="muted" style="font-size:12px">Retro-inspired interface sounds with dynamic fantasy battle music.</p></div></section>
 <section class="screen" id="game"><div class="hud"><div class="stat"><span>FLOOR</span><b id="floor">1</b></div><div class="stat"><span>HP</span><b id="hp">100</b><div class="bar"><div class="fill" id="hpbar"></div></div></div><div class="stat"><span>SCORE</span><b id="score">0</b></div><div class="stat"><span>COMBO</span><b id="combo">×0</b></div></div><div class="panel"><div class="kicker" id="floorType">FLOOR 1</div><div class="enemy"><div class="monster" id="monster">🫧</div><div class="enemyinfo"><h2 id="enemyName">Confusion Slime</h2><p id="enemyDesc"></p><div class="bar"><div class="fill enemyfill" id="enemybar"></div></div><div class="meter"><span>Enemy vitality</span><span id="enemyHp"></span></div></div></div><div class="tag" id="skill">CLARIFICATION</div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="feedback hidden" id="feedback"></div><div class="controls"><button class="secondary" id="quit">End run</button><button class="primary hidden" id="next">Next encounter →</button></div></div></section>
 <section class="screen" id="end"><div class="panel"><div class="kicker">RUN COMPLETE</div><h1 id="endTitle">The dungeon claims another hero.</h1><p class="muted" id="endSub"></p><div class="report"><div class="stat"><b id="rScore">0</b><span>Final score</span></div><div class="stat"><b id="rFloor">1</b><span>Floor reached</span></div><div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div><div class="stat"><b id="rDefeats">0</b><span>Enemies defeated</span></div><div class="stat"><b id="rCombo">0</b><span>Best combo</span></div><div class="stat"><b id="rBest">0</b><span>Personal best</span></div></div><div class="kicker">ADVISOR SKILL REPORT</div><div id="skills"></div><div class="controls"><button class="primary" id="again">Fight again</button><button class="secondary" id="menu">Main menu</button></div></div></section><footer>TECHNICAL SUPPORT BATTLE · PROTOTYPE 0.1</footer></main>
 <script>
@@ -17,16 +17,15 @@ const $=id=>document.getElementById(id),
 
 const enemies=[
   {name:"Confusion Slime",emoji:"🫧",desc:"A tangled issue that needs careful questions.", baseHp:75},
-  {name:"Rage Goblin",emoji:"👺",desc:"A frustrated customer tests your composure.", baseHp:95},
-  {name:"Doubt Mimic",emoji:"🧰",desc:"A customer unsure they can trust the process.", baseHp:115},
-  {name:"Escalation Dragon",emoji:"🐉",desc:"A complex situation requiring judgment and safety.", baseHp:160}
+  {name:"Rage Goblin",emoji:"👺",desc:"A frustrated customer tests your composure.", baseHp:75},
+  {name:"Doubt Mimic",emoji:"🧰",desc:"A customer unsure they can trust the process.", baseHp:110},
+  {name:"Escalation Dragon",emoji:"🐉",desc:"A complex situation requiring judgment and safety.", baseHp:170}
 ];
 
-// Phase 2.3: 108 Individually Authored Scenarios (3 Choices Each)
 const bank=[
   ["Clarification",1,"A customer reports their phone battery is draining much faster since yesterday. They haven't noticed any app updates. What should you ask first?",[
     ["Ask when they first noticed the change and check battery usage by app over the last 24 hours.",0,"Establishes a diagnostic timeline and isolates high-energy software tasks before making assumptions."],
-    ["Advise them to perform a factory restore immediately to rule out operating system bugs.",3,"Restoring a device is a drastic step that destroys user setup without isolated diagnosis."],
+    ["Advise them to perform a factory restore immediately to rule out operating system bugs.",3,"Restoring a device is a drastic step that erases user settings without isolated diagnosis."],
     ["Explain that battery drain after updates is normal and suggest waiting a week for it to settle.",1,"Assumes an update occurred when the customer explicitly stated no changes were made."]
   ]],
   ["Clarification",0,"A customer says, 'My screen is displaying strange colored lines.' What should you ask before offering troubleshooting steps?",[
@@ -261,6 +260,11 @@ const bank=[
     ["Unplug the drive forcibly during active writing without unmounting.",2,"Risks filesystem corruption."],
     ["Replace the computer motherboard.",3,"Grossly disproportionate action."]
   ]],
+  ["Troubleshooting",0,"A user's bluetooth headphones audio keeps cutting out when they put their phone in their back pocket. What is the primary cause?",[
+    ["Body tissue attenuates 2.4GHz Bluetooth signals; moving the phone to a front pocket or arm band restores line-of-sight RF transmission.",0,"Explains physical radio frequency signal attenuation caused by human body water content."],
+    ["The phone's audio chip is overheating from pocket warmth.",2,"Incorrect thermal explanation of Bluetooth signal dropping."],
+    ["The headphones require a paid mobile firmware upgrade.",3,"Nonsensical monetization claim."]
+  ]],
 
   ["Ownership",2,"You need 10 minutes to research a rare error code. The customer is waiting on the line. How should you set expectations?",[
     ["Explain what you are researching, offer a 10-minute hold or a scheduled callback, and give a clear check-in time.",0,"Gives the customer control of their time while setting accurate, transparent expectations."],
@@ -336,6 +340,11 @@ const bank=[
     ["Review itemized billing line by line with them, explaining each charge and credit clearly until they feel confident.",0,"Takes full ownership of customer clarity and financial transparency."],
     ["Tell them to read the printed invoice footnotes themselves.",2,"Dismissive customer service."],
     ["Transfer them to accounting without reviewing basic line items.",1,"Avoids basic ownership."]
+  ]],
+  ["Ownership",2,"A software bug fix is scheduled for a future software release next month. How do you summarize this for the customer?",[
+    ["Explain that the issue is confirmed by engineering, outline temporary workaround steps, and provide tracking for the update release.",0,"Validates the confirmed bug state, empowers the user with immediate workarounds, and sets release tracking."],
+    ["Tell them there is no bug and they are imagining the issue.",3,"Gaslights the customer and denies software telemetry."],
+    ["Promise to rewrite the operating system codebase yourself tonight.",3,"Delivers an impossible personal claim."]
   ]],
 
   ["Security & safety",3,"A customer received a text asking them to click a link to verify their account or face account suspension. What do you advise?",[
@@ -413,6 +422,11 @@ const bank=[
     ["Rename the file extension to '.pdf' and open it.",3,"Extremely dangerous, still executes binary code."],
     ["Double-click it to see if it's an authentic invoice.",3,"Triggers immediate malware execution."]
   ]],
+  ["Security & safety",3,"A customer notices their cloud account logged in from a country they have never visited. What immediate action should they take?",[
+    ["Change account password immediately, revoke all active signed-in sessions, and enable multi-factor authentication.",0,"Contains active account compromise and revokes unauthorized session tokens."],
+    ["Send an email to the unknown IP address asking them to log out.",3,"Useless and reveals personal contact details to attackers."],
+    ["Ignore it assuming cloud location mapping is always inaccurate.",2,"Dangerous delay in containing unauthorized session hijacks."]
+  ]],
 
   ["Escalation",3,"A customer demands a supervisor because their out-of-warranty hardware repair cannot be covered for free under policy. What do you do?",[
     ["Empathize with their disappointment, explain the policy clearly, and arrange a warm transfer to a supervisor with full notes.",0,"Respects escalation rights while ensuring the supervisor has complete context."],
@@ -488,6 +502,11 @@ const bank=[
     ["Explain that SLA parameters are detailed in published Terms of Service agreements and offer the official SLA document link.",0,"Provides official contractual documentation without making unauthorized verbal guarantees."],
     ["Write a custom liability guarantee on corporate letterhead yourself.",3,"Exceeds legal authority."],
     ["Tell them software never crashes under any circumstance.",2,"False technical representation."]
+  ]],
+  ["Escalation",3,"A regional power outage damaged corporate servers and created a backlog of 10,000 pending tickets. What is the team communication protocol?",[
+    ["Deploy standard service disruption banner alerts, communicate queue delays transparently, and triage high-severity security incidents first.",0,"Implements incident communication management and priority triage during mass disruptions."],
+    ["Delete all 10,000 backlog tickets to start fresh.",3,"Mass data destruction of unresolved customer tickets."],
+    ["Blame frontline advisors publicly on social media.",3,"Unacceptable management communication failure."]
   ]],
 
   ["Active listening",1,"A customer is breathlessly listing issues across their tablet, smartwatch, and laptop. They sound overwhelmed. What is your response?",[
@@ -566,11 +585,9 @@ const bank=[
     ["Tell them email notifications cannot show visual banners.",2,"Inaccurate system OS capability statement."]
   ]],
   ["Active listening",1,"A caller says, 'My computer boots up fine in the morning, but gets slower and slower as I open more browser tabs throughout the day.' What is happening?",[
-    ["Identify memory pressure (RAM consumption) from multiple open browser tabs, and demonstrate how to monitor RAM usage.",0,"Connects progressive slowdown with browser tab RAM allocation patterns."],
-    ["Tell them the processor loses energy as the sun sets.",3,"Absurd non-technical claim."],
-    ["Recommend replacing the computer power cord.",2,"Unrelated to system memory allocation."]
+    ["Identify memory pressure (RAM consumption) from multiple open browser tabs, and demonstrate how to monitor RAM usage.",0,"Connects progressive slowdown with browser tab RAM allocation patterns."]
   ]]
-].map((q, idx) => [...q, idx]); // Bind unique global question index at index 4
+].map((q, idx) => [...q, idx]); // Bind unique global question index at position 4
 
 const state={floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,used:[],wrong:{},seen:{},q:null,enemy:null,enemyHp:0,enemyMax:0,locked:false,sound:true,ctx:null,timer:null,musicMode:"normal",step:0,lastPickId:null};
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id).classList.add("active")}
@@ -584,24 +601,18 @@ $("sound").onclick=()=>{state.sound=!state.sound;$("sound").textContent=state.so
 $("musicVol").oninput=()=>{if(+$("musicVol").value===0)stopMusic();else if(state.sound)music(state.musicMode)};
 
 function pick(){
-  // Exclude used question IDs
   let candidates = bank.filter(q => !state.used.includes(q[4]));
-  
-  // Exhaustion check: Reshuffle pool when exhausted
   if(candidates.length === 0){
     state.used = [];
     candidates = bank.filter(q => q[4] !== state.lastPickId);
     if(candidates.length === 0) candidates = bank;
   }
-  
-  // Weight individual question performance
   let weights = candidates.map(q => {
     let qId = q[4];
     let misses = state.wrong[qId] || 0;
     let plays = state.seen[qId] || 0;
     return 1 + Math.min(2.5, misses * 0.9) - Math.min(0.8, plays * 0.1);
   });
-  
   let sum = weights.reduce((a, b) => a + b, 0);
   let r = Math.random() * sum;
   let idx = 0;
@@ -609,7 +620,6 @@ function pick(){
     r -= weights[idx];
     if(r <= 0) break;
   }
-  
   let chosen = candidates[idx];
   state.used.push(chosen[4]);
   state.lastPickId = chosen[4];
@@ -617,14 +627,18 @@ function pick(){
 }
 
 function foe(f){
-  let template = f%10===0 ? enemies[3] : f%5===0 ? enemies[Math.floor(f/5-1)%3] : enemies[(f-1)%3];
-  let multiplier = 1 + (f - 1) * 0.1;
+  let template = f%10===0 ? enemies[3] : f%5===0 ? enemies[2] : enemies[(f-1)%2];
+  let multiplier = 1 + (f - 1) * 0.08;
   let scaledHp = Math.round(template.baseHp * multiplier);
-  return {...template, elite: f%5===0, boss: f%10===0, baseHp: scaledHp};
+  return {...template, elite: f%5===0 && f%10!==0, boss: f%10===0, baseHp: scaledHp};
 }
 
 function startRun(){
-  Object.assign(state,{floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,used:[],wrong:{},seen:{},locked:false,lastPickId:null});
+  Object.assign(state,{
+    floor:1,hp:100,score:0,combo:0,bestCombo:0,
+    correct:0,answered:0,defeats:0,used:[],
+    wrong:{},seen:{},locked:false,enemy:null,enemyHp:0,enemyMax:0,lastPickId:null
+  });
   show("game");audio();music("normal");load();
 }
 
@@ -685,7 +699,7 @@ function answer(choice){
   let qId = q[4];
   let best = (choice[1] === 0);
   state.seen[qId] = (state.seen[qId] || 0) + 1;
-  state.seen[q[0]] = (state.seen[q[0]] || 0) + 1; // Category aggregate tracking
+  state.seen[q[0]] = (state.seen[q[0]] || 0) + 1;
 
   let bestChoice = q[3].find(c => c[1] === 0);
 
@@ -723,7 +737,7 @@ function answer(choice){
     state.hp = Math.max(0, state.hp - loss);
     state.combo = 0;
     state.wrong[qId] = (state.wrong[qId] || 0) + 1;
-    state.wrong[q[0]] = (state.wrong[q[0]] || 0) + 1; // Category aggregate tracking
+    state.wrong[q[0]] = (state.wrong[q[0]] || 0) + 1;
     title = choice[1] === 1 ? "A small misstep" : choice[1] === 2 ? "A costly misstep" : "Critical mistake";
     detail = `Counterattack: −${loss} HP. ${choice[2]}`;
     fx("bad");
