@@ -826,10 +826,10 @@ if(new URLSearchParams(location.search).get("qa")==="1"){
   $("home").append(q);
   $("qaBoss").onclick = () => {
     startRun();
-    state.floor = 10;
     state.enemy = null;
     state.enemyHp = 0;
     state.enemyMax = 0;
+    state.floor = 10;
     load();
   };
   $("qaClear").onclick = () => { localStorage.removeItem("tsb_best_score"); localStorage.removeItem("tsb_best_floor"); alert("Saved high score cleared."); };
