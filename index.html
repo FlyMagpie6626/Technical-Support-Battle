@@ -838,8 +838,6 @@ const bank=[
   ],"Q112"]
 ];
 
-const state=
-
 const state={
   floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,
   used:[],wrong:{},seen:{},q:null,enemy:null,enemyHp:0,enemyMax:0,locked:false,
@@ -892,9 +890,9 @@ function fx(k){
 /* Layered Synthesized Audio Track Generator */
 const synthScales={
   normal: [261.63, 293.66, 329.63, 392.00, 440.00, 523.25], // C major / A minor ambient
-  boss: [146.83, 164.81, 174.61, 220.00, 246.94, 293.66],   # D minor suspenseful
-  danger: [130.81, 138.59, 164.81, 174.61, 207.65, 220.00], # Dark chromatic tension
-  ultra: [110.00, 130.81, 146.83, 164.81, 196.00, 220.00]   # Epic deep scale
+  boss: [146.83, 164.81, 174.61, 220.00, 246.94, 293.66],   // D minor suspenseful
+  danger: [130.81, 138.59, 164.81, 174.61, 207.65, 220.00], // Dark chromatic tension
+  ultra: [110.00, 130.81, 146.83, 164.81, 196.00, 220.00]   // Epic deep scale
 };
 
 function stopMusic(){if(state.timer){clearInterval(state.timer);state.timer=null}}
