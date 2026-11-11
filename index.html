@@ -594,10 +594,10 @@ const bank=[
     ["I'll leave the outage information out for now and continue troubleshooting the device as though the service were operating normally.",2,"Wastes customer time and causes frustration when outage is known."],
     ["The problem is being caused by your local equipment, so changing those settings should restore the service.",2,"False technical claim deflecting official outage telemetry."]
   ],"Q057"],
-  ["Ownership",2,"A customer asks a question about a peripheral brand you are unfamiliar with. How do you respond?",[
-    ["I'm familiar with similar peripherals, so I can give you the likely specifications based on how those devices normally work.",2,"Risk delivering inaccurate setup instructions."],
-    ["Since I don't know that brand, I wouldn't be able to help with any third-party peripheral questions.",2,"Unhelpful refusal of basic integration support."],
-    ["I don't want to guess and give you the wrong information. Let me check the manufacturer's documentation first so I can give you accurate guidance.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."]
+  ["Ownership",2,"A customer asks you to explain a complex bill charge from last month. What do you do?",[
+    ["The details are already listed in the invoice, so you can check the footnotes for an explanation of the charge.",2,"Dismissive customer service."],
+    ["This is a billing question, so I'll transfer you to the billing team to explain it.",1,"Avoids basic ownership."],
+    ["Let's go through the charges and credits together so I can explain exactly what each item means and where the amount came from.",0,"Takes full ownership of customer clarity and financial transparency."]
   ],"Q058"],
   ["Ownership",2,"A customer calls back because a ticket opened yesterday was closed without resolution. What do you do?",[
     ["Since yesterday's ticket was already closed, you'll need to open a new one and wait for the next available advisor.",2,"Forces bureaucratic loops on unresolved customer."],
@@ -781,7 +781,7 @@ const bank=[
     ["I'll document the current state, review the previous attempts and available logs, align on a single troubleshooting strategy, and take ownership from there.",0,"Cleans up case ambiguity, establishes case documentation, and stabilizes strategy."],
     ["Blame the customer for calling back repeatedly.",2,"Unprofessional blame assignment."]
   ],"Q094"],
-  ["Escalation",3,"A customer asks for a written liability statement guaranteeing zero software downtime. What do you explain?",[
+  ["Escalation",3,"A customer requests a written liability statement guaranteeing zero software downtime. What do you explain?",[
     ["I can provide a custom guarantee that your software will have zero downtime.",3,"Exceeds legal authority."],
     ["I can't create a custom liability guarantee, but I can point you to the published SLA and Terms of Service that define the applicable service commitments and limitations.",0,"Provides official contractual documentation without making unauthorized verbal guarantees."],
     ["Software doesn't normally crash, so you shouldn't need a formal guarantee.",2,"False technical representation."]
