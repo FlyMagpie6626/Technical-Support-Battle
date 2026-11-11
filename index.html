@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#0f172a"><title>Technical Support Battle v1.2.3</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#0f172a"><title>Technical Support Battle v1.2.4</title>
 <style>
 :root{
   --bg:#0f172a;--p:#1e293b;--panel:#1c2436;--line:#334155;--ink:#f8fafc;--muted:#94a3b8;
@@ -147,13 +147,14 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 .controls{display:flex;gap:6px;margin-top:6px;flex-shrink:0}
 .controls button{flex:1;padding:8px}
 .hidden{display:none!important}
-.report{grid-template-columns:repeat(3,1fr);gap:5px;margin:4px 0}
-.report .stat{padding:5px}
-.report .stat b{font-size:14px}
+.report{grid-template-columns:repeat(3,1fr);gap:4px;margin:3px 0}
+.report .stat{padding:4px 3px}
+.report .stat b{font-size:13px}
 
-.skill-report-table{width:100%;border-collapse:collapse;margin-top:6px;font-size:11px;background:rgba(15,23,42,0.6);border-radius:9px;overflow:hidden;border:1px solid var(--line)}
-.skill-report-table th,.skill-report-table td{padding:5px 7px;text-align:left;border-bottom:1px solid var(--line)}
-.skill-report-table th{background:rgba(30,41,59,0.9);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:9px;letter-spacing:.05em}
+.skill-report-container{overflow-x:auto;max-height:none;flex:1;min-height:0}
+.skill-report-table{width:100%;border-collapse:collapse;margin-top:4px;font-size:10.5px;background:rgba(15,23,42,0.6);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.skill-report-table th,.skill-report-table td{padding:3px 6px;text-align:left;border-bottom:1px solid var(--line)}
+.skill-report-table th{background:rgba(30,41,59,0.9);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:8.5px;letter-spacing:.05em}
 .skill-report-table tr:last-child td{border-bottom:none}
 .skill-report-table td:nth-child(2),.skill-report-table td:nth-child(3),.skill-report-table td:nth-child(4),.skill-report-table td:nth-child(5){text-align:center}
 .skill-report-table th:nth-child(2),.skill-report-table th:nth-child(3),.skill-report-table th:nth-child(4),.skill-report-table th:nth-child(5){text-align:center}
@@ -170,7 +171,7 @@ footer{text-align:center;color:#64748b;font-size:9px;margin-top:4px;padding-top:
 }
 </style></head><body><main class="wrap">
 <div class="top">
-  <div class="brand">⚔ TECHNICAL SUPPORT BATTLE <span class="ver-tag">v1.2.3</span></div>
+  <div class="brand">⚔ TECHNICAL SUPPORT BATTLE <span class="ver-tag">v1.2.5</span></div>
   <button class="sound" id="sound">♫ Sound: On</button>
 </div>
 
@@ -250,47 +251,51 @@ footer{text-align:center;color:#64748b;font-size:9px;margin-top:4px;padding-top:
 </section>
 
 <section class="screen" id="end">
-  <div class="panel">
-    <div class="kicker" style="color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.1em;">RUN COMPLETE</div>
-    <h1 id="endTitle" style="font-size:20px;margin:2px 0 3px">The dungeon claims another hero.</h1>
-    <p class="muted" id="endSub" style="font-size:11px;margin:0 0 5px"></p>
-    <div class="report">
-      <div class="stat"><b id="rScore">0</b><span>Score</span></div>
-      <div class="stat"><b id="rFloor">1</b><span>Highest Floor</span></div>
-      <div class="stat"><b id="rCleared">0</b><span>Floors Cleared</span></div>
-      <div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div>
-      <div class="stat"><b id="rAnswered">0</b><span>Answered</span></div>
-      <div class="stat"><b id="rCorrect">0</b><span>Correct</span></div>
-      <div class="stat"><b id="rIncorrect">0</b><span>Incorrect</span></div>
-      <div class="stat"><b id="rDefeats">0</b><span>Enemies Defeated</span></div>
-      <div class="stat"><b id="rCombo">0</b><span>Best Combo</span></div>
-      <div class="stat"><b id="rBest">0</b><span>Personal Best</span></div>
-      <div class="stat"><b id="rBestFloor">1</b><span>Best Floor</span></div>
+  <div class="panel" style="padding:8px 10px;justify-content:space-between">
+    <div style="flex-shrink:0">
+      <div class="kicker" style="color:var(--accent);font-size:9.5px;font-weight:800;letter-spacing:.1em;">RUN COMPLETE</div>
+      <h1 id="endTitle" style="font-size:18px;margin:1px 0 2px">The dungeon claims another hero.</h1>
+      <p class="muted" id="endSub" style="font-size:10.5px;margin:0 0 4px"></p>
+      <div class="report">
+        <div class="stat"><b id="rScore">0</b><span>Score</span></div>
+        <div class="stat"><b id="rFloor">1</b><span>Highest Floor</span></div>
+        <div class="stat"><b id="rCleared">0</b><span>Floors Cleared</span></div>
+        <div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div>
+        <div class="stat"><b id="rAnswered">0</b><span>Answered</span></div>
+        <div class="stat"><b id="rCorrect">0</b><span>Correct</span></div>
+        <div class="stat"><b id="rIncorrect">0</b><span>Incorrect</span></div>
+        <div class="stat"><b id="rDefeats">0</b><span>Enemies Defeated</span></div>
+        <div class="stat"><b id="rCombo">0</b><span>Best Combo</span></div>
+        <div class="stat"><b id="rBest">0</b><span>Personal Best</span></div>
+        <div class="stat"><b id="rBestFloor">1</b><span>Best Floor</span></div>
+      </div>
     </div>
-    <div class="kicker" style="color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.1em;margin-top:6px">ADVISOR SKILL REPORT</div>
-    <div style="overflow-x:auto;max-height:150px">
-      <table class="skill-report-table">
-        <thead>
-          <tr>
-            <th>Skill Category</th>
-            <th>Attempted</th>
-            <th>Correct</th>
-            <th>Incorrect</th>
-            <th>Accuracy</th>
-          </tr>
-        </thead>
-        <tbody id="skillReportTableBody">
-        </tbody>
-      </table>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;margin-top:2px">
+      <div class="kicker" style="color:var(--accent);font-size:9.5px;font-weight:800;letter-spacing:.1em;margin-bottom:2px">ADVISOR SKILL REPORT</div>
+      <div class="skill-report-container">
+        <table class="skill-report-table">
+          <thead>
+            <tr>
+              <th>Skill Category</th>
+              <th>Attempted</th>
+              <th>Correct</th>
+              <th>Incorrect</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody id="skillReportTableBody">
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="controls" style="margin-top:8px">
+    <div class="controls" style="margin-top:6px;flex-shrink:0">
       <button class="primary" id="again">Fight again</button>
       <button class="secondary" id="menu">Main menu</button>
     </div>
   </div>
 </section>
 
-<footer>TECHNICAL SUPPORT BATTLE · v1.2.3</footer>
+<footer>TECHNICAL SUPPORT BATTLE · v1.2.5</footer>
 </main>
 <script>
 "use strict";
@@ -764,7 +769,7 @@ const bank=[
   ["Escalation",3,"A customer claims a software update infringed on patent rights. How do you route this statement?",[
     ["I can debate the patent issue with you and explain why the software update shouldn't violate patent law.",2,"Advisors are not corporate legal representatives."],
     ["Patent and legal claims need to be handled by the appropriate Corporate Counsel or legal process. I'll route the inquiry and provide the relevant contact details.",0,"Follows corporate IP routing procedures without speculating."],
-    ["You're right; the company must have used someone else's patented technology in the update.",3,"Breaches corporate representation rules."]
+    ["You'right; the company must have used someone else's patented technology in the update.",3,"Breaches corporate representation rules."]
   ],"Q091"],
   ["Escalation",3,"A customer requests detailed security audit logs of employee backend access to their account. What do you do?",[
     ["Internal access logs can involve employee and privacy information, so I'll explain the privacy process and submit the appropriate formal audit request to Governance.",0,"Properly channels data privacy audit requests to compliance teams."],
@@ -809,7 +814,7 @@ const bank=[
   ],"Q099"],
   ["Active listening",1,"A caller states, 'I updated my tablet, and now my drawing pen will not pair.' What detail must you acknowledge?",[
     ["The update probably isn't relevant, so let's assume the drawing pen battery has failed and troubleshoot that first.",2,"Overlooks explicit timing information provided by customer."],
-    ["The pen stopped pairing immediately after the tablet update, so that timing is an important clue. Let's check the update and the pen's compatibility or pairing state.",0,"Connects event timeline to narrow down software/firmware compatibility."],
+    ["The pen stopped pairing immediately after the tablet update, so that timing is an important clue. Let me check the update and the pen's compatibility or pairing state.",0,"Connects event timeline to narrow down software/firmware compatibility."],
     ["What made you decide to update the tablet in the first place?",1,"Questioning customer choices rather than focusing on diagnostic facts."]
   ],"Q100"],
   ["Active listening",1,"A caller explains issues using incorrect technical terms (calling hard drive a 'CPU tower'). How do you communicate?",[
@@ -1298,32 +1303,46 @@ function finish(isDefeat = true){
   if(isDefeat){
     fx("defeat");
   }
-  show("end");
-  let acc = state.answered ? Math.round(state.correct / state.answered * 100) : 0,
-      bestScore = Math.max(state.score, Number(localStorage.getItem("tsb_best_score") || 0)),
-      bestFloor = Math.max(state.floor, Number(localStorage.getItem("tsb_best_floor") || 1));
-  localStorage.setItem("tsb_best_score", bestScore);
-  localStorage.setItem("tsb_best_floor", bestFloor);
+
+  const finalScore = state.score;
+  const finalFloor = state.floor;
+  const finalCleared = state.floorsCleared;
+  const finalAnswered = state.answered;
+  const finalCorrect = state.correct;
+  const finalIncorrect = state.answered - state.correct;
+  const finalDefeats = state.defeats;
+  const finalCombo = state.bestCombo;
+
+  const acc = finalAnswered ? Math.round((finalCorrect / finalAnswered) * 100) : 0;
+  
+  let bestScore = finalScore;
+  let bestFloor = finalFloor;
+  try {
+    bestScore = Math.max(finalScore, Number(localStorage.getItem("tsb_best_score") || 0));
+    bestFloor = Math.max(finalFloor, Number(localStorage.getItem("tsb_best_floor") || 1));
+    localStorage.setItem("tsb_best_score", bestScore);
+    localStorage.setItem("tsb_best_floor", bestFloor);
+  } catch(e) {}
+
+  $("rScore").textContent = finalScore;
+  $("rFloor").textContent = finalFloor;
+  $("rCleared").textContent = finalCleared;
+  $("rAccuracy").textContent = acc + "%";
+  $("rAnswered").textContent = finalAnswered;
+  $("rCorrect").textContent = finalCorrect;
+  $("rIncorrect").textContent = finalIncorrect;
+  $("rDefeats").textContent = finalDefeats;
+  $("rCombo").textContent = finalCombo;
+  $("rBest").textContent = bestScore;
+  $("rBestFloor").textContent = bestFloor;
 
   if(isDefeat){
     $("endTitle").textContent = "The dungeon claims another hero.";
-    $("endSub").textContent = `Floor reached: ${state.floor} (${state.floorsCleared} floors cleared). Your HP reached zero. Review your advisor performance report below.`;
+    $("endSub").textContent = `Floor reached: ${finalFloor} (${finalCleared} floors cleared). Your HP reached zero. Review your advisor performance report below.`;
   } else {
     $("endTitle").textContent = "Run ended voluntarily";
-    $("endSub").textContent = `Floor reached: ${state.floor} (${state.floorsCleared} floors cleared). You chose to end the run. Review your advisor performance report below.`;
+    $("endSub").textContent = `Floor reached: ${finalFloor} (${finalCleared} floors cleared). You chose to end the run. Review your advisor performance report below.`;
   }
-
-  $("rScore").textContent = state.score;
-  $("rFloor").textContent = state.floor;
-  $("rCleared").textContent = state.floorsCleared;
-  $("rAccuracy").textContent = acc + "%";
-  $("rAnswered").textContent = state.answered;
-  $("rCorrect").textContent = state.correct;
-  $("rIncorrect").textContent = state.answered - state.correct;
-  $("rDefeats").textContent = state.defeats;
-  $("rCombo").textContent = state.bestCombo;
-  $("rBest").textContent = bestScore;
-  $("rBestFloor").textContent = bestFloor;
 
   let tableBody = $("skillReportTableBody");
   tableBody.replaceChildren();
@@ -1359,6 +1378,8 @@ function finish(isDefeat = true){
     tr.append(tdCat, tdAtt, tdCorr, tdInc, tdAcc);
     tableBody.append(tr);
   });
+
+  show("end");
 }
 
 $("start").onclick = () => startRun(1);
