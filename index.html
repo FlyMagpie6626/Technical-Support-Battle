@@ -307,570 +307,570 @@ const enemies=[
 
 const bank=[
   ["Clarification",1,"A customer reports their phone battery is draining much faster since yesterday. They haven't noticed any app updates. What should you ask first?",[
-    ["I'd recommend checking your background app refresh settings and screen brightness right away.",1,"Prematurely suggests specific settings changes without first establishing what changed yesterday."],
-    ["Could you tell me when you first noticed this change? I'd like us to check your battery usage by app over the last 24 hours.",0,"Establishes a diagnostic timeline and isolates high-energy software tasks before making assumptions."],
-    ["Let's restart your device into safe mode right away so we can test for background drain issues.",2,"Jumps to an aggressive troubleshooting step before gathering basic usage telemetry."]
+    ["Let's review your recent usage, background activity, and display settings to see whether anything is consuming more power than usual.",1,"Prematurely suggests specific settings changes without first establishing what changed yesterday."],
+    ["When did you first notice the faster battery drain, and which apps appear highest in your Battery Usage report?",0,"Establishes a diagnostic timeline and isolates high-energy software tasks before making assumptions."],
+    ["We can restart the device and immediately change several background settings to see whether that improves battery performance.",2,"Jumps to an aggressive troubleshooting step before gathering basic usage telemetry."]
   ],"Q001"],
   ["Clarification",0,"A customer says, 'My screen is displaying strange colored lines.' What should you ask before offering troubleshooting steps?",[
-    ["When did these lines first appear, and has the device experienced any drops or physical impact?",0,"Differentiates software rendering glitches and specific app bugs from physical panel damage."],
-    ["Let's perform a force restart on your device right now.",1,"Standard step, but misses critical diagnostic context about potential hardware drops."],
-    ["I'd recommend bringing your device into an authorized repair facility immediately.",2,"Jumps to repair before verifying if it might be a temporary software rendering issue."]
+    ["When do the lines appear? Have you noticed any cracks, pressure marks, or recent drops involving the device?",0,"Differentiates software rendering glitches and specific app bugs from physical panel damage."],
+    ["Try restarting the device first and see whether the display returns to normal afterward.",1,"Standard step, but misses critical diagnostic context about potential hardware drops."],
+    ["Before arranging a repair, let's check whether the lines appear across different screens and whether the device has physical damage.",2,"Jumps to repair before verifying if it might be a temporary software rendering issue."]
   ],"Q002"],
   ["Clarification",0,"A customer says their cloud account storage is full, but they rarely take photos. What should you verify?",[
-    ["Let's check your storage breakdown and active backups together.",0,"Identifies actual storage consumers rather than guessing based on photo volume."],
-    ["I can help you purchase an upgraded storage tier in your system preferences right now.",1,"Upsells tier upgrades without investigating current data allocation."],
-    ["Could you clear your browser cache files directly on your device?",2,"Clears local browser cache, which does not impact cloud account storage capacity."]
+    ["Let's review your cloud storage breakdown, including backups, messages, files, and photos, to identify what's actually using the available space.",0,"Identifies actual storage consumers rather than guessing based on photo volume."],
+    ["You can purchase a larger storage plan through your account settings if the current capacity isn't sufficient.",1,"Upsells tier upgrades without investigating current data allocation."],
+    ["Clearing your browser history might free up some space on the device.",2,"Clears local browser cache, which does not impact cloud account storage capacity."]
   ],"Q003"],
   ["Clarification",0,"A customer reports that their tablet app keeps closing unexpectedly. What should you clarify first?",[
-    ["Does this happen with just one specific app or multiple apps, and have you noticed any error messages?",0,"Determines whether the issue is app-specific or systemic across the operating system."],
-    ["Let's clear your application cache completely and perform a full device reboot.",1,"Plausible action, but skips verifying whether multiple apps or system stability are involved."],
-    ["We should reinstall your entire operating system.",3,"Extremely invasive step without basic scope isolation."]
+    ["Does this happen with just one application, or have you noticed other apps closing unexpectedly as well?",0,"Determines whether the issue is app-specific or systemic across the operating system."],
+    ["Let's restart the tablet and check whether the application opens normally afterward.",1,"Plausible action, but skips verifying whether multiple apps or system stability are involved."],
+    ["We may need to reinstall the operating system if the application continues closing unexpectedly.",3,"Extremely invasive step without basic scope isolation."]
   ],"Q004"],
   ["Clarification",0,"A customer says their internet router lights are 'blinking weirdly.' What should you ask?",[
-    ["Let's unplug the power cable for ten seconds to reboot.",1,"Standard power cycle advice, but misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."],
-    ["Could you tell me which indicator icons are blinking and what color they are showing?",0,"Gathers precise telemetry from visual status LEDs."],
-    ["Let's reset your router settings back to factory defaults in system preferences.",2,"Erases ISP configuration credentials unnecessarily before checking indicator meanings."]
+    ["Let's unplug the router briefly and reconnect it to refresh the network connection.",1,"Standard power cycle advice, but misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."],
+    ["Which indicator lights are blinking, and what colors are they showing right now?",0,"Gathers precise telemetry from visual status LEDs."],
+    ["We should check the router's configuration before considering any changes that could interrupt your internet service.",2,"Erases ISP configuration credentials unnecessarily before checking indicator meanings."]
   ],"Q005"],
   ["Clarification",0,"A customer states that their smartwatch is 'not tracking exercise.' What diagnostic detail is needed?",[
-    ["Let's clarify whether heart rate, GPS, or step count is failing, and check your permission settings.",0,"Zeroes in on specific hardware sensors and background app permissions."],
-    ["Would you like to unpair and re-pair your watch to reset the Bluetooth connection parameters?",1,"Valid reconnection step, but fails to isolate whether specific sensors or permissions are failing."],
-    ["I can recommend purchasing a replacement fitness tracker model after reviewing your warranty options.",2,"Premature replacement advice without sensor isolation."]
+    ["Which measurements aren't recording correctly: your heart rate, distance, or steps? We can also check the relevant health permissions.",0,"Zeroes in on specific hardware sensors and background app permissions."],
+    ["Let's reconnect the watch to your phone and see whether its tracking functions return to normal.",1,"Valid reconnection step, but fails to isolate whether specific sensors or permissions are failing."],
+    ["If the tracking problem continues, we can investigate whether the watch needs further diagnostics or hardware service.",2,"Premature replacement advice without sensor isolation."]
   ],"Q006"],
   ["Clarification",0,"A customer reports that their cloud photo library is 'not syncing.' What should you ask first?",[
-    ["Let's check your Wi-Fi connection, Low Power Mode status, and cloud storage settings.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
-    ["Please sign out of your cloud account right now.",2,"Can trigger unnecessary sync re-indexes and potential conflicts without checking basic network status."],
-    ["Let's clear your local device storage cache.",2,"Risks unsynced local data loss before checking network connectivity."]
+    ["Let's check your Wi-Fi connection, Low Power Mode, and available cloud storage to see whether syncing has been paused.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
+    ["Signing out of your cloud account might refresh the connection and restart synchronization.",2,"Can trigger unnecessary sync re-indexes and potential conflicts without checking basic network status."],
+    ["Let's review the photos currently stored on your device before attempting any changes to your library.",2,"Risks unsynced local data loss before checking network connectivity."]
   ],"Q007"],
   ["Clarification",0,"A customer states their account was 'hacked' because they received a password reset request email. What do you clarify?",[
-    ["Let's click the password reset email link immediately to see where it redirects.",3,"Risks guiding them into a potential phishing link if unverified."],
-    ["Did you personally request this reset, or has anyone else had physical access to your device?",0,"Distinguishes between malicious compromise and user-triggered verification emails."],
-    ["I'd recommend updating your security questions and enabling text alerts right away.",1,"Good security advice, but skips clarifying whether the email was actually user-initiated."]
+    ["Let's review your account's security settings and make sure your trusted contact information is current.",3,"Risks guiding them into a potential phishing link if unverified."],
+    ["Did you request that password reset, or could someone else have accessed one of your devices?",0,"Distinguishes between malicious compromise and user-triggered verification emails."],
+    ["Don't open any links in the message yet. We can independently verify whether the notification is legitimate.",1,"Good security advice, but skips clarifying whether the email was actually user-initiated."]
   ],"Q008"],
   ["Clarification",0,"A customer says their wireless network speed dropped significantly after moving their desk to another room. What do you investigate?",[
-    ["Let's look at the physical distance, wall materials, and whether you are on the 2.4GHz or 5GHz band.",0,"Addresses RF signal attenuation, wall absorption, and band range characteristics."],
-    ["Would you like to restart your computer network adapter drivers and clear saved networks?",2,"Addresses local software binding rather than physical RF attenuation from new wall placement."],
-    ["I'd suggest calling your Internet Service Provider to upgrade your subscription speed limits.",1,"Focuses on subscription speed rather than internal room distance interference."]
+    ["Let's compare your distance from the router, the walls between you, and whether you're connected to the 2.4 or 5 GHz band.",0,"Addresses RF signal attenuation, wall absorption, and band range characteristics."],
+    ["Restarting your computer's network adapter could help refresh its wireless connection.",2,"Addresses local software binding rather than physical RF attenuation from new wall placement."],
+    ["We can check your current internet plan and connection speed before considering whether an upgrade would help.",1,"Focuses on subscription speed rather than internal room distance interference."]
   ],"Q009"],
   ["Clarification",0,"A customer reports that their wireless earbuds keep disconnecting during workouts. What context should you gather?",[
-    ["Let's reset your phone's global network settings.",2,"Heavy global network reset before isolating Bluetooth interference or range."],
-    ["Could you tell me where and when the connection typically drops?",0,"Gathers environmental, motion, and wireless range variables."],
-    ["I'd recommend putting your phone in an armband.",1,"Plausible ergonomic tip, but fails to gather comprehensive diagnostic interference data."]
+    ["Let's check whether your earbuds have the latest available firmware and whether their battery levels are sufficient.",2,"Heavy global network reset before isolating Bluetooth interference or range."],
+    ["Does the connection drop in a particular location, or does it happen regardless of where you're exercising?",0,"Gathers environmental, motion, and wireless range variables."],
+    ["Resetting your phone's network settings may help resolve persistent wireless connection problems.",1,"Plausible ergonomic tip, but fails to gather comprehensive diagnostic interference data."]
   ],"Q010"],
   ["Clarification",0,"A user says their desktop computer turns off completely without warning during intensive video rendering. What clarify question helps most?",[
-    ["Does the shutdown happen instantly like a pulled plug or orderly, and are your fans running loudly?",0,"Distinguishes thermal overheating cuts from power supply trip failures or software shutdowns."],
-    ["Let's check your software auto-save settings.",2,"Focuses on application configuration when sudden shutdowns indicate hardware power or thermal events."],
-    ["I'd advise running a full malware scan on your main drives to check background CPU usage.",1,"Misdiagnoses hardware thermal or power cutouts as a virus infection."]
+    ["Does it suddenly lose power, or does it shut down normally? Have you noticed unusual fan noise or excessive heat?",0,"Distinguishes thermal overheating cuts from power supply trip failures or software shutdowns."],
+    ["Let's check whether your video editor is saving projects automatically during rendering sessions.",2,"Focuses on application configuration when sudden shutdowns indicate hardware power or thermal events."],
+    ["We can review background processes and system activity to determine whether something is placing excessive demands on your computer.",1,"Misdiagnoses hardware thermal or power cutouts as a virus infection."]
   ],"Q011"],
   ["Clarification",0,"A customer says their email app is 'stuck sending.' What key details should you ask for first?",[
-    ["Let's open your Outbox folder together to check for queued messages.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
-    ["Would you like to restart the email app?",1,"Plausible troubleshooting step, but misses checking outbox payload size or authentication status."],
-    ["Let's delete your entire account profile.",2,"Drastic step that deletes local cache before checking simple outbox queue status."]
+    ["Let's open your Outbox and check whether a particular message or attachment is preventing the email from sending.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
+    ["Restarting the email application could refresh its connection and clear a temporary sending issue.",1,"Plausible troubleshooting step, but misses checking outbox payload size or authentication status."],
+    ["We can review your account's server settings and authentication status before considering changes to the existing configuration.",2,"Drastic step that deletes local cache before checking simple outbox queue status."]
   ],"Q012"],
   ["Clarification",0,"A customer mentions their device screen brightness changes by itself. What setting or factor should you clarify?",[
-    ["Let's check your Auto-Brightness setting and see how the display responds to different lighting.",0,"Identifies expected system display sensor behaviors."],
-    ["Would you like to adjust your screen timeout duration settings?",2,"Addresses display sleep timing rather than automatic ambient brightness adaptation."],
-    ["I can recommend replacing your display panel hardware.",2,"Treats automatic sensor adjustment as hardware failure."]
+    ["Let's check whether Auto-Brightness is enabled and compare how the display behaves under different lighting conditions.",0,"Identifies expected system display sensor behaviors."],
+    ["Changing your screen timeout settings might help make the display behave more consistently.",2,"Addresses display sleep timing rather than automatic ambient brightness adaptation."],
+    ["If the brightness continues fluctuating, we can investigate whether the ambient light sensor is responding correctly.",2,"Treats automatic sensor adjustment as hardware failure."]
   ],"Q013"],
   ["Clarification",0,"A customer says their online payment was declined. What details do you ask to isolate the problem?",[
-    ["Let's clear your browser cookies immediately.",2,"Potentially exposes browser sessions without identifying merchant/card payment status."],
-    ["Could you share the specific decline reason or error message, and check with your bank?",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
-    ["Would you like to try using a different web browser app?",1,"Plausible browser check, but skips verifying specific bank decline reasons or error codes."]
+    ["Let's check whether the payment page is working correctly and whether the issue occurs in another browser.",2,"Potentially exposes browser sessions without identifying merchant/card payment status."],
+    ["Did your bank provide a decline notification or a specific reason for rejecting the transaction?",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
+    ["We can review the payment error and verify whether the merchant or your bank is reporting a processing issue.",1,"Plausible browser check, but skips verifying specific bank decline reasons or error codes."]
   ],"Q014"],
   ["Clarification",0,"A customer reports their cellular phone signal shows 'No Service' inside their home basement. What should you verify?",[
-    ["Does the signal return outdoors, and is Wi-Fi Calling configured on your device?",0,"Isolates building material RF attenuation and offers Wi-Fi coverage alternatives."],
-    ["Let's toggle Airplane Mode on and off to refresh your radio connection.",1,"Standard quick fix, but misses evaluating structural building interference."],
-    ["I'd recommend switching cellular service providers immediately.",2,"Drastic commercial recommendation before checking indoor coverage settings."]
+    ["Do you regain cellular signal outdoors, and is Wi-Fi Calling available on your device and carrier?",0,"Isolates building material RF attenuation and offers Wi-Fi coverage alternatives."],
+    ["Try toggling Airplane Mode to refresh the device's cellular connection.",1,"Standard quick fix, but misses evaluating structural building interference."],
+    ["We can investigate whether the building materials or surrounding coverage conditions are affecting your cellular reception.",2,"Drastic commercial recommendation before checking indoor coverage settings."]
   ],"Q015"],
   ["Clarification",0,"A customer states their microphone sounds 'muffled and quiet' to callers. What physical and software checks do you ask about?",[
-    ["Let's test your microphone by recording a quick Voice Memo together.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware failure."],
-    ["Would you like to adjust your side volume buttons?",1,"Addresses ear speaker output volume rather than microphone input capture quality."],
-    ["Let's perform a complete factory reset on your device.",3,"Grossly disproportionate response for potential mic mesh obstruction."]
+    ["Let's inspect the microphone openings for obstruction and record a quick voice memo to compare the audio quality.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware failure."],
+    ["Try increasing your phone's volume and check whether callers can hear you more clearly afterward.",1,"Addresses ear speaker output volume rather than microphone input capture quality."],
+    ["We should compare recordings across different applications before deciding whether the microphone requires further hardware diagnostics.",3,"Grossly disproportionate response for potential mic mesh obstruction."]
   ],"Q016"],
 
   ["Empathy",1,"A caller says, 'I've called support twice already today and spent an hour on hold! I am not explaining this all over again!' How do you respond?",[
-    ["I apologize for the wait, but could you summarize your problem from the beginning?",2,"Forces customer repetition and shifts blame onto previous advisors."],
-    ["Please remain calm while I locate your case file details.",1,"Telling an agitated customer to calm down invalidates their feelings and increases friction."],
-    ["I completely understand why you're frustrated after waiting so long. Let me review your case notes right now so you don't have to repeat yourself.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."]
+    ["I understand you've already spent quite some time trying to resolve this. Could you walk me through the issue again so I can understand what's happening?",2,"Forces customer repetition and shifts blame onto previous advisors."],
+    ["I'd appreciate it if you could remain patient while I retrieve your previous case information.",1,"Telling an agitated customer to calm down invalidates their feelings and increases friction."],
+    ["I'm sorry you've had to go through this repeatedly. I'll review your previous case notes so you won't have to start from the beginning.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."]
   ],"Q017"],
   ["Empathy",1,"A customer lost unbacked-up photo memories due to a hardware failure. They are visibly upset and crying. How do you respond?",[
-    ["I am so sorry you've lost those memories. Let's explore every possible backup and recovery check together.",0,"Shows genuine compassion while offering grounded support without false promises."],
-    ["You really should have backed up your photos to the cloud sooner.",3,"Cruel and blaming during a moment of distress."],
-    ["Let's set up automatic cloud backups moving forward so this never happens again.",1,"Helpful prevention tip, but delivered prematurely before validating their immediate grief."]
+    ["I'm really sorry. I understand those photos mean a lot to you. Let's see whether there are any available recovery options.",0,"Shows genuine compassion while offering grounded support without false promises."],
+    ["Unfortunately, this is why keeping regular backups is important. We can help you configure that once the issue is resolved.",3,"Cruel and blaming during a moment of distress."],
+    ["Have you considered using cloud storage in the future? That would help protect your photos if something similar happens again.",1,"Helpful prevention tip, but delivered prematurely before validating their immediate grief."]
   ],"Q018"],
   ["Empathy",1,"A small business manager is frantic because their credit card reader app is failing during a busy lunch hour. How do you respond?",[
-    ["Please slow down; panicking won't fix your software any faster.",2,"Patronizing tone that invalidates customer stress during a business crisis."],
-    ["I know how critical this lunch rush is for your business. Let's work together right now to get your payments processing.",0,"Recognizes business impact, validates urgency, and establishes immediate teamwork."],
-    ["Technical glitches happen all the time, so you should keep paper receipt backups.",1,"Unhelpful lecturing that avoids immediate problem-solving."]
+    ["Let's take a moment to calm things down. Getting upset won't make the payment application work any faster.",2,"Patronizing tone that invalidates customer stress during a business crisis."],
+    ["I understand how important this lunch rush is for your business. Let's work together to get your payment system running again.",0,"Recognizes business impact, validates urgency, and establishes immediate teamwork."],
+    ["Technical problems can happen at any time. It might be helpful to keep handwritten receipts available as a backup.",1,"Unhelpful lecturing that avoids immediate problem-solving."]
   ],"Q019"],
   ["Empathy",1,"An elderly customer expresses anxiety about setting up a new smartphone because they are 'bad with technology.' How do you respond?",[
-    ["Would you like me to skip the setup process entirely?",1,"Paternalistic approach that deprives the customer of learning their device."],
-    ["Take a deep breath—we will go at your pace step by step. You're going to do great.",0,"Builds confidence, removes shame, and sets a comfortable support pace."],
-    ["Modern smartphones are very simple, so you shouldn't worry.",2,"Condescending remark that heightens the customer's feeling of inadequacy."]
+    ["We can skip most of the setup for now and leave the more complicated features untouched.",1,"Paternalistic approach that deprives the customer of learning their device."],
+    ["That's completely fine. We can take everything one step at a time, and I'll adjust the pace to whatever feels comfortable for you.",0,"Builds confidence, removes shame, and sets a comfortable support pace."],
+    ["Don't worry, modern smartphones are designed to be simple. You'll probably get used to everything after a little practice.",2,"Condescending remark that heightens the customer's feeling of inadequacy."]
   ],"Q020"],
   ["Empathy",1,"A customer expresses frustration after trying to resolve an account billing issue online for 2 hours. How do you start?",[
-    ["I appreciate your patience trying online first. Let's look at your billing options together right now.",0,"Validates customer effort and signals active partnership."],
-    ["You really should have called our support line first instead of struggling online.",2,"Blames the customer for attempting self-service."],
-    ["Our billing portal is actually very simple to navigate.",1,"Defends company tools while invalidating user experience."]
+    ["That sounds exhausting, especially after spending two hours trying to sort this out. Let's review your billing issue together.",0,"Validates customer effort and signals active partnership."],
+    ["You probably would've saved time by contacting our support team before attempting to resolve it yourself.",2,"Blames the customer for attempting self-service."],
+    ["Our billing portal is designed to make these transactions straightforward. Let me explain how the system works.",1,"Defends company tools while invalidating user experience."]
   ],"Q021"],
   ["Empathy",1,"A freelance designer caller is stressed because their graphics tablet stopped responding right before a client presentation. How do you respond?",[
-    ["I know the pressure is on with your presentation starting soon. Let's check your stylus settings right away.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."],
-    ["You shouldn't leave your technical prep to the last minute before important client presentations.",3,"Judgemental and unhelpful during a customer crisis."],
-    ["Why don't you just present your slides without drawing live graphics today?",1,"Impractical workaround ignoring the professional stakes."]
+    ["I understand the timing couldn't be worse. Let's check the stylus connection and input settings so we can get you ready for your presentation.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."],
+    ["You really should've tested your equipment before the presentation. Unfortunately, there's only so much we can do at this point.",3,"Judgemental and unhelpful during a customer crisis."],
+    ["Could you temporarily present without the drawing features? That might help you get through the meeting while we investigate.",1,"Impractical workaround ignoring the professional stakes."]
   ],"Q022"],
   ["Empathy",1,"A customer is frustrated because a recent OS update moved several settings menus they used daily. How do you respond?",[
-    ["I understand how disruptive interface changes can be. Let me show you right where those settings moved.",0,"Acknowledges disruption caused by UI changes while guiding them clearly."],
-    ["You'll just have to get used to it; software changes whether you like it or not.",2,"Dismissive and unsympathetic tone."],
-    ["We always recommend that our customers never update their software.",1,"Bad security and maintenance guidance."]
+    ["I can see how disruptive that would be when you're used to accessing those settings every day. Let me show you where they've moved.",0,"Acknowledges disruption caused by UI changes while guiding them clearly."],
+    ["Software interfaces change over time, so you'll eventually become familiar with the new arrangement.",2,"Dismissive and unsympathetic tone."],
+    ["One option would be to avoid installing future updates so your settings remain familiar.",1,"Bad security and maintenance guidance."]
   ],"Q023"],
   ["Empathy",1,"A user is embarrassed because they fell for a phishing email and entered their personal information. How do you respond?",[
-    ["Please don't be hard on yourself—these scams trick many people. Let's secure your account immediately.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."],
-    ["How could you possibly fall for such an obvious fake email link?",3,"Shames and humiliates the customer during a security incident."],
-    ["Don't worry about it, scammers rarely do anything bad with stolen data.",2,"False reassurance that delays critical security containment."]
+    ["Please don't be too hard on yourself. These messages can be convincing. Let's secure your account first and check what information may have been exposed.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."],
+    ["That message must have been fairly convincing. What made you believe it was an official notification?",3,"Shames and humiliates the customer during a security incident."],
+    ["Don't worry too much. These incidents don't always result in unauthorized access, so we can check things later.",2,"False reassurance that delays critical security containment."]
   ],"Q024"],
   ["Empathy",1,"A caller states they spent all weekend trying to fix their computer setup instead of resting. How do you respond?",[
-    ["Weekends are actually the best time to troubleshoot computer problems.",2,"Dismisses the customer's frustration regarding lost personal time."],
-    ["You should have spent your weekend outdoors enjoying nature.",1,"Inappropriate personal lifestyle commentary."],
-    ["I'm so sorry you lost your weekend to this. Let's work together to fix it quickly so you can relax.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."]
+    ["At least you had some time available over the weekend to work on the computer. Let's see what you've managed to fix so far.",2,"Dismisses the customer's frustration regarding lost personal time."],
+    ["You could've taken a break and enjoyed your weekend instead of spending so much time troubleshooting.",1,"Inappropriate personal lifestyle commentary."],
+    ["That sounds incredibly frustrating, especially after giving up your entire weekend. Let's see what we can do to finally resolve it.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."]
   ],"Q025"],
   ["Empathy",1,"A customer is visibly upset after failing to set up a smart home hub after hours of effort. How do you respond?",[
-    ["Let's take it from the top together. We'll connect each device and check its settings step by step.",0,"Normalizes setup challenges and establishes collaborative support."],
-    ["Smart home tech is very simple, so you must have missed an instruction.",2,"Insulting and dismissive response."],
-    ["You should probably return all your smart home devices to the store for a refund.",1,"Extremely unhelpful and avoids problem-solving."]
+    ["I know setting everything up can be overwhelming. Let's connect the devices one at a time and make sure each one is configured properly.",0,"Normalizes setup challenges and establishes collaborative support."],
+    ["The setup process is generally straightforward, so there might be a step in the instructions that was overlooked.",2,"Insulting and dismissive response."],
+    ["If the devices are giving you this much trouble, returning them might be easier than continuing with the setup.",1,"Extremely unhelpful and avoids problem-solving."]
   ],"Q026"],
   ["Empathy",1,"A customer is anxious because their lost wallet contained their primary security verification card. What do you say?",[
-    ["I know how stressful losing a wallet is. Let's review alternative verification steps to keep your account safe.",0,"Validates anxiety and offers clear alternative support paths."],
-    ["You really should take better care of your personal wallet and sensitive credentials.",3,"Blaming and disrespectful."],
-    ["Well, without that card in your hand, there is nothing anyone can do for your account today.",2,"Inaccurate and dismissive of recovery procedures."]
+    ["I understand why that would be worrying. Let's check which alternative verification methods are available while making sure your account remains protected.",0,"Validates anxiety and offers clear alternative support paths."],
+    ["Going forward, I'd recommend keeping your important identification and verification cards somewhere safer.",3,"Blaming and disrespectful."],
+    ["Without that card, we might not be able to proceed with account verification. Let's see what information you still have available.",2,"Inaccurate and dismissive of recovery procedures."]
   ],"Q027"],
   ["Empathy",1,"A parent calls distressed because their child accidentally made $300 in in-app purchases. How do you handle their call?",[
-    ["I understand how alarming that unexpected charge is. Let's review your refund eligibility and set up purchase controls.",0,"Relieves financial panic, addresses review, and provides preventive steps."],
-    ["You should have set up a purchase passcode before giving your phone to a child.",2,"Reprimands parent during stressful financial event."],
-    ["In-app purchases are always non-refundable, so checking options is pointless.",2,"False policy claim that heightens panic."]
+    ["I understand how concerning an unexpected charge like that can be. Let's review the transactions and check whether they're eligible for a refund. We can also look at purchase restrictions.",0,"Relieves financial panic, addresses review, and provides preventive steps."],
+    ["Was a purchase restriction or parental passcode enabled before your child started using the device?",2,"Reprimands parent during stressful financial event."],
+    ["Most in-app purchases aren't automatically refundable, so we shouldn't expect the charges to be reversed.",2,"False policy claim that heightens panic."]
   ],"Q028"],
   ["Empathy",1,"A customer whose device repair was delayed twice calls in tears because they need it for medical appointments. What do you say?",[
-    ["I am so sorry for this unacceptable delay, especially given your medical needs. Let me check tracking and escalate this immediately.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."],
-    ["Delays happen all the time in repair centers.",2,"Cold and indifferent to human impact."],
-    ["We do not prioritize medical calls in our queue.",1,"Unsympathetic policy enforcement."]
+    ["I'm sorry this has happened twice, especially knowing how important the device is for your medical appointments. Let me check the repair status and see whether we can escalate the delay.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."],
+    ["Unfortunately, repair delays are something that can happen when service centers are handling a high volume of devices.",2,"Cold and indifferent to human impact."],
+    ["Our standard repair process doesn't automatically prioritize medical-related requests, but I can check what options are available.",1,"Unsympathetic policy enforcement."]
   ],"Q029"],
   ["Empathy",1,"A customer is frustrated because an app interface update changed their keyboard layout settings. What is your response?",[
-    ["I know how frustrating it is when muscle memory is disrupted. Let's guide you back to your preferred keyboard layout.",0,"Validates user muscle-memory frustration and provides direct resolution."],
-    ["Change is good for you, try learning the new format.",2,"Patronizing and unhelpful."],
-    ["Nobody uses the old keyboard layout anyway.",2,"Invalidates user preference."]
+    ["I understand how frustrating that can be when you're accustomed to a particular layout. Let's check whether we can restore your previous keyboard configuration.",0,"Validates user muscle-memory frustration and provides direct resolution."],
+    ["The updated layout is intended to improve the experience, so I'd recommend giving yourself some time to adjust.",2,"Patronizing and unhelpful."],
+    ["Most users eventually adapt to interface changes, although I understand that switching layouts can take some getting used to.",2,"Invalidates user preference."]
   ],"Q030"],
   ["Empathy",1,"A remote worker is panicked because their internet drops every time they start an important team call. How do you start?",[
-    ["Why don't you just work from a local coffee shop today instead?",1,"Impractical workaround ignoring technical support duty."],
-    ["If your internet drops during calls, that's your provider's fault, not ours.",2,"Deflects responsibility before checking local device network settings."],
-    ["I understand how stressful that is during workday calls. Let's run some targeted checks on your connection right now.",0,"Validates workplace pressure and sets a collaborative action plan."]
+    ["Could you temporarily join your meetings from another location, such as a nearby café, while we investigate the connection?",1,"Impractical workaround ignoring technical support duty."],
+    ["If the connection drops during online meetings, the problem is most likely with your internet provider rather than the device.",2,"Deflects responsibility before checking local device network settings."],
+    ["I understand how disruptive that must be when you're working remotely. Let's check what's happening with your connection during those meetings.",0,"Validates workplace pressure and sets a collaborative action plan."]
   ],"Q031"],
   ["Empathy",1,"A customer's legacy software project won't open after an OS upgrade. They are worried weeks of work are gone. How do you open?",[
-    ["I know how terrifying potential work loss feels. Let me assist you in locating backups and compatibility modes.",0,"Directly acknowledges fear of data loss and offers concrete diagnostic paths."],
-    ["Upgrading your OS without checking your legacy software compatibility was a huge mistake.",2,"Lecturing and unhelpful."],
-    ["Just restart your entire project design from scratch to ensure no hidden file glitches persist.",3,"Insensitive and catastrophic advice."]
+    ["I understand how worrying it is when weeks of work suddenly become inaccessible. Let's first check for available backups and see whether we can open the project using a compatible environment.",0,"Directly acknowledges fear of data loss and offers concrete diagnostic paths."],
+    ["Before upgrading an operating system, it's important to verify whether your existing applications support the new version. That may explain what's happening.",2,"Lecturing and unhelpful."],
+    ["If the project can't be recovered, you may need to recreate it using a newer application that's compatible with your current system.",3,"Insensitive and catastrophic advice."]
   ],"Q032"],
 
   ["Troubleshooting",1,"A laptop connects to home Wi-Fi but fails to load web pages. Other devices on the same network browse normally. What is the best next step?",[
-    ["Let's restart your home Wi-Fi router immediately.",1,"Disrupts all connected network users unnecessarily when one device is affected."],
-    ["Let's try opening another web browser to isolate whether the issue is browser-specific.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."],
-    ["Would you like to forget your saved Wi-Fi network credentials?",2,"Focuses on network authentication when connection is already established."]
+    ["Let's restart the laptop first and see whether the browser starts loading pages normally afterward.",1,"Disrupts all connected network users unnecessarily when one device is affected."],
+    ["Since the Wi-Fi connection itself is working, let's try another browser to narrow down whether the problem is specific to the current browser.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."],
+    ["Let's forget the saved Wi-Fi network and reconnect it so we can refresh the laptop's network credentials.",2,"Focuses on network authentication when connection is already established."]
   ],"Q033"],
   ["Troubleshooting",0,"A Bluetooth mouse cursor is stuttering and freezing on screen. Battery level reports 85%. What should you check?",[
-    ["Let's replace the mouse batteries right away.",1,"Ignores verified sensor telemetry without testing easier connection variables."],
-    ["Let's check for wireless interference and reconnect the device.",0,"Systematically addresses RF interference, optical tracking surfaces, and connection states."],
-    ["We should reinstall your entire computer graphics driver stack.",2,"Disproportionate troubleshooting step for a simple peripheral tracking issue."]
+    ["The battery level looks healthy, so let's replace the mouse batteries anyway and see whether the movement becomes more stable.",1,"Ignores verified sensor telemetry without testing easier connection variables."],
+    ["Let's check for nearby wireless interference and the surface you're using, then reconnect the mouse to see whether the stuttering continues.",0,"Systematically addresses RF interference, optical tracking surfaces, and connection states."],
+    ["We can reinstall the graphics driver to make sure the cursor movement isn't being affected by a display-related software problem.",2,"Disproportionate troubleshooting step for a simple peripheral tracking issue."]
   ],"Q034"],
   ["Troubleshooting",0,"A customer's wireless video call is lagging badly, but speed tests show high download bandwidth. What should you investigate?",[
-    ["You should purchase a higher download speed plan.",1,"Focuses on download speed when upload latency is the typical bottleneck."],
-    ["Let's check your upload bandwidth, Wi-Fi latency, packet loss, and local network congestion.",0,"Recognizes video conferencing relies heavily on upload stability and low latency."],
-    ["Let's reinstall your local computer graphics drivers.",2,"Misdiagnoses network transmission issues as hardware rendering."]
+    ["Since your download speed is already high, upgrading your internet plan should give the video call enough bandwidth to stay stable.",1,"Focuses on download speed when upload latency is the typical bottleneck."],
+    ["Let's check your upload performance, connection latency, packet loss, and whether other devices are competing for bandwidth during the call.",0,"Recognizes video conferencing relies heavily on upload stability and low latency."],
+    ["The graphics driver could be affecting the video, so let's reinstall it before we investigate the network connection.",2,"Misdiagnoses network transmission issues as hardware rendering."]
   ],"Q035"],
   ["Troubleshooting",0,"An external monitor connected via HDMI displays 'No Signal' after an OS update. What do you check first?",[
-    ["Let's check your physical cable connections and ensure the correct monitor input source is selected.",0,"Starts with quick physical and software detection checks before deep driver work."],
-    ["Would you like to open your computer desktop case?",2,"Plausible hardware step but overly invasive before basic external cable/input verification."],
-    ["I'd suggest buying a brand new HDMI cable.",1,"Recommends purchasing hardware before checking input source toggles."]
+    ["Let's start with the HDMI cable, the monitor's selected input, and whether the computer still detects the external display before we move into driver troubleshooting.",0,"Starts with quick physical and software detection checks before deep driver work."],
+    ["Because the issue started after the update, we may need to open the computer and inspect the display hardware if the monitor still shows no signal.",2,"Plausible hardware step but overly invasive before basic external cable/input verification."],
+    ["It would be worth replacing the HDMI cable first, since an update can sometimes expose problems with an older cable.",1,"Recommends purchasing hardware before checking input source toggles."]
   ],"Q036"],
   ["Troubleshooting",0,"An application freezes every time a user clicks the 'Export PDF' button. Other functions work normally. What is the best step?",[
-    ["Let's check your folder write permissions, available disk space, and export settings.",0,"Isolates specific export function and storage permissions."],
-    ["We need to uninstall and reinstall your main operating system.",3,"Grossly disproportionate action for isolated app export errors."],
-    ["Let's clear your local web browser cache files.",1,"Does not address local file export permissions or document complexity."]
+    ["Since the problem happens specifically when exporting, let's check the app's permissions, available storage, and export settings before changing anything more drastic.",0,"Isolates specific export function and storage permissions."],
+    ["Let's reinstall the operating system so we can rule out corrupted system components affecting the PDF export.",3,"Grossly disproportionate action for isolated app export errors."],
+    ["Clearing the browser cache may remove temporary files that are interfering with the application's ability to create the PDF.",1,"Does not address local file export permissions or document complexity."]
   ],"Q037"],
   ["Troubleshooting",0,"A web browser displays certificate security errors on every HTTPS website visited. What simple system check should you perform?",[
-    ["Let's check your computer's system date and time settings.",0,"System clock mismatch is primary cause of universal HTTPS certificate validation failures."],
-    ["Would you like to disable SSL validation in your browser settings?",2,"Exposes user to security risks rather than resolving clock/cert integrity."],
-    ["Let's clear your local DNS cache.",1,"Addresses domain resolution rather than system clock timestamp mismatches."]
+    ["Let's check the computer's date and time first, because an incorrect system clock can make otherwise valid website certificates appear expired or invalid.",0,"System clock mismatch is primary cause of universal HTTPS certificate validation failures."],
+    ["We could temporarily disable certificate validation in the browser to confirm whether the security warning is causing the problem.",2,"Exposes user to security risks rather than resolving clock/cert integrity."],
+    ["Let's clear the DNS cache first, since a stale website address can sometimes cause security errors when you visit HTTPS pages.",1,"Addresses domain resolution rather than system clock timestamp mismatches."]
   ],"Q038"],
   ["Troubleshooting",0,"A user's laptop battery drains completely while in sleep mode overnight with lid closed. What should you check?",[
-    ["Let's check for scheduled background wake events and peripheral triggers.",0,"Identifies background sleep-preventing tasks, peripheral wake triggers, and power options."],
-    ["Would you like to calibrate your battery capacity?",2,"Useful for meter accuracy, but does not fix background sleep wake triggers."],
-    ["Laptops normally drain 100% overnight during sleep.",1,"Inaccurate description of sleep state power consumption."]
+    ["Let's check whether anything is scheduled to wake the laptop or keep it active while it's supposed to be sleeping, including connected devices and power settings.",0,"Identifies background sleep-preventing tasks, peripheral wake triggers, and power options."],
+    ["We can recalibrate the battery so the system has a more accurate estimate of how much charge remains overnight.",2,"Useful for meter accuracy, but does not fix background sleep wake triggers."],
+    ["A laptop can normally lose its entire battery during sleep, so we should just adjust the overnight charging routine.",1,"Inaccurate description of sleep state power consumption."]
   ],"Q039"],
   ["Troubleshooting",0,"A laptop's keyboard types wrong characters (e.g., pressing 'q' produces 'w'). What is the most likely simple fix?",[
-    ["Let's check your selected keyboard input language settings.",0,"Targets input language layout mismatches, common cause of shifted character mapping."],
-    ["We should replace your internal physical keyboard assembly.",2,"Drastic step before checking software input layout preferences."],
-    ["Let's run a full malware scan across your drive.",1,"Misattributes input mapping setting changes to malware."]
+    ["Let's check whether keyboard input language or layout is selected, because that can make the physical keys produce different characters.",0,"Targets input language layout mismatches, common cause of shifted character mapping."],
+    ["The keyboard hardware may be failing, so replacing the internal keyboard would be the best way to rule that out.",2,"Drastic step before checking software input layout preferences."],
+    ["A malware scan would be a good first step because malicious software can sometimes interfere with keyboard input.",1,"Misattributes input mapping setting changes to malware."]
   ],"Q040"],
   ["Troubleshooting",0,"A user's computer screen is turned upside down. What is the most likely cause and fix?",[
-    ["We need to replace your internal computer graphics hardware board.",2,"Overkill for simple screen display rotation setting."],
-    ["Let's check your display orientation settings.",0,"Identifies accidental screen rotation display settings."],
-    ["Would you like to update your system BIOS firmware version?",2,"Overly complex system step for basic display rotation setting."]
+    ["The graphics hardware may have developed a fault, so replacing the internal graphics board would be the safest way to restore the correct orientation.",2,"Overkill for simple screen display rotation setting."],
+    ["Let's check the display orientation settings first, since an accidental rotation setting can turn the entire screen upside down.",0,"Identifies accidental screen rotation display settings."],
+    ["We should update the computer's BIOS because an incorrect display orientation can sometimes indicate outdated firmware.",2,"Overly complex system step for basic display rotation setting."]
   ],"Q041"],
   ["Troubleshooting",0,"An audio recording has persistent background electrical humming noise. What is the best initial isolation step?",[
-    ["Let's check your cable shielding and power connections.",0,"Isolates AC ground loops and cable interference from microphone capsule failure."],
-    ["We should reinstall your computer operating system.",3,"Unrelated to acoustic/electrical ground loop interference."],
-    ["Let's increase your recording input gain slider to maximum.",1,"Amplifies background electrical hum along with voice signal."]
+    ["Let's check the microphone cable, its shielding, and the power connections to see whether electrical interference or a ground loop is introducing the hum.",0,"Isolates AC ground loops and cable interference from microphone capsule failure."],
+    ["Increasing the recording gain should make the voice clearer, and we can see whether the humming becomes less noticeable afterward.",3,"Unrelated to acoustic/electrical ground loop interference."],
+    ["The operating system may have corrupted the audio recording system, so reinstalling it would help eliminate software interference.",1,"Amplifies background electrical hum along with voice signal."]
   ],"Q042"],
   ["Troubleshooting",0,"A USB flash drive read speed is extremely slow on front ports, but fast on rear ports. Why?",[
-    ["Your flash drive file system has become severely fragmented.",1,"File fragmentation affects both front and rear ports equally."],
-    ["Your front ports likely use unpowered headers while rear ports link directly to the motherboard USB 3.0 bus.",0,"Correctly identifies internal motherboard bus and port generation differences."],
-    ["Your operating system requires a dedicated host driver update specifically for front panel USB headers.",1,"Front and rear USB controllers share core host drivers."]
+    ["The drive's file system may be fragmented, so defragmenting it should restore the transfer speed on those ports.",1,"File fragmentation affects both front and rear ports equally."],
+    ["The front ports may be connected through a different or slower USB controller or header, while the rear ports may have a direct USB 3 connection.",0,"Correctly identifies internal motherboard bus and port generation differences."],
+    ["The computer may need a separate driver specifically for the front USB ports, even though the rear ports are already working.",1,"Front and rear USB controllers share core host drivers."]
   ],"Q043"],
   ["Troubleshooting",0,"A desktop monitor flickers randomly only when heavy graphics apps run. What should you test?",[
-    ["Let's check your GPU operating temperatures and power stability.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
-    ["Would you like to replace your monitor power cable?",1,"Standard cable issues cause continuous flickering rather than load-dependent flickering."],
-    ["Let's format your storage hard drive.",2,"Disproportionate action for graphics driver/thermal issues."]
+    ["Because the flickering only appears under heavy graphics load, let's check the GPU temperature, power behavior, and graphics driver before replacing other hardware.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
+    ["A monitor power cable can cause intermittent flickering, so replacing that cable would be the best first test.",1,"Standard cable issues cause continuous flickering rather than load-dependent flickering."],
+    ["The storage drive may be causing the graphics applications to behave incorrectly, so formatting it could help isolate the problem.",2,"Disproportionate action for graphics driver/thermal issues."]
   ],"Q044"],
   ["Troubleshooting",0,"A wireless printer prints garbage symbols and endless blank pages. What is the probable fix?",[
-    ["Let's clear the print queue and check your printer driver installation.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
-    ["Would you like to replace your Wi-Fi router channel settings?",1,"Network connection is functional since print data reaches printer."],
-    ["Let's replace your printer paper tray.",1,"Paper feeding mechanism is working correctly."]
+    ["Let's clear any stuck print jobs and check that the correct printer driver is installed, since corrupted queue data or an incompatible driver can produce garbage output.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
+    ["The printer is receiving the jobs, so let's change the Wi-Fi router's channel settings to see whether that improves the printed characters.",1,"Network connection is functional since print data reaches printer."],
+    ["The blank pages suggest a paper-feed problem, so we should replace the printer's paper tray before checking the software.",1,"Paper feeding mechanism is working correctly."]
   ],"Q045"],
   ["Troubleshooting",0,"A smartphone camera cannot focus on close objects, remaining blurry, but far objects are sharp. What do you check?",[
-    ["Let's reset your network connection settings.",1,"Network settings have no impact on optical camera focus."],
-    ["Let's inspect your lens for smudges and test macro focus mode.",0,"Targets lens cleanliness, macro mode toggles, and mechanical autofocus actuation."],
-    ["We should reflash your phone cellular modem firmware.",2,"Irrelevant for optical lens actuator issues."]
+    ["Network settings shouldn't affect the camera's ability to focus, so let's reset them first to make sure the phone's other connections are working correctly.",1,"Network settings have no impact on optical camera focus."],
+    ["Let's inspect the camera lens for smudges and check whether a macro or close-focus setting is affecting how the camera handles nearby objects.",0,"Targets lens cleanliness, macro mode toggles, and mechanical autofocus actuation."],
+    ["The cellular modem firmware could be interfering with the camera system, so reflashing it would be the next step.",2,"Irrelevant for optical lens actuator issues."]
   ],"Q046"],
   ["Troubleshooting",0,"An external hard drive light blinks continuously and prevents computer shutdown. What process should you inspect?",[
-    ["Let's check for active background file locks on the drive.",0,"Identifies background process file locks preventing safe disk unmounting."],
-    ["You can just unplug the drive forcibly.",2,"Risks filesystem corruption."],
-    ["Let's reinstall your computer graphics drivers.",1,"Unrelated to disk I/O lock management."]
+    ["Let's check which applications are accessing the external drive and whether a background process is still using files on it before disconnecting the drive.",0,"Identifies background process file locks preventing safe disk unmounting."],
+    ["If the drive is preventing shutdown, unplugging it immediately should release whatever is keeping the computer from turning off.",2,"Risks filesystem corruption."],
+    ["The graphics drivers may be holding up the shutdown process, so reinstalling them could resolve the problem.",1,"Unrelated to disk I/O lock management."]
   ],"Q047"],
   ["Troubleshooting",0,"A user's bluetooth headphones audio cuts out when their phone is in their back pocket. What is primary cause?",[
-    ["Your phone battery saver mode limits Bluetooth transmission power.",1,"Battery saver restricts background data, not active Bluetooth audio streaming."],
-    ["Your headphones require a mandatory paid firmware upgrade.",2,"Firmware updates do not change physical RF range through human body mass."],
-    ["Try moving your phone to your front pocket to reduce signal blockage.",0,"Explains physical radio frequency signal attenuation caused by human body water content."]
+    ["Battery Saver may be reducing the Bluetooth connection strength, so disabling it should restore the headphones' normal range.",1,"Battery saver restricts background data, not active Bluetooth audio streaming."],
+    ["The headphones may require a paid firmware upgrade to maintain a stable connection when the phone is farther away.",2,"Firmware updates do not change physical RF range through human body mass."],
+    ["Let's try moving the phone to your front pocket, because your body can block or weaken the Bluetooth signal when the phone is behind you.",0,"Explains physical radio frequency signal attenuation caused by human body water content."]
   ],"Q048"],
 
   ["Ownership",2,"You need 10 minutes to research a rare error code. The customer is waiting on the line. What should you set expectations?",[
-    ["I'm putting you on hold right now.",2,"Leaves customer uninformed on hold, creating anxiety and frustration."],
-    ["I'll need about 10 minutes to research this specific error code. Would you prefer to stay on the line while I check, or shall I call you back shortly?",0,"Gives customer control of time while setting accurate, transparent expectations."],
-    ["This will only take 30 seconds while I search our database records.",1,"Sets unrealistic expectation likely to be broken."]
+    ["I can place you on hold while I look into the error code, and I'll come back as soon as I find something useful.",2,"Leaves customer uninformed on hold, creating anxiety and frustration."],
+    ["This is a less common error, so I'll explain the hold first and check back with you in about ten minutes rather than leaving you waiting without an update.",0,"Gives customer control of time while setting accurate, transparent expectations."],
+    ["Give me a moment and I'll search the database; it should only take about thirty seconds.",1,"Sets unrealistic expectation likely to be broken."]
   ],"Q049"],
   ["Ownership",2,"You promised a callback at 3:00 PM, but your investigation takes longer. It is now 2:55 PM. What should you do?",[
-    ["Let's call them right at 3:00 PM to provide a progress update.",0,"Maintains trust by honoring commitments even when answers are not ready."],
-    ["Let's delay calling until 3:30 PM so we have a complete resolution ready.",2,"Breaks promised timeframe, causing customer to feel forgotten."],
-    ["Send an automated email stating the case remains open.",1,"Impersonal alternative to direct promised phone check-in."]
+    ["I'll still call you at the promised time with an update, even if my investigation isn't finished yet, so you know where things stand.",0,"Maintains trust by honoring commitments even when answers are not ready."],
+    ["I can wait until I've completed everything and call you around 3:30 PM with the full resolution.",2,"Breaks promised timeframe, causing customer to feel forgotten."],
+    ["I'll send an automated email instead to let you know the case is still open.",1,"Impersonal alternative to direct promised phone check-in."]
   ],"Q050"],
   ["Ownership",2,"You realize a step you provided 5 minutes ago caused the customer's printer configuration to reset. How do you proceed?",[
-    ["I sincerely apologize—that last step I gave you caused your printer settings to reset. Let me walk you through restoring them right now.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."],
-    ["That printer manufacturer software is just poorly designed.",2,"Deflects personal responsibility and erodes trust in guidance."],
-    ["Pretend the reset was required for the configuration.",1,"Deceptive communication to cover up advisor misstep."]
+    ["I'm sorry about that. That step reset the printer configuration, so let's restore the settings and make sure everything is working again.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."],
+    ["The printer software probably caused the configuration to reset, so let's see whether the manufacturer has a fix.",2,"Deflects personal responsibility and erodes trust in guidance."],
+    ["The reset was necessary for the troubleshooting process, so we'll just continue from the current configuration.",1,"Deceptive communication to cover up advisor misstep."]
   ],"Q051"],
   ["Ownership",2,"A customer's issue was resolved, but they are anxious it will recur after hanging up. What is the best closing?",[
-    ["Let's review the fix together, and I'll email you a summary guide so you're fully covered if anything comes up.",0,"Reinforces self-help knowledge, provides reassurance, and establishes clear contact paths."],
-    ["Technology is unpredictable so guarantees do not exist for future software performance.",2,"Creates unnecessary anxiety and leaves poor final impression."],
-    ["I can stay on the line with you for the next two hours monitoring your system stability.",1,"Unrealistic resource expenditure violating queue efficiency."]
+    ["Let's review what fixed the issue, I'll give you the relevant steps or reference material, and I'll explain what to do if the problem comes back.",0,"Reinforces self-help knowledge, provides reassurance, and establishes clear contact paths."],
+    ["Technology can be unpredictable, so I can't guarantee that the issue won't return after we disconnect.",2,"Creates unnecessary anxiety and leaves poor final impression."],
+    ["I can stay on the line for two hours and monitor the system continuously to make sure the issue doesn't recur.",1,"Unrealistic resource expenditure violating queue efficiency."]
   ],"Q052"],
   ["Ownership",2,"An advisor promised a replacement part by Friday, but shipping was delayed to Monday. How do you handle their call?",[
-    ["I see there is a shipping delay pushing your delivery to Monday. I sincerely apologize for the inaccurate timeline you were given.",0,"Owns organizational mistake, delivers accurate expectations, and provides tracking."],
-    ["That shipping carrier is entirely at fault for the delay.",2,"Deflects accountability and leaves customer unsupported."],
-    ["Friday was never actually guaranteed by our shipping department.",1,"Argues semantics with disappointed customer."]
+    ["I'm sorry the replacement didn't arrive when we originally expected it. I'll explain the shipping delay and give you the latest tracking information so you know what to expect.",0,"Owns organizational mistake, delivers accurate expectations, and provides tracking."],
+    ["The shipping carrier caused the delay, so unfortunately there's nothing we could have done about it.",2,"Deflects accountability and leaves customer unsupported."],
+    ["Friday was never guaranteed, so the Monday delivery is still within the normal process.",1,"Argues semantics with disappointed customer."]
   ],"Q053"],
   ["Ownership",2,"You promised to send a setup document via email after your call ended, but your shift is over. What do you do?",[
-    ["Let's send the setup document right away before logging off.",0,"Demonstrates personal accountability and commitment to service."],
-    ["Leave the follow-up email for the next shift advisor.",3,"Fails to follow up on direct personal commitment."],
-    ["Wait and send it tomorrow morning when you return to your desk.",2,"Delays promised customer documentation unnecessarily."]
+    ["I'll make sure the setup document is sent today even though my shift is ending, since that's something I promised to provide after our call.",0,"Demonstrates personal accountability and commitment to service."],
+    ["I'll leave a note for the next advisor so they can send the document when they pick up the case.",3,"Fails to follow up on direct personal commitment."],
+    ["I'll send it tomorrow morning when I'm back, since I'm already finishing my shift.",2,"Delays promised customer documentation unnecessarily."]
   ],"Q054"],
   ["Ownership",2,"A customer is transfer-weary after being routed incorrectly twice. You are in the correct department. What do you say?",[
-    ["Which department transferred you here incorrectly?",2,"Blames colleagues and continues negative transfer dialogue."],
-    ["If this isn't resolved in 5 minutes, I'll have to transfer you again.",1,"Heightens anxiety about future transfers."],
-    ["I'm so sorry you were bounced around. You're in the right place now, and I'm going to take care of this for you.",0,"Provides immediate relief, establishes authority, and takes personal ownership."]
+    ["Do you remember which advisor transferred you here? I can check whether they sent the right information.",2,"Blames colleagues and continues negative transfer dialogue."],
+    ["If we can't resolve it within five minutes, I'll have to transfer you again to another team.",1,"Heightens anxiety about future transfers."],
+    ["I know you've already been transferred twice, so I'll take ownership from here and work through the issue with you.",0,"Provides immediate relief, establishes authority, and takes personal ownership."]
   ],"Q055"],
   ["Ownership",2,"A customer is confused by complex setup instructions you just provided. What is your best move?",[
-    ["Let me repeat the exact same paragraph for you, speaking more loudly.",2,"Rude and ineffective communication adjustment."],
-    ["You should find someone tech-savvy nearby to read these instructions for you.",3,"Insulting advice abdicating support ownership."],
-    ["Let's break these instructions down into smaller steps together and test each one.",0,"Adapts communication style to customer needs and guides interactively."]
+    ["Let me repeat the instructions exactly as before, but I'll slow down and speak a little louder this time.",2,"Rude and ineffective communication adjustment."],
+    ["If the instructions are still confusing, you may want to ask someone who is more comfortable with technology to help you.",3,"Insulting advice abdicating support ownership."],
+    ["Let's break this into smaller steps. We'll complete one step at a time, and I'll make sure you're comfortable before we move to the next one.",0,"Adapts communication style to customer needs and guides interactively."]
   ],"Q056"],
   ["Ownership",2,"You notice an ongoing service outage alert matching the customer's reported issue. What do you inform them?",[
-    ["I see our systems are reporting an active outage in your area. Let me share the current status and expected restoration time.",0,"Provides transparent outage status updates, setting accurate expectations."],
-    ["Hide the outage information and troubleshoot local settings.",2,"Wastes customer time and causes frustration when outage is known."],
-    ["Your local equipment issues must have caused this service disruption.",2,"False technical claim deflecting official outage telemetry."]
+    ["I can see that there's an active outage affecting the same service you're reporting. I'll explain what we know, what the expected next steps are, and what we can do while it's being resolved.",0,"Provides transparent outage status updates, setting accurate expectations."],
+    ["I'll leave the outage information out for now and continue troubleshooting the device as though the service were operating normally.",2,"Wastes customer time and causes frustration when outage is known."],
+    ["The problem is being caused by your local equipment, so changing those settings should restore the service.",2,"False technical claim deflecting official outage telemetry."]
   ],"Q057"],
   ["Ownership",2,"A customer asks a question about a peripheral brand you are unfamiliar with. How do you respond?",[
-    ["Let's guess their technical specifications based on similar hardware.",2,"Risk delivering inaccurate setup instructions."],
-    ["We do not discuss third-party peripherals on our support line.",2,"Unhelpful refusal of basic integration support."],
-    ["Let me check our official documentation on that peripheral before advising you.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."]
+    ["I'm familiar with similar peripherals, so I can give you the likely specifications based on how those devices normally work.",2,"Risk delivering inaccurate setup instructions."],
+    ["Since I don't know that brand, I wouldn't be able to help with any third-party peripheral questions.",2,"Unhelpful refusal of basic integration support."],
+    ["I don't want to guess and give you the wrong information. Let me check the manufacturer's documentation first so I can give you accurate guidance.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."]
   ],"Q058"],
   ["Ownership",2,"A customer calls back because a ticket opened yesterday was closed without resolution. What do you do?",[
-    ["You'll need to open a new ticket online and wait in line again.",2,"Forces bureaucratic loops on unresolved customer."],
-    ["I'm going to reopen your case right now and take personal ownership of resolving it.",0,"Takes ownership of systemic errors and restores customer trust."],
-    ["Our automated ticketing system routines closed it automatically.",2,"Deflects personal and company accountability."]
+    ["Since yesterday's ticket was already closed, you'll need to open a new one and wait for the next available advisor.",2,"Forces bureaucratic loops on unresolved customer."],
+    ["I'll reopen the case and review what happened so we can continue from the work that's already been done rather than making you start over.",0,"Takes ownership of systemic errors and restores customer trust."],
+    ["It looks like the automated ticketing system closed it incorrectly, so the issue wasn't really something our team could control.",2,"Deflects personal and company accountability."]
   ],"Q059"],
   ["Ownership",2,"You promised a follow-up email with logs by 5 PM. At 4:45 PM, logs are still compiling. What do you do?",[
-    ["Let's wait until 6 PM to send anything so the final logs are included.",2,"Misses promised deadline without warning."],
-    ["I'll send a quick status update right now with a revised delivery time so you're kept informed.",0,"Honors communication deadlines transparently even when technical tasks run long."],
-    ["Let's send the incomplete log files immediately anyway.",2,"Delivers low-quality unverified data."]
+    ["I'll wait until the logs finish compiling and send everything after six, even though that means missing the time I promised.",2,"Misses promised deadline without warning."],
+    ["The logs are taking longer than expected, so I'll send you an update now with the new estimated time rather than leaving you waiting past the original deadline.",0,"Honors communication deadlines transparently even when technical tasks run long."],
+    ["I'll send the incomplete logs now so I can technically meet the deadline, even though they aren't finished yet.",2,"Delivers low-quality unverified data."]
   ],"Q060"],
   ["Ownership",2,"A customer's hardware repair requires a part backordered for 3 weeks. How do you present this?",[
-    ["Hide the backorder status completely from the customer.",3,"Deceptive practice guaranteeing customer disappointment."],
-    ["I want to be completely transparent: that replacement part is currently backordered for about 3 weeks. Let's look at alternative options.",0,"Delivers difficult news transparently while providing actionable options."],
-    ["You should just buy a brand new device instead.",1,"Pushes sales rather than supporting repair ownership."]
+    ["The part is backordered, so I'll avoid mentioning the three-week delay until we know whether anything changes.",3,"Deceptive practice guaranteeing customer disappointment."],
+    ["The part is currently backordered for about three weeks. I'll explain the expected timeline and check whether there are any available alternatives.",0,"Delivers difficult news transparently while providing actionable options."],
+    ["Since the part is delayed that long, buying a new device would probably be the easiest option.",1,"Pushes sales rather than supporting repair ownership."]
   ],"Q061"],
   ["Ownership",2,"During troubleshooting, you notice an unpatched security vulnerability on the customer's router. What do you do?",[
-    ["Ignore the vulnerability since they didn't ask about it.",1,"Misses opportunity for proactive safety support."],
-    ["You should buy a completely new router brand immediately.",1,"Pushes hardware replacement when firmware patch resolves vulnerability."],
-    ["I noticed an important security update is available for your router model. Would you like me to walk you through installing it?",0,"Demonstrates proactive ownership beyond immediate ticket scope."]
+    ["I noticed a security issue, but since it wasn't part of your original question, we'll leave it alone for now.",1,"Misses opportunity for proactive safety support."],
+    ["The router is vulnerable, so the best option is to replace it immediately with another brand.",1,"Pushes hardware replacement when firmware patch resolves vulnerability."],
+    ["I noticed that the router has an unpatched security vulnerability. I'll show you the available firmware update steps or the manufacturer's guidance so we can address it safely.",0,"Demonstrates proactive ownership beyond immediate ticket scope."]
   ],"Q062"],
   ["Ownership",2,"A customer asks you to explain a complex bill charge from last month. What do you do?",[
-    ["You can read the printed invoice footnotes yourself.",2,"Dismissive customer service."],
-    ["Let me transfer you to billing.",1,"Avoids basic ownership."],
-    ["Let's review each line item charge and credit together so everything is completely clear.",0,"Takes full ownership of customer clarity and financial transparency."]
+    ["The details are already listed in the invoice, so you can check the footnotes for an explanation of the charge.",2,"Dismissive customer service."],
+    ["This is a billing question, so I'll transfer you to the billing team to explain it.",1,"Avoids basic ownership."],
+    ["Let's go through the charges and credits together so I can explain exactly what each item means and where the amount came from.",0,"Takes full ownership of customer clarity and financial transparency."]
   ],"Q063"],
   ["Ownership",2,"A software bug fix is scheduled for a future release next month. How do you summarize this for the customer?",[
-    ["Our software doesn't have any bugs.",3,"Gaslights customer and denies software telemetry."],
-    ["I can confirm this is a known bug scheduled for our software update next month. Here is a workaround you can use in the meantime.",0,"Validates confirmed bug, empowers user with workarounds, and sets release tracking."],
-    ["I will promise you an emergency hotfix patch today.",2,"Overpromises engineering release capabilities."]
+    ["There isn't really a bug if the company hasn't released a fix yet.",3,"Gaslights customer and denies software telemetry."],
+    ["The bug is confirmed and the fix is planned for next month. In the meantime, I'll explain the available workaround so you can keep using the service.",0,"Validates confirmed bug, empowers user with workarounds, and sets release tracking."],
+    ["I'll request an emergency hotfix today and expect engineering to release it immediately.",2,"Overpromises engineering release capabilities."]
   ],"Q064"],
 
   ["Security & safety",3,"A customer received a text asking them to click a link to verify their account or face suspension. What do you advise?",[
-    ["Let's warn them immediately not to click that link and verify their account security.",0,"Prioritizes account security and prevents credential harvesting."],
-    ["Let's click the link in the text message to check if it's authentic.",3,"Exposes customer directly to phishing scams and credential theft."],
-    ["Would you like to reply STOP to the sender?",2,"Replying to spam text messages confirms phone number is active."]
+    ["Don't click the link. I'll help you verify the account through an official channel and check whether there are any security concerns.",0,"Prioritizes account security and prevents credential harvesting."],
+    ["You can click the link without submitting anything, just to see whether the page looks legitimate.",3,"Exposes customer directly to phishing scams and credential theft."],
+    ["Replying STOP should remove the messages and is a good way to confirm the sender is legitimate.",2,"Replying to spam text messages confirms phone number is active."]
   ],"Q065"],
   ["Security & safety",3,"A caller states their device battery looks visibly swollen and is pushing the screen outward. What instructions do you give?",[
-    ["Let's power down your device right away.",2,"Plausible response, but misses advising against continued charging."],
-    ["Would you like to run a battery calibration test?",2,"Keep physically hazardous component powered and charging under load."],
-    ["Please stop using and charging your device immediately, and place it on a non-flammable surface.",0,"Prioritizes physical fire/battery safety and proper hazardous component handling."]
+    ["Please power the device down, and after it cools down we can continue troubleshooting the battery.",2,"Plausible response, but misses advising against continued charging."],
+    ["Let's run a battery calibration first so we can determine whether the swelling is only a reporting problem.",2,"Keep physically hazardous component powered and charging under load."],
+    ["Stop using the device and unplug it from power. A visibly swollen battery can be hazardous, so it shouldn't be charged or used while swollen.",0,"Prioritizes physical fire/battery safety and proper hazardous component handling."]
   ],"Q066"],
   ["Security & safety",3,"A customer asking for help unlocking an account cannot pass primary identity verification. How do you handle this?",[
-    ["Let's bypass verification since you sound very sincere.",3,"Severe security violation risking unauthorized account compromise."],
-    ["I understand this is frustrating, but strict privacy policies protect accounts. Let's explore self-service recovery options.",0,"Upholds account security standards while providing constructive alternative paths."],
-    ["Could you please read out your account password to me?",3,"Never ask for or collect user passwords under any circumstance."]
+    ["If you sound like the account owner, we can make an exception and bypass the verification step.",3,"Severe security violation risking unauthorized account compromise."],
+    ["I can't bypass identity verification or ask for your password, but I can walk you through the approved recovery options that protect the account.",0,"Upholds account security standards while providing constructive alternative paths."],
+    ["Read the account password to me and I'll use it to verify that you're the owner.",3,"Never ask for or collect user passwords under any circumstance."]
   ],"Q067"],
   ["Security & safety",3,"A customer reports pop-ups claiming their computer is infected and instructing them to call a toll-free number. What do you explain?",[
-    ["Let's call the toll-free number displayed on screen to check if it's legitimate.",3,"Directs customer into hands of active fraudsters."],
-    ["Would you like to install multiple third-party antivirus cleaners simultaneously?",2,"Can cause system instability without removing malicious pop-up scripts."],
-    ["This is a well-known tech support scam. Please do not call that number or click anything.",0,"Correctly identifies tech support scam scareware and provides safe remediation."]
+    ["Call the number shown in the pop-up and ask them to confirm whether the warning is legitimate.",3,"Directs customer into hands of active fraudsters."],
+    ["Install several antivirus cleanup tools at the same time so they can all remove whatever the warning detected.",2,"Can cause system instability without removing malicious pop-up scripts."],
+    ["That pop-up is a common technical-support scam. Don't call the number or give anyone remote access; let's close it safely and check the computer through trusted security tools.",0,"Correctly identifies tech support scam scareware and provides safe remediation."]
   ],"Q068"],
   ["Security & safety",3,"A user calls asking to reset a password for a spouse's account, stating the spouse is unavailable. What do you do?",[
-    ["Let's reset the password since you are married.",3,"Severe account security violation."],
-    ["I can answer your security questions for you.",3,"Bypasses authentic account ownership requirements."],
-    ["I'm sorry, but for account privacy reasons, the account owner must contact us directly.",0,"Protects account privacy and adheres strictly to security protocols."]
+    ["Since you're married, I can reset the password for your spouse as long as you can confirm the account details.",3,"Severe account security violation."],
+    ["If you know the answers to the security questions, I can use those answers to reset the account for you.",3,"Bypasses authentic account ownership requirements."],
+    ["I need to protect the account holder's privacy, so I can't reset or access the account on their behalf. The account owner will need to use the approved recovery process.",0,"Protects account privacy and adheres strictly to security protocols."]
   ],"Q069"],
   ["Security & safety",3,"A customer asks if using a public open Wi-Fi network at an airport is safe for mobile banking. What do you advise?",[
-    ["Public open Wi-Fi is 100% safe to use for banking.",3,"Provides dangerously inaccurate network security advice."],
-    ["Banking apps will not work at all on public Wi-Fi.",2,"Technically inaccurate explanation."],
-    ["I'd advise against doing mobile banking on open public Wi-Fi unless you are using a secure VPN or your cellular data.",0,"Delivers sound network security hygiene and privacy protection tips."]
+    ["Public airport Wi-Fi is generally safe for banking as long as the network name looks official.",3,"Provides dangerously inaccurate network security advice."],
+    ["Banking applications normally stop working on public Wi-Fi, so you won't be able to use mobile banking there.",2,"Technically inaccurate explanation."],
+    ["For sensitive banking activity, it's safer to use your cellular connection or another trusted network rather than an open public Wi-Fi network.",0,"Delivers sound network security hygiene and privacy protection tips."]
   ],"Q070"],
   ["Security & safety",3,"A customer asks how to set up multi-factor authentication (MFA) on their primary account. What guidance do you give?",[
-    ["Multi-factor authentication doesn't offer any real protection.",2,"Discourages effective account security controls."],
-    ["Let's walk through enabling MFA in your security settings step by step.",0,"Provides secure configuration guidance while emphasizing account recovery readiness."],
-    ["Could you tell me your authentication codes so I can set it up?",3,"Never solicit authentication codes from users."]
+    ["MFA isn't necessary because a strong password provides enough protection by itself.",2,"Discourages effective account security controls."],
+    ["Let's open your account's security settings and choose the MFA option, then I'll walk you through the available verification methods and recovery setup.",0,"Provides secure configuration guidance while emphasizing account recovery readiness."],
+    ["If you receive an authentication code during setup, read it to me so I can confirm the configuration.",3,"Never solicit authentication codes from users."]
   ],"Q071"],
   ["Security & safety",3,"A customer asks if disabling automatic operating system updates improves device security. What do you explain?",[
-    ["Yes, disabling updates is safer because updates always introduce malware.",3,"Provides dangerous security misinformation."],
-    ["Updates only change app user interface colors anyway.",2,"Inaccurate summary of software patch release purposes."],
-    ["I strongly recommend keeping automatic updates enabled to protect your device against critical security vulnerabilities.",0,"Promotes security updates as essential protection against software vulnerabilities."]
+    ["Yes, disabling updates is safer because updates sometimes introduce malware.",3,"Provides dangerous security misinformation."],
+    ["Updates mostly cosmetic changes to how applications look, so they don't affect security very much.",2,"Inaccurate summary of software patch release purposes."],
+    ["Keep automatic updates enabled when possible, because security patches help protect the device against known software vulnerabilities.",0,"Promotes security updates as essential protection against software vulnerabilities."]
   ],"Q072"],
   ["Security & safety",3,"A customer asks why two-factor authentication (2FA) prompts appear when signing in from new browsers. What do you explain?",[
-    ["Let me explain how 2FA verifies your identity when signing in from unrecognized browsers.",0,"Educates on security authorization principles for new device sign-ins."],
-    ["Those 2FA prompts are just system glitches.",3,"Undermines critical account security protections."],
-    ["You should share your 2FA prompts publicly online.",3,"Dangerous security risk exposing account verification signals."]
+    ["Two-factor authentication adds another verification step when a sign-in comes from a new or unrecognized browser, helping confirm that it's really you.",0,"Educates on security authorization principles for new device sign-ins."],
+    ["Those prompts usually mean the account's two-factor system has malfunctioned.",3,"Undermines critical account security protections."],
+    ["You can share the 2FA prompt publicly if you want someone else to confirm that the sign-in is legitimate.",3,"Dangerous security risk exposing account verification signals."]
   ],"Q073"],
   ["Security & safety",3,"A customer asks why they should use a passcode lock on their mobile device. What do you explain?",[
-    ["Passcodes only slow down your device sign-in.",2,"Misrepresents security controls as mere user inconvenience."],
-    ["Let me explain how a passcode protects your personal data and device encryption.",0,"Delivers clear physical data protection and device encryption education."],
-    ["I'd advise setting '1234' as your passcode for quick access.",3,"Recommends weak, easily guessed security credentials."]
+    ["A passcode mainly makes signing in slower, so it's mostly a convenience feature.",2,"Misrepresents security controls as mere user inconvenience."],
+    ["A passcode helps prevent someone who has physical access to the device from opening it and accessing protected information.",0,"Delivers clear physical data protection and device encryption education."],
+    ["A simple code such as 1234 is fine as long as you don't tell other people what it is.",3,"Recommends weak, easily guessed security credentials."]
   ],"Q074"],
   ["Security & safety",3,"A caller receives an unsolicited call from someone claiming to be their ISP demanding remote access. What do you advise?",[
-    ["You can grant them access if they know your name.",3,"Severe safety risk enabling remote takeover."],
-    ["Please hang up immediately—never grant remote access to unsolicited callers.",0,"Prevents remote access social engineering attacks."],
-    ["Ask the caller for their badge number to verify.",2,"Scammers easily fake badge numbers."]
+    ["If the caller knows your name and account information, allowing remote access should be fine.",3,"Severe safety risk enabling remote takeover."],
+    ["Don't allow remote access from an unsolicited caller. If you need support, contact your ISP through an official channel you already trust.",0,"Prevents remote access social engineering attacks."],
+    ["Ask the caller for a badge number first; if it sounds legitimate, you can then give them access.",2,"Scammers easily fake badge numbers."]
   ],"Q075"],
   ["Security & safety",3,"A customer finds an unlabeled USB flash drive in a parking lot. What should they do with it?",[
-    ["Let's plug the drive into your computer to find the owner.",3,"Exposes hardware to malware/hardware payload attacks."],
-    ["Would you like to run an antivirus scan on the drive?",2,"Opening folder structure can still execute malicious autorun payloads."],
-    ["Please do not connect that unknown drive to any computer.",0,"Protects against badUSB hardware payloads and malware auto-execution."]
+    ["Plug the drive into a spare computer so you can identify the owner without putting your main computer at risk.",3,"Exposes hardware to malware/hardware payload attacks."],
+    ["You can connect it after disabling some security features and running an antivirus scan before opening the files.",2,"Opening folder structure can still execute malicious autorun payloads."],
+    ["Don't connect the drive to your computer. An unknown USB device can contain malicious hardware or software, and there's no safe reason to open it just to identify the owner.",0,"Protects against badUSB hardware payloads and malware auto-execution."]
   ],"Q076"],
   ["Security & safety",3,"A user asks if saving all passwords in a plain text file on their desktop is safe. What do you advise?",[
-    ["You can hide the text file inside a nested folder.",2,"Security through obscurity fails against basic file scanners."],
-    ["Plain text files lack encryption. I recommend using an encrypted password manager instead.",0,"Teaches credential encryption security hygiene."],
-    ["Just lock your computer desktop folder.",1,"User-level permissions do not protect against local malware."]
+    ["You can make a plain-text password file safer by hiding it several folders deep on the desktop.",2,"Security through obscurity fails against basic file scanners."],
+    ["Plain-text passwords aren't encrypted, so someone or some malware with access to the file could read them. An encrypted password manager is a safer approach.",0,"Teaches credential encryption security hygiene."],
+    ["Putting the password file inside a locked desktop folder is enough to protect the credentials.",1,"User-level permissions do not protect against local malware."]
   ],"Q077"],
   ["Security & safety",3,"A customer reports their webcam light turns on randomly when no camera apps are open. What should they check?",[
-    ["Just put tape over your webcam and ignore it.",1,"Physical cover helps privacy, but misses underlying malware containment."],
-    ["Let's check your system camera access permissions for background apps.",0,"Addresses unauthorized camera access vulnerabilities and spy malware."],
-    ["We should reinstall your computer display drivers.",1,"Irrelevant for USB camera background capture."]
+    ["Cover the webcam with tape and ignore the issue, since the light turning on doesn't necessarily matter.",1,"Physical cover helps privacy, but misses underlying malware containment."],
+    ["Let's check which applications and services currently have permission to access the camera and review recent camera activity if the device provides it.",0,"Addresses unauthorized camera access vulnerabilities and spy malware."],
+    ["Reinstalling the display driver should stop the webcam light from activating unexpectedly.",1,"Irrelevant for USB camera background capture."]
   ],"Q078"],
   ["Security & safety",3,"A user receives an email attachment named 'Invoice.exe' from an unknown sender. What is your advice?",[
-    ["Download the attachment to an isolated folder to inspect it.",2,"Downloading executable payloads exposes local storage to execution risks."],
-    ["Please report it as phishing and delete it immediately without opening.",0,"Prevents execution of malicious executable email payloads."],
-    ["Double-click the file to open and view your invoice.",3,"Triggers immediate malware execution."]
+    ["Save the attachment in an isolated folder first so you can inspect the executable without opening it.",2,"Downloading executable payloads exposes local storage to execution risks."],
+    ["Don't open it. Report the message as phishing or suspicious and delete it without running the attachment.",0,"Prevents execution of malicious executable email payloads."],
+    ["Double-click the file so we can see what program opens it and determine whether it's really an invoice.",3,"Triggers immediate malware execution."]
   ],"Q079"],
   ["Security & safety",3,"A customer notices their cloud account logged in from an unknown country. What immediate action should they take?",[
-    ["Let's reset your password and enable multi-factor authentication right now.",0,"Contains active account compromise and revokes unauthorized session tokens."],
-    ["Send an email to that unknown IP address to ask why.",3,"Useless and reveals personal contact details to attackers."],
-    ["Ignore it, as it's probably just a mapping error.",2,"Dangerous delay in containing unauthorized session hijacks."]
+    ["Reset the account password and enable MFA, then review the account's recent sign-ins and security activity for anything else unfamiliar.",0,"Contains active account compromise and revokes unauthorized session tokens."],
+    ["Send a message to the unknown IP address and ask whoever is using it why they accessed the account.",3,"Useless and reveals personal contact details to attackers."],
+    ["Ignore it for now because the location could simply be a mapping error.",2,"Dangerous delay in containing unauthorized session hijacks."]
   ],"Q080"],
 
   ["Escalation",3,"A customer demands a supervisor because their out-of-warranty hardware repair cannot be covered for free under policy. What do you do?",[
-    ["I refuse to transfer you to a supervisor.",2,"Violates escalation handling guidelines and increases customer anger."],
-    ["I understand your frustration with our warranty policy. Let me summarize your case notes and connect you with a supervisor.",0,"Respects escalation rights while ensuring supervisor has complete context."],
-    ["Let me override company policy and approve a free repair for you right now.",3,"Exceeds advisor authority and breaches operational policies."]
+    ["If the customer doesn't qualify for free repair, there's no reason to involve a supervisor.",2,"Violates escalation handling guidelines and increases customer anger."],
+    ["I understand why you'd want this reviewed. I'll explain the warranty policy clearly and, if you'd still like a supervisor, I'll arrange a warm transfer with notes so you don't have to repeat everything.",0,"Respects escalation rights while ensuring supervisor has complete context."],
+    ["Since the customer is asking for a supervisor, I'll approve the free repair even though the policy doesn't allow it.",3,"Exceeds advisor authority and breaches operational policies."]
   ],"Q081"],
   ["Escalation",3,"A customer's complex networking issue has exceeded frontline troubleshooting tools. How do you hand off the case?",[
-    ["Let's cold-transfer the customer to the queue.",2,"Forces next representative and customer to start from scratch."],
-    ["Let me prepare detailed notes and warm-transfer you to our specialist team.",0,"Ensures smooth continuity of care without making customer repeat details."],
-    ["Tier 2 specialists do not take customer phone calls.",3,"Inaccurate escalation guidance abandoning customer care."]
+    ["I'll transfer you to the next queue so they can figure out which tools are needed.",2,"Forces next representative and customer to start from scratch."],
+    ["Your issue has gone beyond the tools available to me. I'll summarize the troubleshooting we've completed and warm-transfer the case with clear notes so the next team has the full context.",0,"Ensures smooth continuity of care without making customer repeat details."],
+    ["Tier 2 doesn't take calls directly, so you'll need to wait for them to review the case.",3,"Inaccurate escalation guidance abandoning customer care."]
   ],"Q082"],
   ["Escalation",3,"A customer insists on a free replacement for water damage, claiming another rep promised it. No notes confirm this. What do you do?",[
-    ["Let's review our official warranty terms regarding water damage.",0,"Holds policy boundaries firmly without making unverified promises."],
-    ["I will process your free replacement immediately since you were promised.",3,"Violates company policy and inventory rules."],
-    ["The previous advisor who spoke with you was lying.",2,"Unprofessional internal blame assignment."]
+    ["I can explain the warranty terms and review the case history with you. If there's no documented exception, I'll explain what options are actually available.",0,"Holds policy boundaries firmly without making unverified promises."],
+    ["If another representative promised it, I'll approve the free replacement now even though I can't find any notes confirming it.",3,"Violates company policy and inventory rules."],
+    ["The previous representative clearly lied to you, because there is nothing in the notes supporting that promise.",2,"Unprofessional internal blame assignment."]
   ],"Q083"],
   ["Escalation",3,"A customer demands legal contact details and refuses troubleshooting after experiencing data loss. What do you do?",[
-    ["Taking legal action against us is completely impossible under our store terms.",2,"Combative stance escalating corporate liability risks."],
-    ["I understand how upsetting data loss is. Let me provide our official corporate legal department contact details.",0,"Follows legal disclosure protocols with professional neutrality."],
-    ["Delete the customer case file immediately.",3,"Gross breach of corporate record retention policies."]
+    ["Legal action isn't possible under the store's terms, so there's no reason to discuss it further.",2,"Combative stance escalating corporate liability risks."],
+    ["I'll document what you've reported, keep the conversation focused on what we can verify, and make sure the appropriate team or process receives the case if legal follow-up is required.",0,"Follows legal disclosure protocols with professional neutrality."],
+    ["Since the customer no longer wants troubleshooting, I'll delete the case and end the interaction.",3,"Gross breach of corporate record retention policies."]
   ],"Q084"],
   ["Escalation",3,"A customer demands a policy exception for a non-refundable digital purchase made by an authorized family member. What do you do?",[
-    ["Let me issue an unauthorized refund from my personal funds.",3,"Extremely improper conduct violating accounting policies."],
-    ["I understand your disappointment. Let me explain our purchase policy and review any appeal paths.",0,"Maintains store policy clarity while offering preventive configurations."],
-    ["All digital purchases are final, goodbye.",2,"Abrupt policy delivery without offering preventive setup guidance."]
+    ["I'll issue the refund from my own funds so we can close the case without waiting for an appeal.",3,"Extremely improper conduct violating accounting policies."],
+    ["I'll explain the non-refundable purchase terms and walk you through the available appeal or review path so the request can be handled through the proper process.",0,"Maintains store policy clarity while offering preventive configurations."],
+    ["Digital purchases are final, so there's nothing else to discuss and I'll end the call.",2,"Abrupt policy delivery without offering preventive setup guidance."]
   ],"Q085"],
   ["Escalation",3,"A customer is verbally abusive and uses severe profanity targeting the advisor. What protocol do you follow?",[
-    ["Start yelling right back at the customer.",3,"Unacceptable breach of professional standards."],
-    ["I must kindly ask you to refrain from using profanity. If this continues, I will need to disconnect our call.",0,"Protects advisor safety following established abusive call boundary protocols."],
-    ["Mute my microphone and ignore them for 20 minutes.",2,"Improper queue management."]
+    ["I understand you're upset, but if you keep speaking that way, I'll raise my voice too.",3,"Unacceptable breach of professional standards."],
+    ["I want to help, but I need us to keep the conversation respectful. If the abusive language continues after the warning, I'll follow the disconnect procedure.",0,"Protects advisor safety following established abusive call boundary protocols."],
+    ["I'll mute my microphone for twenty minutes and wait until you stop using profanity.",2,"Improper queue management."]
   ],"Q086"],
   ["Escalation",3,"An issue requires engineering investigation, but customer demands a solution within 5 minutes. How do you manage this?",[
-    ["Let me make up a fake technical explanation.",3,"Dishonest communication undermining technical trust."],
-    ["I understand the urgency. Let me explain why engineering analysis is needed, set a timeline, and schedule a callback.",0,"Manages expectations firmly while ensuring proper technical escalation."],
-    ["I promise our engineers will fix this in 5 minutes.",2,"Overpromises engineering release timetables."]
+    ["Engineering is probably going to find a simple fix, so I'll make up an explanation now to save you the wait.",3,"Dishonest communication undermining technical trust."],
+    ["This requires engineering analysis that I can't complete safely in five minutes. I'll explain what they're reviewing, give you the expected timeline, and arrange a callback with the next update.",0,"Manages expectations firmly while ensuring proper technical escalation."],
+    ["I'll promise engineering can have the fix ready within five minutes so you don't have to wait.",2,"Overpromises engineering release timetables."]
   ],"Q087"],
   ["Escalation",3,"A business client reports an enterprise server cluster outage affecting 500 workers. How do you prioritize this escalation?",[
-    ["Treat this as a standard single-user support ticket.",3,"Severe misclassification of business outage severity."],
-    ["I am flagging this as a Priority 1 Critical incident and notifying our Incident Command team immediately.",0,"Follows critical severity enterprise escalation paths."],
-    ["Please file a web support ticket and wait 48 hours for a reply.",2,"Fails to trigger critical outage incident response protocols."]
+    ["I'll process this like any other single-user ticket and let the normal queue determine its priority.",3,"Severe misclassification of business outage severity."],
+    ["An outage affecting roughly 500 workers is a critical business-impacting incident. I'll flag it as Priority 1, notify the incident team, and maintain communication while it's being handled.",0,"Follows critical severity enterprise escalation paths."],
+    ["Please submit a standard web ticket and wait for the normal response window.",2,"Fails to trigger critical outage incident response protocols."]
   ],"Q088"],
   ["Escalation",3,"A customer requests safety data sheets and hazardous disposal guidance for a battery. Where do you escalate?",[
-    ["Let me provide our environmental safety documentation links or warm-transfer you to Compliance.",0,"Routes specialized hazardous safety queries to compliance teams."],
-    ["Let me guess the chemical composition for you.",3,"Dangerous and unauthorized chemical disclosure."],
-    ["Just throw your hazardous batteries in the household trash.",3,"Violates environmental disposal regulations."]
+    ["I'll provide the appropriate safety documentation or connect you with Compliance, since hazardous battery handling needs accurate disposal and safety guidance.",0,"Routes specialized hazardous safety queries to compliance teams."],
+    ["I can estimate the battery's chemical composition from its model and give you disposal instructions based on that.",3,"Dangerous and unauthorized chemical disclosure."],
+    ["Put the battery in the regular trash and make sure it's wrapped first.",3,"Violates environmental disposal regulations."]
   ],"Q089"],
   ["Escalation",3,"A customer threatens self-harm during a call regarding a lost account. What critical protocol must be triggered?",[
-    ["I'm staying right here with you on the line. Let me connect you with our crisis support specialists right now.",0,"Prioritizes human life safety by engaging emergency crisis protocols."],
-    ["Hang up the phone immediately.",3,"Abandons crisis safety protocol."],
-    ["Argue with them about account security rules.",3,"Inappropriate during life-safety crisis."]
+    ["I'm going to stay calm and keep the line open while I immediately follow the appropriate crisis-safety process and get the necessary support involved.",0,"Prioritizes human life safety by engaging emergency crisis protocols."],
+    ["I'll end the call now because this is outside normal account support.",3,"Abandons crisis safety protocol."],
+    ["Let's focus on the account rules first and come back to what you're saying about harming yourself afterward.",3,"Inappropriate during life-safety crisis."]
   ],"Q090"],
   ["Escalation",3,"A customer claims a software update infringed on patent rights. How do you route this statement?",[
-    ["Let's debate patent law together on this call.",2,"Advisors are not corporate legal representatives."],
-    ["I understand your concern. Legal inquiries are handled by our Corporate Counsel, and I can provide their contact details.",0,"Follows corporate IP routing procedures without speculating."],
-    ["I agree that our software violated your patent.",3,"Breaches corporate representation rules."]
+    ["I can debate the patent issue with you and explain why the software update shouldn't violate patent law.",2,"Advisors are not corporate legal representatives."],
+    ["Patent and legal claims need to be handled by the appropriate Corporate Counsel or legal process. I'll route the inquiry and provide the relevant contact details.",0,"Follows corporate IP routing procedures without speculating."],
+    ["You're right; the company must have used someone else's patented technology in the update.",3,"Breaches corporate representation rules."]
   ],"Q091"],
   ["Escalation",3,"A customer requests detailed security audit logs of employee backend access to their account. What do you do?",[
-    ["Let's review our privacy procedures and submit a formal privacy audit ticket to Governance.",0,"Properly channels data privacy audit requests to compliance teams."],
-    ["Let me export our internal employee access logs directly to you.",3,"Breaches internal security data protection policies."],
-    ["Those internal logs do not exist.",2,"False technical claim."]
+    ["Internal access logs can involve employee and privacy information, so I'll explain the privacy process and submit the appropriate formal audit request to Governance.",0,"Properly channels data privacy audit requests to compliance teams."],
+    ["I can export the internal access logs and send the complete records directly to you.",3,"Breaches internal security data protection policies."],
+    ["We don't keep internal access logs, so there isn't anything available to review.",2,"False technical claim."]
   ],"Q092"],
   ["Escalation",3,"A high-profile VIP executive calls support with an urgent device lock issue. How do you handle verification?",[
-    ["Let's follow our standard executive verification protocols to ensure complete security.",0,"Balances security compliance with VIP service protocols."],
-    ["Let's bypass security verification for a VIP account.",3,"Violates security policy; VIP accounts are high-value target risks."],
-    ["Refuse to help because you must wait in the standard queue.",2,"Inflexible and poor executive service handling."]
+    ["I'll follow the same executive verification requirements while making sure the urgent device issue receives the appropriate level of service.",0,"Balances security compliance with VIP service protocols."],
+    ["Since you're a VIP, we can bypass the normal security verification and unlock the device immediately.",3,"Violates security policy; VIP accounts are high-value target risks."],
+    ["VIP requests still have to use the standard queue, so I can't help with the issue here.",2,"Inflexible and poor executive service handling."]
   ],"Q093"],
   ["Escalation",3,"An advisor receives a ticket where 4 previous reps attempted conflicting fixes without notes. What is first move?",[
-    ["Let's pass this ticket along to a 5th advisor.",2,"Continues hot-potato ticket passing."],
-    ["Let's document the current state, review previous logs, align on a strategy, and take full ownership.",0,"Cleans up case ambiguity, establishes case documentation, and stabilizes strategy."],
+    ["Since four advisors already worked on it, I'll pass the ticket to another advisor and let them decide what to do next.",2,"Continues hot-potato ticket passing."],
+    ["I'll document the current state, review the previous attempts and available logs, align on a single troubleshooting strategy, and take ownership from there.",0,"Cleans up case ambiguity, establishes case documentation, and stabilizes strategy."],
     ["Blame the customer for calling back repeatedly.",2,"Unprofessional blame assignment."]
   ],"Q094"],
   ["Escalation",3,"A customer asks for a written liability statement guaranteeing zero software downtime. What do you explain?",[
-    ["I will write and sign a custom liability guarantee for you.",3,"Exceeds legal authority."],
-    ["Our Service Level Agreement parameters are detailed in our published Terms of Service agreements.",0,"Provides official contractual documentation without making unauthorized verbal guarantees."],
-    ["I can guarantee that our software will never experience downtime.",2,"False technical representation."]
+    ["I can provide a custom guarantee that your software will have zero downtime.",3,"Exceeds legal authority."],
+    ["I can't create a custom liability guarantee, but I can point you to the published SLA and Terms of Service that define the applicable service commitments and limitations.",0,"Provides official contractual documentation without making unauthorized verbal guarantees."],
+    ["Software doesn't normally crash, so you shouldn't need a formal guarantee.",2,"False technical representation."]
   ],"Q095"],
   ["Escalation",3,"A regional power outage damaged servers and created a backlog of 10,000 pending tickets. What is communication protocol?",[
-    ["Let's deploy banner alerts, communicate queue delays, and triage high-severity security cases.",0,"Implements incident communication management and priority triage during mass disruptions."],
-    ["Let's delete all 10,000 pending support tickets.",3,"Mass data destruction of unresolved customer tickets."],
-    ["Blame our support advisors publicly on social media.",3,"Unacceptable management communication failure."]
+    ["We'll communicate the outage and queue delays clearly, prioritize critical security and high-severity cases, and use the incident process to keep customers informed while service is restored.",0,"Implements incident communication management and priority triage during mass disruptions."],
+    ["The backlog is too large to manage, so the safest option is to delete the 10,000 pending tickets and start over.",3,"Mass data destruction of unresolved customer tickets."],
+    ["I'll explain on social media that the advisors caused the backlog so customers know where the responsibility lies.",3,"Unacceptable management communication failure."]
   ],"Q096"],
 
   ["Active listening",1,"A customer lists issues across tablet, smartwatch, and laptop. They sound overwhelmed. What is your response?",[
-    ["Interrupt them to request serial numbers immediately.",2,"Transactional and rigid response ignoring customer emotional overwhelm."],
-    ["I hear how much you're dealing with across your devices. Let's list them out and tackle the most urgent one first.",0,"Brings structure to chaotic complaint and lets user prioritize core concern."],
-    ["Our policy allows only one device per support call session.",1,"Unhelpful policy enforcement frustrating caller further."]
+    ["Let's start by collecting the serial numbers for all three devices so we can work through them one at a time.",2,"Transactional and rigid response ignoring customer emotional overwhelm."],
+    ["I hear that there are several things going wrong at once. Let's summarize them together and decide which issue is most urgent so we can tackle it first.",0,"Brings structure to chaotic complaint and lets user prioritize core concern."],
+    ["Our policy normally allows only one device issue per call, so you'll need to choose which device you want help with.",1,"Unhelpful policy enforcement frustrating caller further."]
   ],"Q097"],
   ["Active listening",1,"A caller says, 'My phone charging port is dead,' but later mentions, 'It only charges when I tilt left.' What do you do?",[
-    ["Insist on setting up a full mainboard replacement immediately.",2,"Takes exaggerated customer statement literally while ignoring clarifying facts."],
-    ["I noticed you mentioned it charges when tilted—that points to a loose connection. Let's inspect your cable and port.",0,"Catches crucial contextual details narrowing down physical loose connections."],
-    ["You just contradicted yourself on the phone.",3,"Confrontational phrasing damaging advisor-customer trust."]
+    ["If the charging port is unreliable, we should go straight to replacing the mainboard so we don't waste time.",2,"Takes exaggerated customer statement literally while ignoring clarifying facts."],
+    ["The fact that it charges when you tilt the phone is an important clue. Let's check the cable and port for a loose or damaged connection.",0,"Catches crucial contextual details narrowing down physical loose connections."],
+    ["You first said the port was dead, so the two descriptions don't match.",3,"Confrontational phrasing damaging advisor-customer trust."]
   ],"Q098"],
   ["Active listening",1,"A customer pauses for several seconds after you ask a question. How should you react?",[
-    ["Repeatedly ask 'Are you still there?' every 3 seconds.",1,"Impatient interjection interrupting customer focus."],
-    ["Take your time, I'm right here whenever you're ready.",0,"Gives customer room to formulate thoughts or examine screen."],
-    ["Assume the call disconnected and drop the line immediately.",3,"Prematurely terminates customer interaction."]
+    ["Are you still there? Are you still there? I'll keep checking every few seconds so I know the call hasn't dropped.",1,"Impatient interjection interrupting customer focus."],
+    ["I'll give you a moment to think or check the screen before I speak again.",0,"Gives customer room to formulate thoughts or examine screen."],
+    ["Since you haven't answered immediately, I'll assume the call has disconnected and end it.",3,"Prematurely terminates customer interaction."]
   ],"Q099"],
   ["Active listening",1,"A caller states, 'I updated my tablet, and now my drawing pen will not pair.' What detail must you acknowledge?",[
-    ["Let's ignore the software update and check if your pen battery died.",2,"Overlooks explicit timing information provided by customer."],
-    ["I see the pairing issue started right after your tablet software update. Let's look into compatibility.",0,"Connects event timeline to narrow down software/firmware compatibility."],
-    ["Why did you update your tablet in the first place?",1,"Questioning customer choices rather than focusing on diagnostic facts."]
+    ["The update probably isn't relevant, so let's assume the drawing pen battery has failed and troubleshoot that first.",2,"Overlooks explicit timing information provided by customer."],
+    ["The pen stopped pairing immediately after the tablet update, so that timing is an important clue. Let's check the update and the pen's compatibility or pairing state.",0,"Connects event timeline to narrow down software/firmware compatibility."],
+    ["What made you decide to update the tablet in the first place?",1,"Questioning customer choices rather than focusing on diagnostic facts."]
   ],"Q100"],
   ["Active listening",1,"A caller explains issues using incorrect technical terms (calling hard drive a 'CPU tower'). How do you communicate?",[
-    ["Interrupt them to deliver a lecture on correct computer terminology.",2,"Arrogant response alienating customer."],
-    ["I understand completely—let's work through this using clear, simple terms together.",0,"Focuses on clear technical understanding without making customer feel foolish."],
-    ["Use overly dense technical jargon to confuse them further.",3,"Poor communication behavior."]
+    ["Before we continue, I want to correct the terminology you're using so we can discuss the hardware properly.",2,"Arrogant response alienating customer."],
+    ["I understand what you're describing. I'll use clear language and confirm what you mean as we troubleshoot so we don't get hung up on technical terms.",0,"Focuses on clear technical understanding without making customer feel foolish."],
+    ["I'll use more technical terminology so we can make sure we're talking about the same components.",3,"Poor communication behavior."]
   ],"Q101"],
   ["Active listening",1,"A caller mentions, 'My computer screen flickers whenever I adjust hinge angle.' What is root diagnostic clue?",[
-    ["Let's treat this as a computer virus infection.",3,"Ignores physical hinge movement trigger entirely."],
-    ["Since the flickering happens when moving the hinge, that points to a loose display cable. Let's check.",0,"Identifies core physical mechanical relationship to display failure."],
-    ["I'd advise updating your web browser software applications.",2,"Irrelevant application check for physical hinge hardware glitch."]
+    ["A flickering screen is often caused by malware, so let's run a security scan before looking at the hinge.",3,"Ignores physical hinge movement trigger entirely."],
+    ["The fact that the flicker happens when you change the hinge angle is a strong clue. Let's check the display cable and hinge area for a loose or damaged connection.",0,"Identifies core physical mechanical relationship to display failure."],
+    ["Let's update the browser and other applications first to make sure a software issue isn't affecting the display.",2,"Irrelevant application check for physical hinge hardware glitch."]
   ],"Q102"],
   ["Active listening",1,"A customer complains, 'My phone speaker sounds distorted, but only on speakerphone mode.' What does this indicate?",[
-    ["Let's focus our troubleshooting on the bottom speakerphone component rather than the top earpiece.",0,"Differentiates between top earpiece speaker and bottom speakerphone components."],
-    ["We need to replace your phone's primary earpiece speaker hardware.",2,"Misidentifies which physical speaker transducer is active during speakerphone."],
-    ["You should simply stop using speakerphone mode.",1,"Avoids fixing reported hardware symptom."]
+    ["Since the distortion happens only in speakerphone mode, let's focus on the speakerphone audio path rather than the earpiece you use for normal calls.",0,"Differentiates between top earpiece speaker and bottom speakerphone components."],
+    ["The earpiece speaker is probably damaged, so replacing that component should fix the distortion.",2,"Misidentifies which physical speaker transducer is active during speakerphone."],
+    ["The easiest solution is to stop using speakerphone mode so you won't hear the distortion.",1,"Avoids fixing reported hardware symptom."]
   ],"Q103"],
   ["Active listening",1,"A caller says, 'External hard drive makes repetitive clicking noise and files will not load.' What does this mean?",[
-    ["Let's run a disk defragmentation tool right away.",3,"Continuous stress on clicking mechanical drive can cause catastrophic platter damage."],
-    ["That clicking sound in a mechanical drive usually indicates read-head failure. Let's secure your data backups immediately.",0,"Identifies mechanical drive failure signs and prioritizes preventing data loss."],
-    ["Try giving the hard drive a firm smack on your desk.",3,"Physical violence damages mechanical components permanently."]
+    ["A clicking drive may simply need a disk defragmentation pass, so let's optimize it before doing anything else.",3,"Continuous stress on clicking mechanical drive can cause catastrophic platter damage."],
+    ["Repetitive clicking from a mechanical drive combined with files failing to load can indicate a failing read head. Let's avoid unnecessary use and prioritize data recovery.",0,"Identifies mechanical drive failure signs and prioritizes preventing data loss."],
+    ["If the drive keeps clicking, gently tapping it on the desk may help the mechanism move again.",3,"Physical violence damages mechanical components permanently."]
   ],"Q104"],
   ["Active listening",1,"A caller says, 'My monitor display turns off after 10 minutes inactivity, returning on mouse move.' What is happening?",[
-    ["Let's diagnose your monitor screen as defective and replace it.",2,"Misdiagnoses normal power management behavior as hardware failure."],
-    ["That's actually your normal power-saving display sleep setting at work, not a hardware fault.",0,"Correctly identifies normal operating system display sleep features."],
-    ["We need to reflash your monitor internal display controller firmware.",2,"Unnecessary complex firmware operation for basic sleep behavior."]
+    ["The monitor may be defective because the display turning off after ten minutes suggests it is losing power.",2,"Misdiagnoses normal power management behavior as hardware failure."],
+    ["That sounds like normal display sleep behavior: the screen turns off after inactivity and wakes when you move the mouse. It's a power-saving feature, not necessarily a hardware fault.",0,"Correctly identifies normal operating system display sleep features."],
+    ["We should reflash the monitor's internal controller firmware to prevent the screen from sleeping.",2,"Unnecessary complex firmware operation for basic sleep behavior."]
   ],"Q105"],
   ["Active listening",1,"A customer says, 'I hear high-pitched whistling whenever I plug in my phone charger.' What should you note?",[
-    ["That whistling sound can indicate power supply coil whine or a transformer defect. Let's get that replaced.",0,"Catches acoustic power supply indicators before electrical failure."],
-    ["Hearing a high-pitched whistle from chargers is totally standard.",2,"Normalizes potential power component breakdown."],
-    ["Let's clean your phone screen display to fix the noise.",3,"Irrelevant check for power supply acoustic noise."]
+    ["That high-pitched sound can indicate coil whine or another power-component issue. If it's persistent or new, I'd recommend having the charger checked or replaced rather than treating it as normal.",0,"Catches acoustic power supply indicators before electrical failure."],
+    ["A high-pitched whistling sound is completely normal for phone chargers, so there's nothing to investigate.",2,"Normalizes potential power component breakdown."],
+    ["Let's clean the phone's screen first in case the sound is being caused by the display.",3,"Irrelevant check for power supply acoustic noise."]
   ],"Q106"],
   ["Active listening",1,"A customer says, 'My Wi-Fi drops every afternoon at 2:00 PM exactly.' What clue should you explore?",[
-    ["Let's replace your computer network stack software configuration.",2,"Misses environmental time recurrence clue entirely."],
-    ["Since it happens right at 2:00 PM every day, let's check for scheduled backups or heavy appliance interference.",0,"Listens to exact time recurrence to identify scheduled tasks or interference."],
-    ["Let's ignore the 2 PM pattern and replace your router.",2,"Ignores explicit time pattern telemetry."]
+    ["Since the drops happen at the same time every day, let's replace the computer's network software before investigating anything else.",2,"Misses environmental time recurrence clue entirely."],
+    ["The exact 2 PM pattern is a useful clue. Let's check for scheduled backups, timers, heavy appliance use, or other activity that consistently occurs around that time.",0,"Listens to exact time recurrence to identify scheduled tasks or interference."],
+    ["The router is probably failing, so replacing it would be the fastest way to eliminate the problem.",2,"Ignores explicit time pattern telemetry."]
   ],"Q107"],
   ["Active listening",1,"A caller states, 'My tablet screen only rotates when I open Photos app.' What is diagnostic deduction?",[
-    ["Your tablet gyroscope hardware must be completely destroyed.",2,"Overlooks that hardware sensors work in Photos app."],
-    ["Let's check your system Orientation Lock settings and app-specific rotation behavior.",0,"Identifies system orientation locks that apps can override."],
-    ["Screen rotation is forbidden everywhere else by design.",2,"Inaccurate operating system description."]
+    ["Since rotation works in Photos, the tablet's gyroscope must be damaged and should be replaced.",2,"Overlooks that hardware sensors work in Photos app."],
+    ["Since rotation works in Photos, the sensor is responding. Let's check Orientation Lock and whether the other app has different rotation behavior.",0,"Identifies system orientation locks that apps can override."],
+    ["The operating system simply doesn't allow the screen to rotate outside the Photos app.",2,"Inaccurate operating system description."]
   ],"Q108"],
   ["Active listening",1,"A customer says, 'My laptop fan sounds like a jet engine on my plush blanket.' What should you advise?",[
-    ["Let's replace your internal laptop fan hardware right away.",2,"Misdiagnoses physical ventilation blockage as mechanical fan failure."],
-    ["Soft blankets block your laptop's bottom vents and trap heat. Let's place it on a hard, flat surface.",0,"Identifies physical thermal intake blockages mentioned in user context."],
-    ["Let's lower your operating system display resolution settings.",1,"Unrelated to physical intake obstruction."]
+    ["The fan is probably failing because it sounds unusually loud, so replacing the internal fan should solve it.",2,"Misdiagnoses physical ventilation blockage as mechanical fan failure."],
+    ["A plush blanket can block the laptop's bottom vents and restrict airflow, making the fan work much harder. Let's move it to a firm, flat surface.",0,"Identifies physical thermal intake blockages mentioned in user context."],
+    ["Lowering the screen resolution should reduce the fan noise because the display will require less processing power.",1,"Unrelated to physical intake obstruction."]
   ],"Q109"],
   ["Active listening",1,"A caller mentions, 'I hear my own voice echoing when talking on speakerphone.' Whose setup has issue?",[
-    ["Your phone cellular antenna must be broken.",2,"Misdiagnoses acoustic echo loop mechanics."],
-    ["That echo usually happens when the remote party's microphone picks up their speaker output.",0,"Correctly analyzes acoustic echo loops based on speech path mechanics."],
-    ["Let's replace your earpiece speaker hardware right now.",2,"Wrong end of audio loop."]
+    ["The phone's cellular antenna is probably damaged because speakerphone echo can be caused by poor reception.",2,"Misdiagnoses acoustic echo loop mechanics."],
+    ["The echo usually happens when the other person's microphone picks up the sound coming from their speaker, creating an audio loop. Let's have the other side check their setup too.",0,"Correctly analyzes acoustic echo loops based on speech path mechanics."],
+    ["Replacing your phone's earpiece speaker should remove the echo you're hearing on speakerphone.",2,"Wrong end of audio loop."]
   ],"Q110"],
   ["Active listening",1,"A customer says, 'Email notifications make sound, but no banner pops up.' What setting do you check?",[
-    ["Let's delete your entire email account profile.",3,"Drastic action for visual notification toggle."],
-    ["Let's check your Notification Center settings to make sure Banners are enabled alongside sounds.",0,"Distinguishes audio notification toggles from visual banner alert configurations."],
-    ["Email notifications can never show visual banners by design.",2,"Inaccurate system OS capability statement."]
+    ["Let's delete and recreate the email account profile so we can reset all of its notification settings.",3,"Drastic action for visual notification toggle."],
+    ["The sound is working, so let's check the Notification Center settings and make sure visual Banners are enabled for the email app.",0,"Distinguishes audio notification toggles from visual banner alert configurations."],
+    ["Email notifications can only make sounds and aren't able to display banners.",2,"Inaccurate system OS capability statement."]
   ],"Q111"],
   ["Active listening",1,"A caller says, 'Computer boots fine morning, but gets slower as I open browser tabs.' What is happening?",[
-    ["Let's clear your browser cache and cookies.",1,"May help certain browser issues, but does not investigate progressive memory consumption."],
-    ["Opening multiple browser tabs increases memory pressure. Let's look at how your system manages RAM.",0,"Connects progressive slowdown with browser tab RAM allocation patterns."],
-    ["We should recommend upgrading your internet plan subscription speed.",2,"Network bandwidth does not explain increasing local system slowdown."]
+    ["Clearing the browser cache and cookies may help, so let's start there before looking at system resources.",1,"May help certain browser issues, but does not investigate progressive memory consumption."],
+    ["The slowdown increasing as more browser tabs open points to memory pressure. Let's check RAM usage and see how much memory the browser tabs are consuming.",0,"Connects progressive slowdown with browser tab RAM allocation patterns."],
+    ["If the browser becomes slower as more tabs open, increasing your internet plan speed should make the computer respond faster.",2,"Network bandwidth does not explain increasing local system slowdown."]
   ],"Q112"]
 ];
 
