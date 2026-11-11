@@ -29,14 +29,14 @@ const bank=[
     ["Suggest restarting the device into safe mode right away to test for background drain issues across system services.",2,"Jumps to an aggressive troubleshooting step before gathering basic usage telemetry."]
   ],"Q001"],
   ["Clarification",0,"A customer says, 'My screen is displaying strange colored lines.' What should you ask before offering troubleshooting steps?",[
-    ["Ask if lines appear across all apps, during boot, or after device drop/pressure.",0,"Differentiates software rendering glitches and specific app bugs from physical panel damage."],
+    ["Ask when the lines appear and check for physical damage.",0,"Differentiates software rendering glitches and specific app bugs from physical panel damage."],
     ["Tell them to perform a force restart.",1,"Standard step, but misses critical diagnostic context about potential hardware drops."],
     ["Recommend bringing the device to an authorized repair facility.",2,"Jumps to repair before verifying if it might be a temporary software rendering issue."]
   ],"Q002"],
   ["Clarification",0,"A customer says their cloud account storage is full, but they rarely take photos. What should you verify?",[
-    ["Check storage management to see if backups, messages, or large documents consume space.",0,"Identifies actual storage consumers rather than guessing based on photo volume."],
-    ["Recommend purchasing an upgraded tier.",1,"Upsells tier upgrades without investigating current data allocation."],
-    ["Advise clearing browser cache files.",2,"Clears local browser cache, which does not impact cloud account storage capacity."]
+    ["Check storage and backups.",0,"Identifies actual storage consumers rather than guessing based on photo volume."],
+    ["Recommend purchasing an upgraded tier in system preferences.",1,"Upsells tier upgrades without investigating current data allocation."],
+    ["Advise clearing browser cache files directly on the device.",2,"Clears local browser cache, which does not impact cloud account storage capacity."]
   ],"Q003"],
   ["Clarification",0,"A customer reports that their tablet app keeps closing unexpectedly. What should you clarify first?",[
     ["Ask if the issue affects one app or multiple apps, and check for error messages.",0,"Determines whether the issue is app-specific or systemic across the operating system."],
@@ -45,8 +45,8 @@ const bank=[
   ],"Q004"],
   ["Clarification",0,"A customer says their internet router lights are 'blinking weirdly.' What should you ask?",[
     ["Suggest unplugging power for ten seconds.",1,"Standard power cycle advice, but misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."],
-    ["Ask which specific icons or labels are blinking and note their exact color.",0,"Gathers precise telemetry from visual status LEDs."],
-    ["Reset router settings to defaults.",2,"Erases ISP configuration credentials unnecessarily before checking indicator meanings."]
+    ["Ask which icons blink and their color.",0,"Gathers precise telemetry from visual status LEDs."],
+    ["Reset router settings to defaults in system preferences.",2,"Erases ISP configuration credentials unnecessarily before checking indicator meanings."]
   ],"Q005"],
   ["Clarification",0,"A customer states that their smartwatch is 'not tracking exercise.' What diagnostic detail is needed?",[
     ["Clarify whether heart rate, GPS, or step count fails, and check permission settings.",0,"Zeroes in on specific hardware sensors and background app permissions."],
@@ -54,7 +54,7 @@ const bank=[
     ["Recommend purchasing a replacement fitness tracker model after checking hardware warranty status options.",2,"Premature replacement advice without sensor isolation."]
   ],"Q006"],
   ["Clarification",0,"A customer reports that their cloud photo library is 'not syncing.' What should you ask first?",[
-    ["Ask about Wi-Fi connection status, low power mode, and available cloud storage.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
+    ["Check Wi-Fi, Low Power Mode, and cloud storage settings.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
     ["Tell them to sign out of cloud account.",2,"Can trigger unnecessary sync re-indexes and potential conflicts without checking basic network status."],
     ["Instruct clearing local device storage cache.",2,"Risks unsynced local data loss before checking network connectivity."]
   ],"Q007"],
@@ -70,7 +70,7 @@ const bank=[
   ],"Q009"],
   ["Clarification",0,"A customer reports that their wireless earbuds keep disconnecting during workouts. What context should you gather?",[
     ["Suggest resetting global network settings on the user phone.",2,"Heavy global network reset before isolating Bluetooth interference or range."],
-    ["Ask if disconnections occur in specific locations, during movement, or at range limits.",0,"Gathers environmental, motion, and wireless range variables."],
+    ["Ask where and when the connection drops.",0,"Gathers environmental, motion, and wireless range variables."],
     ["Recommend putting phone in arm band.",1,"Plausible ergonomic tip, but fails to gather comprehensive diagnostic interference data."]
   ],"Q010"],
   ["Clarification",0,"A user says their desktop computer turns off completely without warning during intensive video rendering. What clarify question helps most?",[
@@ -79,18 +79,18 @@ const bank=[
     ["Advise running a full malware scan on main disk drives to check background CPU usage.",1,"Misdiagnoses hardware thermal or power cutouts as a virus infection."]
   ],"Q011"],
   ["Clarification",0,"A customer says their email app is 'stuck sending.' What key details should you ask for first?",[
-    ["Ask if large attachments are in Outbox and if receiving new mail works.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
+    ["Check the Outbox.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
     ["Suggest restarting the email app.",1,"Plausible troubleshooting step, but misses checking outbox payload size or authentication status."],
     ["Advise deleting account profile.",2,"Drastic step that deletes local cache before checking simple outbox queue status."]
   ],"Q012"],
   ["Clarification",0,"A customer mentions their device screen brightness changes by itself. What setting or factor should you clarify?",[
-    ["Ask if Auto-Brightness is enabled and if changes occur across light levels.",0,"Identifies expected system display sensor behaviors."],
+    ["Check Auto-Brightness and compare the display at different light levels.",0,"Identifies expected system display sensor behaviors."],
     ["Suggest adjusting screen timeout duration settings in system preferences.",2,"Addresses display sleep timing rather than automatic ambient brightness adaptation."],
     ["Recommend replacing display panel hardware.",2,"Treats automatic sensor adjustment as hardware failure."]
   ],"Q013"],
   ["Clarification",0,"A customer says their online payment was declined. What details do you ask to isolate the problem?",[
     ["Instruct clearing browser cookies immediately.",2,"Potentially exposes browser sessions without identifying merchant/card payment status."],
-    ["Ask if decline occurred on a specific site, error codes given, or bank texts sent.",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
+    ["Check the decline reason and bank alert.",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
     ["Suggest trying a different web browser app.",1,"Plausible browser check, but skips verifying specific bank decline reasons or error codes."]
   ],"Q014"],
   ["Clarification",0,"A customer reports their cellular phone signal shows 'No Service' inside their home basement. What should you verify?",[
@@ -99,7 +99,7 @@ const bank=[
     ["Recommend switching cellular service providers immediately to get better suburban coverage.",2,"Drastic commercial recommendation before checking indoor coverage settings."]
   ],"Q015"],
   ["Clarification",0,"A customer states their microphone sounds 'muffled and quiet' to callers. What physical and software checks do you ask about?",[
-    ["Ask if cases block mic ports and test voice memo recording quality.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware failure."],
+    ["Test the mic and record a voice memo.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware failure."],
     ["Suggest adjusting side volume buttons.",1,"Addresses ear speaker output volume rather than microphone input capture quality."],
     ["Instruct factory resetting device.",3,"Grossly disproportionate response for potential mic mesh obstruction."]
   ],"Q016"],
@@ -107,11 +107,11 @@ const bank=[
   ["Empathy",1,"A caller says, 'I've called support twice already today and spent an hour on hold! I am not explaining this all over again!' How do you respond?",[
     ["I apologize, but summarize the problem.",2,"Forces customer repetition and shifts blame onto previous advisors."],
     ["Please remain calm while I locate your case file details.",1,"Telling an agitated customer to calm down invalidates their feelings and increases friction."],
-    ["I understand how frustrating hold times are. Let me review your notes to pick up where you left off.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."]
+    ["Acknowledge the wait and review their case notes.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."]
   ],"Q017"],
   ["Empathy",1,"A customer lost unbacked-up photo memories due to a hardware failure. They are visibly upset and crying. How do you respond?",[
-    ["Acknowledge how painful losing family photos is, express sympathy, and explain diagnostic steps.",0,"Shows genuine compassion while offering grounded support without false promises."],
-    ["Remind them that backing up personal data is the user's sole responsibility.",3,"Cruel and blaming during a moment of distress."],
+    ["Acknowledge the loss and offer recovery checks.",0,"Shows genuine compassion while offering grounded support without false promises."],
+    ["Blame them for not backing up their photos.",3,"Cruel and blaming during a moment of distress."],
     ["Suggest setting up cloud backups moving forward so this never happens again.",1,"Helpful prevention tip, but delivered prematurely before validating their immediate grief."]
   ],"Q018"],
   ["Empathy",1,"A small business manager is frantic because their credit card reader app is failing during a busy lunch hour. How do you respond?",[
@@ -121,36 +121,36 @@ const bank=[
   ],"Q019"],
   ["Empathy",1,"An elderly customer expresses anxiety about setting up a new smartphone because they are 'bad with technology.' How do you respond?",[
     ["Offer to skip configuration entirely.",1,"Paternalistic approach that deprives the customer of learning their device."],
-    ["Reassure them we will go step-by-step at their pace, as learning takes time for everyone.",0,"Builds confidence, removes shame, and sets a comfortable support pace."],
+    ["Go at their pace.",0,"Builds confidence, removes shame, and sets a comfortable support pace."],
     ["Tell them modern phones are simple.",2,"Condescending remark that heightens the customer's feeling of inadequacy."]
   ],"Q020"],
   ["Empathy",1,"A customer expresses frustration after trying to resolve an account billing issue online for 2 hours. How do you start?",[
-    ["I appreciate your effort online. Let's take over from here and review your billing options together.",0,"Validates customer effort and signals active partnership."],
+    ["Review their billing options together.",0,"Validates customer effort and signals active partnership."],
     ["You should have called us first.",2,"Blames the customer for attempting self-service."],
     ["Our billing portal is simple to navigate.",1,"Defends company tools while invalidating user experience."]
   ],"Q021"],
   ["Empathy",1,"A freelance designer caller is stressed because their graphics tablet stopped responding right before a client presentation. How do you respond?",[
-    ["I recognize how critical this presentation is. Let's run a targeted check to get pen input working.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."],
+    ["Check the stylus settings and test pen input.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."],
     ["You should not leave work to the last minute before important client presentations.",3,"Judgemental and unhelpful during a customer crisis."],
     ["Try presenting slides without drawing live graphics during today's call.",1,"Impractical workaround ignoring the professional stakes."]
   ],"Q022"],
   ["Empathy",1,"A customer is frustrated because a recent OS update moved several settings menus they used daily. How do you respond?",[
-    ["I know navigation changes after updates are annoying. Let me show you where those settings moved.",0,"Acknowledges disruption caused by UI changes while guiding them clearly."],
+    ["Show them where the settings moved.",0,"Acknowledges disruption caused by UI changes while guiding them clearly."],
     ["You will get used to it; software changes whether you like it or not.",2,"Dismissive and unsympathetic tone."],
     ["We recommend never updating software.",1,"Bad security and maintenance guidance."]
   ],"Q023"],
   ["Empathy",1,"A user is embarrassed because they fell for a phishing email and entered their personal information. How do you respond?",[
-    ["Phishing attacks are extremely sophisticated. Calling right now helps us secure your account fast.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."],
+    ["Secure the account, then inspect the message for phishing signs.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."],
     ["How could you fall for such an obvious fake email link?",3,"Shames and humiliates the customer during a security incident."],
     ["Do not worry, scammers rarely do anything bad with stolen data.",2,"False reassurance that delays critical security containment."]
   ],"Q024"],
   ["Empathy",1,"A caller states they spent all weekend trying to fix their computer setup instead of resting. How do you respond?",[
     ["Weekends are the best time to troubleshoot computer problems.",2,"Dismisses the customer's frustration regarding lost personal time."],
     ["You should have spent your weekend outdoors.",1,"Inappropriate personal lifestyle commentary."],
-    ["I am sorry technical issues consumed your weekend. Let's resolve this today so you can relax.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."]
+    ["Acknowledge the frustration and work toward a fix.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."]
   ],"Q025"],
   ["Empathy",1,"A customer is visibly upset after failing to set up a smart home hub after hours of effort. How do you respond?",[
-    ["Smart home setups can be tricky. Let's work together to get everything connected smoothly.",0,"Normalizes setup challenges and establishes collaborative support."],
+    ["Guide them through connecting each device and checking its settings.",0,"Normalizes setup challenges and establishes collaborative support."],
     ["Smart home tech is simple, so you must have missed instructions.",2,"Insulting and dismissive response."],
     ["You should return all your smart home devices to the store for a full cash refund.",1,"Extremely unhelpful and avoids problem-solving."]
   ],"Q026"],
@@ -160,24 +160,24 @@ const bank=[
     ["Well, without that card present in hand, there is nothing anyone can do for your account today.",2,"Inaccurate and dismissive of recovery procedures."]
   ],"Q027"],
   ["Empathy",1,"A parent calls distressed because their child accidentally made $300 in in-app purchases. How do you handle their call?",[
-    ["I know unexpected charges are alarming. Let's review refund policies and set up purchase controls.",0,"Relieves financial panic, addresses review, and provides preventive steps."],
+    ["Review refund eligibility and set purchase controls for the child.",0,"Relieves financial panic, addresses review, and provides preventive steps."],
     ["You should have set a passcode before giving your phone to a child.",2,"Reprimands parent during stressful financial event."],
     ["In-app purchases are generally non-refundable, so checking options is pointless.",2,"False policy claim that heightens panic."]
   ],"Q028"],
   ["Empathy",1,"A customer whose device repair was delayed twice calls in tears because they need it for medical appointments. What do you say?",[
-    ["I am so sorry for these delays when you need your device for medical care. I am escalating tracking.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."],
+    ["Check tracking and escalate the delay.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."],
     ["Delays happen in repair centers frequently.",2,"Cold and indifferent to human impact."],
     ["We do not prioritize medical calls.",1,"Unsympathetic policy enforcement."]
   ],"Q029"],
   ["Empathy",1,"A customer is frustrated because an app interface update changed their keyboard layout settings. What is your response?",[
-    ["It is disorienting when familiar typing layouts shift. Let me guide you to the setting to switch back.",0,"Validates user muscle-memory frustration and provides direct resolution."],
+    ["Guide them back to the previous keyboard layout.",0,"Validates user muscle-memory frustration and provides direct resolution."],
     ["Change is good, try learning the new format.",2,"Patronizing and unhelpful."],
     ["Nobody uses the old keyboard layout.",2,"Invalidates user preference."]
   ],"Q030"],
   ["Empathy",1,"A remote worker is panicked because their internet drops every time they start an important team call. How do you start?",[
     ["Why don't you work from a local coffee shop instead today?",1,"Impractical workaround ignoring technical support duty."],
     ["If your internet drops during calls, that is your provider's fault, not ours.",2,"Deflects responsibility before checking local device network settings."],
-    ["I understand how critical call connectivity is for remote work. Let's run a targeted diagnostic.",0,"Validates workplace pressure and sets a collaborative action plan."]
+    ["Run targeted checks on the remote-work connection.",0,"Validates workplace pressure and sets a collaborative action plan."]
   ],"Q031"],
   ["Empathy",1,"A customer's legacy software project won't open after an OS upgrade. They are worried weeks of work are gone. How do you open?",[
     ["I know how terrifying potential work loss feels. Let me assist in locating backups and compatibility modes.",0,"Directly acknowledges fear of data loss and offers concrete diagnostic paths."],
@@ -187,12 +187,12 @@ const bank=[
 
   ["Troubleshooting",1,"A laptop connects to home Wi-Fi but fails to load web pages. Other devices on the same network browse normally. What is the best next step?",[
     ["Restart the home Wi-Fi router immediately.",1,"Disrupts all connected network users unnecessarily when one device is affected."],
-    ["Test with a different web browser or check proxy settings to isolate application issues.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."],
+    ["Try another browser to isolate the issue.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."],
     ["Forget saved Wi-Fi network credentials.",2,"Focuses on network authentication when connection is already established."]
   ],"Q033"],
   ["Troubleshooting",0,"A Bluetooth mouse cursor is stuttering and freezing on screen. Battery level reports 85%. What should you check?",[
     ["Replace mouse batteries immediately.",1,"Ignores verified sensor telemetry without testing easier connection variables."],
-    ["Check for signal interference, test on a different surface, and re-pair the device.",0,"Systematically addresses RF interference, optical tracking surfaces, and connection states."],
+    ["Check interference, then reconnect it.",0,"Systematically addresses RF interference, optical tracking surfaces, and connection states."],
     ["Reinstall entire graphics driver stack.",2,"Disproportionate troubleshooting step for a simple peripheral tracking issue."]
   ],"Q034"],
   ["Troubleshooting",0,"A customer's wireless video call is lagging badly, but speed tests show high download bandwidth. What should you investigate?",[
@@ -201,37 +201,37 @@ const bank=[
     ["Reinstall local computer graphics drivers.",2,"Misdiagnoses network transmission issues as hardware rendering."]
   ],"Q035"],
   ["Troubleshooting",0,"An external monitor connected via HDMI displays 'No Signal' after an OS update. What do you check first?",[
-    ["Verify physical cable seating, test display input toggles, and check display settings.",0,"Starts with quick physical and software detection checks before deep driver work."],
+    ["Check cables and display input.",0,"Starts with quick physical and software detection checks before deep driver work."],
     ["Instruct user to open desktop case.",2,"Plausible hardware step but overly invasive before basic external cable/input verification."],
     ["Tell them to buy new HDMI cable.",1,"Recommends purchasing hardware before checking input source toggles."]
   ],"Q036"],
   ["Troubleshooting",0,"An application freezes every time a user clicks the 'Export PDF' button. Other functions work normally. What is the best step?",[
-    ["Check file destination permissions, folder storage space, or export a smaller sample.",0,"Isolates specific export function and storage permissions."],
+    ["Check permissions, free space, and export settings.",0,"Isolates specific export function and storage permissions."],
     ["Uninstall and reinstall the main operating system.",3,"Grossly disproportionate action for isolated app export errors."],
     ["Advise clearing local web browser cache files.",1,"Does not address local file export permissions or document complexity."]
   ],"Q037"],
   ["Troubleshooting",0,"A web browser displays certificate security errors on every HTTPS website visited. What simple system check should you perform?",[
-    ["Check if the computer's system date and time are set correctly.",0,"System clock mismatch is primary cause of universal HTTPS certificate validation failures."],
+    ["Check the system date and time settings.",0,"System clock mismatch is primary cause of universal HTTPS certificate validation failures."],
     ["Advise disabling SSL validation in browser settings.",2,"Exposes user to security risks rather than resolving clock/cert integrity."],
     ["Tell them to clear local DNS cache.",1,"Addresses domain resolution rather than system clock timestamp mismatches."]
   ],"Q038"],
   ["Troubleshooting",0,"A user's laptop battery drains completely while in sleep mode overnight with lid closed. What should you check?",[
-    ["Check background wake requests, power management settings, and connected USB devices.",0,"Identifies background sleep-preventing tasks, peripheral wake triggers, and power options."],
+    ["Check scheduled wake events.",0,"Identifies background sleep-preventing tasks, peripheral wake triggers, and power options."],
     ["Calibrate battery capacity.",2,"Useful for meter accuracy, but does not fix background sleep wake triggers."],
     ["Tell them laptops drain 100% overnight.",1,"Inaccurate description of sleep state power consumption."]
   ],"Q039"],
   ["Troubleshooting",0,"A laptop's keyboard types wrong characters (e.g., pressing 'q' produces 'w'). What is the most likely simple fix?",[
-    ["Check if keyboard input language layout was changed in system settings.",0,"Targets input language layout mismatches, common cause of shifted character mapping."],
+    ["Check the selected keyboard input language.",0,"Targets input language layout mismatches, common cause of shifted character mapping."],
     ["Replace the internal physical keyboard assembly.",2,"Drastic step before checking software input layout preferences."],
     ["Run a full malware scan across the drive.",1,"Misattributes input mapping setting changes to malware."]
   ],"Q040"],
   ["Troubleshooting",0,"A user's computer screen is turned upside down. What is the most likely cause and fix?",[
     ["Replace internal computer graphics hardware board.",2,"Overkill for simple screen display rotation setting."],
-    ["Check system display settings for screen orientation layout controls.",0,"Identifies accidental screen rotation display settings."],
+    ["Check display orientation settings.",0,"Identifies accidental screen rotation display settings."],
     ["Update system BIOS firmware version.",2,"Overly complex system step for basic display rotation setting."]
   ],"Q041"],
   ["Troubleshooting",0,"An audio recording has persistent background electrical humming noise. What is the best initial isolation step?",[
-    ["Disconnect laptop power charger to test ground loop noise and check cable shielding.",0,"Isolates AC ground loops and cable interference from microphone capsule failure."],
+    ["Check cable shielding and the power connection.",0,"Isolates AC ground loops and cable interference from microphone capsule failure."],
     ["Reinstall the computer operating system.",3,"Unrelated to acoustic/electrical ground loop interference."],
     ["Increase recording input gain slider to maximum level.",1,"Amplifies background electrical hum along with voice signal."]
   ],"Q042"],
@@ -241,43 +241,43 @@ const bank=[
     ["The operating system requires a dedicated host driver update specifically for front panel USB headers.",1,"Front and rear USB controllers share core host drivers."]
   ],"Q043"],
   ["Troubleshooting",0,"A desktop monitor flickers randomly only when heavy graphics apps run. What should you test?",[
-    ["Monitor GPU temperatures, check display drivers, and verify GPU power cables.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
+    ["Check GPU heat.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
     ["Replace monitor power cable.",1,"Standard cable issues cause continuous flickering rather than load-dependent flickering."],
     ["Format storage hard drive.",2,"Disproportionate action for graphics driver/thermal issues."]
   ],"Q044"],
   ["Troubleshooting",0,"A wireless printer prints garbage symbols and endless blank pages. What is the probable fix?",[
-    ["Cancel print jobs, clear spooler queue, and reinstall correct vendor driver.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
+    ["Clear the queue; check the driver.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
     ["Replace Wi-Fi router channel settings.",1,"Network connection is functional since print data reaches printer."],
     ["Replace printer paper tray.",1,"Paper feeding mechanism is working correctly."]
   ],"Q045"],
   ["Troubleshooting",0,"A smartphone camera cannot focus on close objects, remaining blurry, but far objects are sharp. What do you check?",[
     ["Reset network connection settings.",1,"Network settings have no impact on optical camera focus."],
-    ["Inspect lens for smudges, check macro mode settings, and verify lens movement.",0,"Targets lens cleanliness, macro mode toggles, and mechanical autofocus actuation."],
+    ["Inspect lens smudges and macro mode.",0,"Targets lens cleanliness, macro mode toggles, and mechanical autofocus actuation."],
     ["Reflash phone cellular modem firmware.",2,"Irrelevant for optical lens actuator issues."]
   ],"Q046"],
   ["Troubleshooting",0,"An external hard drive light blinks continuously and prevents computer shutdown. What process should you inspect?",[
-    ["Check if background indexing, antivirus scans, or file transfers hold drive locks.",0,"Identifies background process file locks preventing safe disk unmounting."],
+    ["Check active drive locks.",0,"Identifies background process file locks preventing safe disk unmounting."],
     ["Unplug drive forcibly.",2,"Risks filesystem corruption."],
     ["Reinstall graphics drivers.",1,"Unrelated to disk I/O lock management."]
   ],"Q047"],
   ["Troubleshooting",0,"A user's bluetooth headphones audio cuts out when their phone is in their back pocket. What is primary cause?",[
     ["Phone battery saver mode limits Bluetooth transmission power.",1,"Battery saver restricts background data, not active Bluetooth audio streaming."],
     ["Headphones require a mandatory paid firmware upgrade.",2,"Firmware updates do not change physical RF range through human body mass."],
-    ["Body tissue attenuates Bluetooth signals; moving phone to front pocket restores line-of-sight.",0,"Explains physical radio frequency signal attenuation caused by human body water content."]
+    ["Move the phone to a front pocket to reduce signal blockage.",0,"Explains physical radio frequency signal attenuation caused by human body water content."]
   ],"Q048"],
 
   ["Ownership",2,"You need 10 minutes to research a rare error code. The customer is waiting on the line. How should you set expectations?",[
     ["Put them on hold immediately.",2,"Leaves customer uninformed on hold, creating anxiety and frustration."],
-    ["Explain what you are researching, offer a 10-minute hold or callback, and give a check-in time.",0,"Gives customer control of time while setting accurate, transparent expectations."],
+    ["Explain the hold and set a check-in time.",0,"Gives customer control of time while setting accurate, transparent expectations."],
     ["Tell them it takes 30 seconds while searching database records.",1,"Sets unrealistic expectation likely to be broken."]
   ],"Q049"],
   ["Ownership",2,"You promised a callback at 3:00 PM, but your investigation takes longer. It is now 2:55 PM. What should you do?",[
-    ["Call at 3:00 PM as promised to give a progress update and new callback time.",0,"Maintains trust by honoring commitments even when answers are not ready."],
+    ["Call at the promised time.",0,"Maintains trust by honoring commitments even when answers are not ready."],
     ["Delay calling until 3:30 PM to give a complete resolution.",2,"Breaks promised timeframe, causing customer to feel forgotten."],
     ["Send an automated email stating case remains open.",1,"Impersonal alternative to direct promised phone check-in."]
   ],"Q050"],
   ["Ownership",2,"You realize a step you provided 5 minutes ago caused the customer's printer configuration to reset. How do you proceed?",[
-    ["Acknowledge the mistake candidly, apologize, and guide them through restoring configuration.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."],
+    ["Apologize and restore the settings.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."],
     ["Blame printer manufacturer software.",2,"Deflects personal responsibility and erodes trust in guidance."],
     ["Pretend reset was required.",1,"Deceptive communication to cover up advisor misstep."]
   ],"Q051"],
@@ -292,43 +292,43 @@ const bank=[
     ["Tell them Friday was never guaranteed.",1,"Argues semantics with disappointed customer."]
   ],"Q053"],
   ["Ownership",2,"You promised to send a setup document via email after your call ended, but your shift is over. What do you do?",[
-    ["Send the document before logging off to ensure customer promise is fulfilled.",0,"Demonstrates personal accountability and commitment to service."],
+    ["Send it today.",0,"Demonstrates personal accountability and commitment to service."],
     ["Leave it for the next shift advisor.",3,"Fails to follow up on direct personal commitment."],
     ["Send it tomorrow morning when back.",2,"Delays promised customer documentation unnecessarily."]
   ],"Q054"],
   ["Ownership",2,"A customer is transfer-weary after being routed incorrectly twice. You are in the correct department. What do you say?",[
     ["Who transferred you here?",2,"Blames colleagues and continues negative transfer dialogue."],
     ["If unresolved in 5 minutes, I will transfer you again.",1,"Heightens anxiety about future transfers."],
-    ["I am glad you reached me. You are in the right place, and I will take personal ownership.",0,"Provides immediate relief, establishes authority, and takes personal ownership."]
+    ["Take ownership and help from here.",0,"Provides immediate relief, establishes authority, and takes personal ownership."]
   ],"Q055"],
   ["Ownership",2,"A customer is confused by complex setup instructions you just provided. What is your best move?",[
-    ["Repeat the exact same complex paragraph again while speaking much louder.",2,"Rude and ineffective communication adjustment."],
+    ["Repeat the same complex paragraph word for word, speaking more loudly.",2,"Rude and ineffective communication adjustment."],
     ["Tell them to find someone tech-savvy to read instructions for them right away.",3,"Insulting advice abdicating support ownership."],
-    ["Break instructions down into single steps and verify completion together.",0,"Adapts communication style to customer needs and guides interactively."]
+    ["Break instructions into steps and confirm each one before moving on.",0,"Adapts communication style to customer needs and guides interactively."]
   ],"Q056"],
   ["Ownership",2,"You notice an ongoing service outage alert matching the customer's reported issue. What do you inform them?",[
-    ["Inform them of active outage, estimated resolution time, and tracking options.",0,"Provides transparent outage status updates, setting accurate expectations."],
+    ["Share outage details and next steps.",0,"Provides transparent outage status updates, setting accurate expectations."],
     ["Hide outage information.",2,"Wastes customer time and causes frustration when outage is known."],
     ["Tell them local equipment issues caused the disruption.",2,"False technical claim deflecting official outage telemetry."]
   ],"Q057"],
   ["Ownership",2,"A customer asks a question about a peripheral brand you are unfamiliar with. How do you respond?",[
     ["Guess technical specs based on similar hardware.",2,"Risk delivering inaccurate setup instructions."],
     ["Refuse to discuss third-party peripherals entirely.",2,"Unhelpful refusal of basic integration support."],
-    ["Transparently state you will look up official documentation to guide them accurately.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."]
+    ["Check official documentation before advising.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."]
   ],"Q058"],
   ["Ownership",2,"A customer calls back because a ticket opened yesterday was closed without resolution. What do you do?",[
     ["Tell them to open a new ticket online and wait in line again.",2,"Forces bureaucratic loops on unresolved customer."],
-    ["Reopen case, apologize for premature closure, and take personal responsibility.",0,"Takes ownership of systemic errors and restores customer trust."],
+    ["Reopen the case and take ownership.",0,"Takes ownership of systemic errors and restores customer trust."],
     ["Blame automated ticketing system routines.",2,"Deflects personal and company accountability."]
   ],"Q059"],
   ["Ownership",2,"You promised a follow-up email with logs by 5 PM. At 4:45 PM, logs are still compiling. What do you do?",[
     ["Wait until 6 PM to send anything so final logs are included.",2,"Misses promised deadline without warning."],
-    ["Send status update email explaining compilation and setting revised 5:30 PM time.",0,"Honors communication deadlines transparently even when technical tasks run long."],
+    ["Send the status update with a revised time.",0,"Honors communication deadlines transparently even when technical tasks run long."],
     ["Send incomplete log files immediately.",2,"Delivers low-quality unverified data."]
   ],"Q060"],
   ["Ownership",2,"A customer's hardware repair requires a part backordered for 3 weeks. How do you present this?",[
     ["Hide backorder status completely.",3,"Deceptive practice guaranteeing customer disappointment."],
-    ["Explain backorder clearly, provide alternate loaner options, and schedule updates.",0,"Delivers difficult news transparently while providing actionable options."],
+    ["Explain the delay and offer alternatives.",0,"Delivers difficult news transparently while providing actionable options."],
     ["Tell them to buy a new device.",1,"Pushes sales rather than supporting repair ownership."]
   ],"Q061"],
   ["Ownership",2,"During troubleshooting, you notice an unpatched security vulnerability on the customer's router. What do you do?",[
@@ -339,23 +339,23 @@ const bank=[
   ["Ownership",2,"A customer asks you to explain a complex bill charge from last month. What do you do?",[
     ["Tell them to read printed invoice footnotes.",2,"Dismissive customer service."],
     ["Transfer them to billing.",1,"Avoids basic ownership."],
-    ["Review itemized charges and credits line by line until they feel confident.",0,"Takes full ownership of customer clarity and financial transparency."]
+    ["Review each charge and credit with them.",0,"Takes full ownership of customer clarity and financial transparency."]
   ],"Q063"],
   ["Ownership",2,"A software bug fix is scheduled for a future release next month. How do you summarize this for the customer?",[
     ["Tell them there is no bug.",3,"Gaslights customer and denies software telemetry."],
-    ["Explain issue is confirmed, outline workarounds, and provide release tracking.",0,"Validates confirmed bug, empowers user with workarounds, and sets release tracking."],
+    ["Confirm the bug; explain workarounds.",0,"Validates confirmed bug, empowers user with workarounds, and sets release tracking."],
     ["Promise an emergency hotfix patch today.",2,"Overpromises engineering release capabilities."]
   ],"Q064"],
 
   ["Security & safety",3,"A customer received a text asking them to click a link to verify their account or face suspension. What do you advise?",[
-    ["Warn them it is phishing, advise against clicking links, and check official settings.",0,"Prioritizes account security and prevents credential harvesting."],
+    ["Warn them; check account security.",0,"Prioritizes account security and prevents credential harvesting."],
     ["Tell them to click link to check authenticity.",3,"Exposes customer directly to phishing scams and credential theft."],
     ["Suggest replying STOP to sender.",2,"Replying to spam text messages confirms phone number is active."]
   ],"Q065"],
   ["Security & safety",3,"A caller states their device battery looks visibly swollen and is pushing the screen outward. What instructions do you give?",[
     ["Tell them to power down device.",2,"Plausible response, but misses advising against continued charging."],
     ["Suggest running battery calibration.",2,"Keeps physically hazardous component powered and charging under load."],
-    ["Advise stopping use and charging immediately, keep away from heat, and seek service.",0,"Prioritizes physical fire/battery safety and proper hazardous component handling."]
+    ["Stop using it and unplug it.",0,"Prioritizes physical fire/battery safety and proper hazardous component handling."]
   ],"Q066"],
   ["Security & safety",3,"A customer asking for help unlocking an account cannot pass primary identity verification. How do you handle this?",[
     ["Bypass verification because customer sounds sincere.",3,"Severe security violation risking unauthorized account compromise."],
@@ -365,47 +365,47 @@ const bank=[
   ["Security & safety",3,"A customer reports pop-ups claiming their computer is infected and instructing them to call a toll-free number. What do you explain?",[
     ["Advise calling the toll-free number displayed to verify if legitimate.",3,"Directs customer into hands of active fraudsters."],
     ["Tell them to install multiple third-party antivirus cleaners simultaneously.",2,"Can cause system instability without removing malicious pop-up scripts."],
-    ["Explain these are scam pop-ups, clear browser cache, and never call pop-up numbers.",0,"Correctly identifies tech support scam scareware and provides safe remediation."]
+    ["Identify the pop-up as a scam.",0,"Correctly identifies tech support scam scareware and provides safe remediation."]
   ],"Q068"],
   ["Security & safety",3,"A user calls asking to reset a password for a spouse's account, stating the spouse is unavailable. What do you do?",[
     ["Reset password since married.",3,"Severe account security violation."],
     ["Answer security questions for them.",3,"Bypasses authentic account ownership requirements."],
-    ["Politely explain privacy rules and state owner must request recovery directly.",0,"Protects account privacy and adheres strictly to security protocols."]
+    ["Protect account privacy.",0,"Protects account privacy and adheres strictly to security protocols."]
   ],"Q069"],
   ["Security & safety",3,"A customer asks if using a public open Wi-Fi network at an airport is safe for mobile banking. What do you advise?",[
     ["Assure them public Wi-Fi is 100% safe.",3,"Provides dangerously inaccurate network security advice."],
     ["Tell them banking apps fail on Wi-Fi.",2,"Technically inaccurate explanation."],
-    ["Advise caution on public networks, recommending cellular data or trusted VPNs.",0,"Delivers sound network security hygiene and privacy protection tips."]
+    ["Use cellular data.",0,"Delivers sound network security hygiene and privacy protection tips."]
   ],"Q070"],
   ["Security & safety",3,"A customer asks how to set up multi-factor authentication (MFA) on their primary account. What guidance do you give?",[
-    ["Tell them MFA is unnecessary.",2,"Discourages effective account security controls."],
-    ["Guide them to Security settings, add authenticator app, and save backup codes.",0,"Provides secure configuration guidance while emphasizing account recovery readiness."],
+    ["Tell them MFA offers no real protection.",2,"Discourages effective account security controls."],
+    ["Guide them to MFA settings.",0,"Provides secure configuration guidance while emphasizing account recovery readiness."],
     ["Ask for authentication codes.",3,"Never solicit authentication codes from users."]
   ],"Q071"],
   ["Security & safety",3,"A customer asks if disabling automatic operating system updates improves device security. What do you explain?",[
     ["Agree disabling updates is safer because updates introduce malware.",3,"Provides dangerous security misinformation."],
     ["Tell them updates only change app UI colors.",2,"Inaccurate summary of software patch release purposes."],
-    ["Explain automatic updates provide critical security patches and must remain enabled.",0,"Promotes security updates as essential protection against software vulnerabilities."]
+    ["Keep automatic updates enabled for critical security patches.",0,"Promotes security updates as essential protection against software vulnerabilities."]
   ],"Q072"],
   ["Security & safety",3,"A customer asks why two-factor authentication (2FA) prompts appear when signing in from new browsers. What do you explain?",[
-    ["Explain 2FA verifies identity when unrecognized devices attempt access.",0,"Educates on security authorization principles for new device sign-ins."],
+    ["Explain 2FA.",0,"Educates on security authorization principles for new device sign-ins."],
     ["Tell them 2FA is a glitch.",3,"Undermines critical account security protections."],
     ["Advise sharing 2FA prompts publicly.",3,"Dangerous security risk exposing account verification signals."]
   ],"Q073"],
   ["Security & safety",3,"A customer asks why they should use a passcode lock on their mobile device. What do you explain?",[
     ["Tell passcodes only slow sign-ins down.",2,"Misrepresents security controls as mere user inconvenience."],
-    ["Explain passcodes encrypt personal data and protect against unauthorized access.",0,"Delivers clear physical data protection and device encryption education."],
+    ["Explain passcode protection.",0,"Delivers clear physical data protection and device encryption education."],
     ["Advise setting 1234 as passcode.",3,"Recommends weak, easily guessed security credentials."]
   ],"Q074"],
   ["Security & safety",3,"A caller receives an unsolicited call from someone claiming to be their ISP demanding remote access. What do you advise?",[
     ["Allow access if caller knows name.",3,"Severe safety risk enabling remote takeover."],
-    ["Instruct hanging up, never grant remote access to callers, and contact ISP directly.",0,"Prevents remote access social engineering attacks."],
+    ["Refuse unsolicited access.",0,"Prevents remote access social engineering attacks."],
     ["Ask caller for badge number.",2,"Scammers easily fake badge numbers."]
   ],"Q075"],
   ["Security & safety",3,"A customer finds an unlabeled USB flash drive in a parking lot. What should they do with it?",[
     ["Plug drive into PC to identify owner.",3,"Exposes hardware to malware/hardware payload attacks."],
     ["Run antivirus scan on drive.",2,"Opening folder structure can still execute malicious autorun payloads."],
-    ["Do not plug it into any device; surrender it to IT/Security for analysis.",0,"Protects against badUSB hardware payloads and malware auto-execution."]
+    ["Don't connect the drive.",0,"Protects against badUSB hardware payloads and malware auto-execution."]
   ],"Q076"],
   ["Security & safety",3,"A user asks if saving all passwords in a plain text file on their desktop is safe. What do you advise?",[
     ["Suggest hiding text file in nested folder.",2,"Security through obscurity fails against basic file scanners."],
@@ -414,16 +414,16 @@ const bank=[
   ],"Q077"],
   ["Security & safety",3,"A customer reports their webcam light turns on randomly when no camera apps are open. What should they check?",[
     ["Cover with tape and ignore.",1,"Physical cover helps privacy, but misses underlying malware containment."],
-    ["Check background app permissions, run malware scans, and review extensions.",0,"Addresses unauthorized camera access vulnerabilities and spy malware."],
+    ["Check camera access.",0,"Addresses unauthorized camera access vulnerabilities and spy malware."],
     ["Reinstall display drivers.",1,"Irrelevant for USB camera background capture."]
   ],"Q078"],
   ["Security & safety",3,"A user receives an email attachment named 'Invoice.exe' from an unknown sender. What is your advice?",[
     ["Download attachment to isolated folder.",2,"Downloading executable payloads exposes local storage to execution risks."],
-    ["Do not open or download attachment; delete email and report as suspicious.",0,"Prevents execution of malicious executable email payloads."],
+    ["Report it as phishing, then delete it.",0,"Prevents execution of malicious executable email payloads."],
     ["Double-click file to open.",3,"Triggers immediate malware execution."]
   ],"Q079"],
   ["Security & safety",3,"A customer notices their cloud account logged in from an unknown country. What immediate action should they take?",[
-    ["Change password immediately, revoke active sessions, and enable MFA.",0,"Contains active account compromise and revokes unauthorized session tokens."],
+    ["Reset password; enable MFA.",0,"Contains active account compromise and revokes unauthorized session tokens."],
     ["Send email to unknown IP address.",3,"Useless and reveals personal contact details to attackers."],
     ["Ignore assuming mapping error.",2,"Dangerous delay in containing unauthorized session hijacks."]
   ],"Q080"],
@@ -435,22 +435,22 @@ const bank=[
   ],"Q081"],
   ["Escalation",3,"A customer's complex networking issue has exceeded frontline troubleshooting tools. How do you hand off the case?",[
     ["Cold-transfer customer to queue.",2,"Forces next representative and customer to start from scratch."],
-    ["Summarize facts, document steps taken in notes, and warm-transfer to Tier 2.",0,"Ensures smooth continuity of care without making customer repeat details."],
+    ["Warm-transfer with clear notes.",0,"Ensures smooth continuity of care without making customer repeat details."],
     ["Tell customer Tier 2 does not take calls.",3,"Inaccurate escalation guidance abandoning customer care."]
   ],"Q082"],
   ["Escalation",3,"A customer insists on a free replacement for water damage, claiming another rep promised it. No notes confirm this. What do you do?",[
-    ["Explain warranty parameters, clarify water damage exclusion, and review notes.",0,"Holds policy boundaries firmly without making unverified promises."],
+    ["Explain the warranty terms.",0,"Holds policy boundaries firmly without making unverified promises."],
     ["Fulfill free replacement immediately.",3,"Violates company policy and inventory rules."],
     ["Call previous advisor a liar.",2,"Unprofessional internal blame assignment."]
   ],"Q083"],
   ["Escalation",3,"A customer demands legal contact details and refuses troubleshooting after experiencing data loss. What do you do?",[
     ["Argue legal action is impossible under store terms.",2,"Combative stance escalating corporate liability risks."],
-    ["Remain professional, provide corporate legal resources, and document facts.",0,"Follows legal disclosure protocols with professional neutrality."],
+    ["Document and stay calm.",0,"Follows legal disclosure protocols with professional neutrality."],
     ["Delete customer case file.",3,"Gross breach of corporate record retention policies."]
   ],"Q084"],
   ["Escalation",3,"A customer demands a policy exception for a non-refundable digital purchase made by an authorized family member. What do you do?",[
     ["Issue unauthorized refund from personal funds.",3,"Extremely improper conduct violating accounting policies."],
-    ["Explain digital terms, review family sharing settings, and outline appeal paths.",0,"Maintains store policy clarity while offering preventive configurations."],
+    ["Explain the terms and appeal path.",0,"Maintains store policy clarity while offering preventive configurations."],
     ["Tell them purchases are final and disconnect call immediately.",2,"Abrupt policy delivery without offering preventive setup guidance."]
   ],"Q085"],
   ["Escalation",3,"A customer is verbally abusive and uses severe profanity targeting the advisor. What protocol do you follow?",[
@@ -499,7 +499,7 @@ const bank=[
     ["Blame customer for calling repeatedly.",2,"Unprofessional blame assignment."]
   ],"Q094"],
   ["Escalation",3,"A customer asks for a written liability statement guaranteeing zero software downtime. What do you explain?",[
-    ["Write custom liability guarantee.",3,"Exceeds legal authority."],
+    ["Offer a custom liability guarantee.",3,"Exceeds legal authority."],
     ["Explain SLA parameters are detailed in published Terms of Service agreements.",0,"Provides official contractual documentation without making unauthorized verbal guarantees."],
     ["Tell them software never crashes.",2,"False technical representation."]
   ],"Q095"],
