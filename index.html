@@ -46,7 +46,7 @@ const bank=[
   ["Clarification",0,"A customer says their internet router lights are 'blinking weirdly.' What should you ask?",[
     ["Ask which specific icons or labels (Power, Internet, Wi-Fi) are blinking and what color they are displaying.",0,"Gathers precise telemetry from visual status LEDs."],
     ["Tell them to reset the router to factory settings immediately.",2,"Erases ISP configuration credentials unnecessarily."],
-    ["Assume the router was damaged by lightning and recommend replacement.",3,"Wild speculation without visual LED verification."]
+    ["Suggest power cycling the router without noting which indicator LED is signaling an issue.",1,"Misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."]
   ]],
   ["Clarification",0,"A customer states that their smartwatch is 'not tracking exercise.' What diagnostic detail is needed?",[
     ["Clarify whether heart rate tracking, GPS location, or step counting is failing, and if permission settings are enabled.",0,"Zeroes in on specific hardware sensors and background app permissions."],
@@ -55,8 +55,8 @@ const bank=[
   ]],
   ["Clarification",0,"A customer reports that their cloud photo library is 'not syncing.' What should you ask first?",[
     ["Ask if they are connected to Wi-Fi, have low power mode enabled, or have sufficient cloud storage available.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
-    ["Tell them all cloud photos have been deleted permanently.",3,"Alarmist assertion without basic verification."],
-    ["Instruct them to erase their cloud account.",3,"Destructive action without basic diagnostic checks."]
+    ["Tell them to sign out of their cloud account immediately and sign back in.",2,"Can trigger unnecessary sync re-indexes without checking basic network status."],
+    ["Instruct them to erase local storage cache immediately.",2,"Risks unsynced local data loss."]
   ]],
   ["Clarification",0,"A customer states their account was 'hacked' because they received a password reset request email. What do you clarify?",[
     ["Ask if they requested the reset themselves or if anyone else has physical access to their logged-in devices.",0,"Distinguishes between malicious account compromise and user-triggered verification emails."],
@@ -65,43 +65,43 @@ const bank=[
   ]],
   ["Clarification",0,"A customer says their wireless network speed dropped significantly after moving their desk to another room. What do you investigate?",[
     ["Check physical distance, wall materials, and 2.4GHz vs 5GHz Wi-Fi band selection between the desk and router.",0,"Addresses RF signal attenuation, wall absorption, and band range characteristics."],
-    ["Tell them their computer's network card expired.",3,"Nonsensical technical explanation."],
-    ["Instruct them to replace their internet service provider contract.",1,"Ignores the physical move location variable."]
+    ["Advise them to change their DNS server settings on the computer.",2,"Addresses name resolution rather than physical RF attenuation from new wall placement."],
+    ["Instruct them to call their Internet Service Provider to upgrade their monthly plan.",1,"Focuses on subscription speed rather than internal room distance interference."]
   ]],
   ["Clarification",0,"A customer reports that their wireless earbuds keep disconnecting during workouts. What context should you gather?",[
     ["Ask if disconnection happens in specific physical locations, during intense movement, or when distance from phone increases.",0,"Gathers environmental, motion, and wireless range variables."],
-    ["Tell them sweat permanently destroys Bluetooth signals.",2,"Inaccurate explanation of Bluetooth transmission."],
+    ["Suggest resetting network settings on the phone immediately.",2,"Heavy global network reset before isolating Bluetooth interference or range."],
     ["Instruct them to buy wired headphones immediately.",1,"Pushes product sales instead of isolating wireless variables."]
   ]],
   ["Clarification",0,"A user says their desktop computer turns off completely without warning during intensive video rendering. What clarify question helps most?",[
     ["Ask whether the computer shuts down instantly like a pulled plug or performs an orderly shutdown, and if fan noise was high.",0,"Distinguishes thermal overheating cuts from power supply trip failures or software shutdowns."],
     ["Tell them to delete their video editing software project files.",2,"Destructive action without diagnosing hardware power or thermal state."],
-    ["Advise them to plug the computer into a different wall socket in another building.",1,"Unlikely to help if thermal throttling or internal PSU trip is occurring."]
+    ["Advise them to reinstall the operating system immediately.",2,"Heavy software step when hardware thermal throttling or PSU cutouts are primary suspects."]
   ]],
   ["Clarification",0,"A customer says their email app is 'stuck sending.' What key details should you ask for first?",[
     ["Ask if there are large attachments in the Outbox, and if receiving new mail currently works.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
     ["Tell them to delete their email account from all devices.",2,"Heavy action before checking outbox payload size."],
-    ["Inform them that email servers worldwide are offline.",3,"False systemic claim without checking mail status."]
+    ["Advise them to clear all email history folders immediately.",2,"Risks local folder loss before checking Outbox queue status."]
   ]],
   ["Clarification",0,"A customer mentions their device screen brightness changes by itself. What setting or factor should you clarify?",[
     ["Ask if Auto-Brightness or ambient light sensors are enabled and if the change happens when moving between light environments.",0,"Identifies expected system display sensor behaviors."],
     ["Recommend replacing the display panel assembly.",2,"Treats automatic sensor adjustment as hardware failure."],
-    ["Instruct them to reinstall the display driver.",1,"Overlooks built-in light sensor automation."]
+    ["Instruct them to perform a full system reset.",2,"Overkills standard ambient sensor configuration toggles."]
   ]],
   ["Clarification",0,"A customer says their online payment was declined. What details do you ask to isolate the problem?",[
     ["Ask whether the decline occurred on a specific website, if an error code was given, or if bank security sent a text verification.",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
-    ["Tell them their bank account has been permanently frozen.",3,"Unsubstantiated alarmist claim."],
-    ["Instruct them to clear their entire hard drive.",3,"Irrelevant and destructive action for payment gateway declines."]
+    ["Instruct them to clear browser cookies and disable security settings.",2,"Potentially exposes browser sessions without identifying merchant/card payment status."],
+    ["Tell them to re-enter payment details ten times continuously.",1,"Can trigger bank fraud velocity locks."]
   ]],
   ["Clarification",0,"A customer reports their cellular phone signal shows 'No Service' inside their home basement. What should you verify?",[
     ["Ask if cellular signal returns when stepping outdoors, and whether Wi-Fi Calling is configured on the device.",0,"Isolates building material RF attenuation and offers Wi-Fi coverage alternatives."],
     ["Tell them to switch cellular carriers immediately.",1,"Drastic commercial recommendation before checking indoor coverage settings."],
-    ["Advise them to replace their phone antenna.",2,"Impractical hardware suggestion."]
+    ["Advise them to reset all phone network settings immediately.",2,"Erases saved Wi-Fi passwords without checking baseline indoor signal attenuation."]
   ]],
   ["Clarification",0,"A customer states their microphone sounds 'muffled and quiet' to callers. What physical and software checks do you ask about?",[
     ["Ask if a protective case or screen cover is blocking the bottom microphone port, and test the voice memo recording quality.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware sensor failure."],
     ["Tell them to replace the device mainboard.",3,"Grossly disproportionate response for mic mesh obstruction."],
-    ["Instruct them to turn off cellular data.",1,"Unrelated to microphone audio capture."]
+    ["Instruct them to reset system network settings.",1,"Unrelated to microphone audio capture."]
   ]],
 
   ["Empathy",1,"A caller says, 'I've called support twice already today and spent an hour on hold! I am not explaining this all over again!' How do you respond?",[
@@ -202,68 +202,68 @@ const bank=[
   ]],
   ["Troubleshooting",0,"An external monitor connected via HDMI displays 'No Signal' after a computer software update. What do you check first?",[
     ["Verify physical cable seating, test display input toggles, and check display detection in display settings.",0,"Starts with quick physical and software detection checks before deep driver work."],
-    ["Instruct the user to open the computer casing and replace the internal GPU.",3,"Unsafe and disproportionate hardware tear-down."],
+    ["Instruct the user to open the computer casing and check the GPU seating.",2,"Plausible hardware step but overly invasive before basic external cable/input verification."],
     ["Tell them to purchase a new HDMI cable immediately.",1,"Recommends purchasing hardware before checking input source toggles."]
   ]],
   ["Troubleshooting",0,"An application freezes every time a user clicks the 'Export PDF' button. Other functions in the app work normally. What is the best step?",[
     ["Check file destination permissions, export folder storage, or test exporting a smaller sample file.",0,"Isolates the specific export function and storage permissions."],
     ["Uninstall and reinstall the operating system.",3,"Grossly disproportionate action for an isolated app export error."],
-    ["Tell the customer that PDF exporting is no longer standard technology.",2,"Dismissive and technically incorrect."]
+    ["Advise clearing the browser web cache.",1,"Does not address local file export permissions or document complexity."]
   ]],
   ["Troubleshooting",0,"A web browser on a laptop displays certificate security errors on every HTTPS website visited. What simple system check should you perform?",[
     ["Check if the computer's system date and time are set correctly.",0,"System clock mismatch is a primary cause of universal HTTPS certificate validation failures."],
-    ["Replace the computer's hard drive.",3,"Disproportionate response for an SSL certificate validation error."],
-    ["Tell the user SSL encryption is broken worldwide.",2,"False technical assertion."]
+    ["Advise disabling SSL validation in browser advanced flags.",2,"Exposes the user to security risks rather than resolving clock/cert integrity."],
+    ["Tell them to clear local DNS cache.",1,"Addresses domain resolution rather than system clock timestamp mismatches."]
   ]],
   ["Troubleshooting",0,"A user's laptop battery drains completely while in sleep mode overnight with the lid closed. What should you check?",[
     ["Check background wake requests, power management settings, and connected USB peripherals.",0,"Identifies background sleep-preventing tasks, peripheral wake triggers, and power options."],
-    ["Replace the laptop display hinge sensor immediately.",2,"Assumes hardware sensor failure without checking background wake permissions."],
+    ["Calibrate battery capacity by fully discharging and charging.",2,"Useful for meter accuracy, but doesn't fix background sleep wake triggers."],
     ["Tell them laptops are designed to drain 100% battery overnight.",1,"Inaccurate description of sleep state power consumption."]
   ]],
   ["Troubleshooting",0,"A laptop's keyboard types wrong characters (e.g., pressing 'q' produces 'w'). What is the most likely simple fix?",[
     ["Check if the keyboard input language layout was accidentally changed in system settings.",0,"Targets input language layout mismatches, a common cause of shifted character mapping."],
     ["Replace the internal keyboard hardware assembly.",2,"Drastic step before checking software input layout preferences."],
-    ["Replace the computer's CPU.",3,"Complete misdiagnosis of keyboard layout configuration."]
+    ["Run a full antivirus system scan.",1,"Misattributes input mapping setting changes to malware."]
   ]],
   ["Troubleshooting",0,"A user's computer screen is turned upside down. What is the most likely cause and fix?",[
     ["Check system display settings for screen orientation layout controls (e.g., Landscape vs Inverted).",0,"Identifies accidental screen rotation display settings."],
     ["Replace the internal computer graphics hardware board.",2,"Overkill for a simple screen display rotation setting."],
-    ["Tell them to physically turn their monitor hardware upside down on their desk.",3,"Absurd workaround that avoids setting corrections."]
+    ["Update the computer BIOS/UEFI firmware.",2,"Overly complex system step for a basic display rotation setting."]
   ]],
   ["Troubleshooting",0,"An audio recording has persistent background electrical humming noise. What is the best initial isolation step?",[
     ["Disconnect laptop AC power charger to test for ground loop power noise, and check audio cable shielding.",0,"Isolates AC ground loops and cable interference from microphone capsule failure."],
     ["Reinstall the computer operating system.",3,"Unrelated to acoustic/electrical ground loop interference."],
-    ["Tell them background humming is mandatory in digital recording.",2,"False technical claim."]
+    ["Increase the recording input gain slider in system settings.",1,"Amplifies the background electrical hum along with the voice signal."]
   ]],
   ["Troubleshooting",0,"A USB flash drive read speed is extremely slow when connected to a front panel port, but fast on rear ports. Why?",[
     ["Front panel ports may use an unpowered hub or USB 2.0 internal header while rear ports link directly to the motherboard USB 3.0 bus.",0,"Correctly identifies internal motherboard bus and port generation differences."],
-    ["The flash drive's internal storage memory expired.",2,"Inaccurate description of storage wear."],
-    ["The front USB port requires a paid software license.",3,"Nonsensical assertion."]
+    ["The flash drive's file system is fragmented.",1,"File fragmentation affects both front and rear ports equally."],
+    ["The operating system requires a dedicated driver update for front ports.",1,"Front and rear USB controllers generally share core host drivers."]
   ]],
   ["Troubleshooting",0,"A desktop monitor flickers randomly only when heavy graphics applications are running. What should you test?",[
     ["Monitor GPU temperatures, check display driver updates, and verify GPU power cable connections.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
-    ["Replace the monitor power button.",2,"Unrelated to GPU load-dependent flickering."],
+    ["Replace the monitor power cable.",1,"Standard cable issues cause continuous flickering rather than load-dependent flickering."],
     ["Format the hard drive.",2,"Disproportionate action for graphics driver/thermal issues."]
   ]],
   ["Troubleshooting",0,"A wireless printer prints garbage symbols and endless blank pages when sent a document. What is the probable fix?",[
     ["Cancel pending print jobs, clear the print spooler queue, and reinstall the correct vendor printer driver.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
-    ["Throw away the printer toner cartridge.",2,"Toner cartridges do not cause character encoding corruptions."],
-    ["Replace the computer Wi-Fi card.",2,"Network connection is working since data reached the printer."]
+    ["Replace the Wi-Fi router channel settings.",1,"Network connection is already functional since print data reaches the printer."],
+    ["Replace the printer paper tray.",1,"Paper feeding mechanism is working correctly."]
   ]],
   ["Troubleshooting",0,"A smartphone camera cannot focus on close objects, remaining blurry, but far objects are sharp. What do you check?",[
     ["Inspect physical camera lens for smudges/dirt, check macro mode settings, and verify optical lens movement.",0,"Targets lens cleanliness, macro mode toggles, and mechanical autofocus actuation."],
-    ["Replace the phone SIM card.",3,"SIM cards have no impact on optical camera focus."],
+    ["Reset system network settings.",1,"Network settings have no impact on optical camera focus."],
     ["Reflash phone cellular firmware.",2,"Irrelevant for optical lens actuator issues."]
   ]],
   ["Troubleshooting",0,"An external hard drive light blinks continuously and prevents computer shutdown. What process should you inspect?",[
     ["Check if background indexing, antivirus scanning, or active file transfer operations are holding drive locks.",0,"Identifies background process file locks preventing safe disk unmounting."],
     ["Unplug the drive forcibly during active writing without unmounting.",2,"Risks filesystem corruption."],
-    ["Replace the computer motherboard.",3,"Grossly disproportionate action."]
+    ["Reinstall system graphics drivers.",1,"Unrelated to disk I/O lock management."]
   ]],
   ["Troubleshooting",0,"A user's bluetooth headphones audio keeps cutting out when they put their phone in their back pocket. What is the primary cause?",[
     ["Body tissue attenuates 2.4GHz Bluetooth signals; moving the phone to a front pocket or arm band restores line-of-sight RF transmission.",0,"Explains physical radio frequency signal attenuation caused by human body water content."],
-    ["The phone's audio chip is overheating from pocket warmth.",2,"Incorrect thermal explanation of Bluetooth signal dropping."],
-    ["The headphones require a paid mobile firmware upgrade.",3,"Nonsensical monetization claim."]
+    ["The phone's battery saver mode disables Bluetooth antenna power.",1,"Battery saver restricts background data, not active Bluetooth audio streaming."],
+    ["The headphones require a paid mobile firmware upgrade.",2,"Firmware updates do not change physical RF range through human body mass."]
   ]],
 
   ["Ownership",2,"You need 10 minutes to research a rare error code. The customer is waiting on the line. How should you set expectations?",[
@@ -309,11 +309,11 @@ const bank=[
   ["Ownership",2,"You notice an ongoing service outage alert that matches the customer's reported issue. What do you inform them?",[
     ["Inform them of the active service outage, provide the estimated resolution time, and offer status tracking options.",0,"Provides transparent outage status updates, setting accurate expectations."],
     ["Hide the outage information and attempt 30 minutes of useless local device troubleshooting.",2,"Wastes customer time and causes frustration when an outage is known."],
-    ["Tell them their local hardware caused the regional outage.",3,"False and bizarre technical claim."]
+    ["Tell them local equipment issues caused the service disruption.",2,"False technical claim that deflects official outage telemetry."]
   ]],
   ["Ownership",2,"A customer asks a question about a peripheral product brand you are unfamiliar with. How do you respond?",[
     ["Transparently state you will look up official documentation for that peripheral model to guide them accurately.",0,"Demonstrates honesty, resourcefulness, and willingness to assist."],
-    ["Make up false technical specifications to sound knowledgeable.",3,"Dishonest communication that leads to incorrect guidance."],
+    ["Guess technical specifications based on similar models without verifying.",2,"Risk delivering inaccurate setup instructions."],
     ["Refuse to discuss third-party peripherals under any circumstance.",2,"Unhelpful refusal of basic integration support."]
   ]],
   ["Ownership",2,"A customer calls back because a ticket opened yesterday was closed without resolution. What do you do?",[
@@ -324,7 +324,7 @@ const bank=[
   ["Ownership",2,"You promised a follow-up email with diagnostic logs by 5 PM. At 4:45 PM, the logs are still compiling. What do you do?",[
     ["Send a brief status update email by 5 PM explaining log compilation and setting a revised 5:30 PM completion time.",0,"Honors communication deadlines transparently even when technical tasks run long."],
     ["Wait until 6 PM to send anything so the final logs are included.",2,"Misses the promised deadline without warning."],
-    ["Send an empty log file to meet the deadline.",3,"Deceptive action."]
+    ["Send an incomplete log file without explaining why to hit the 5 PM mark.",2,"Delivers low-quality unverified data."]
   ]],
   ["Ownership",2,"A customer's hardware repair requires a part that is backordered for 3 weeks. How do you present this?",[
     ["Explain the backorder clearly, provide alternate loaner or repair options, and schedule weekly progress updates.",0,"Delivers difficult news transparently while providing actionable options and proactive check-ins."],
@@ -334,7 +334,7 @@ const bank=[
   ["Ownership",2,"During troubleshooting, you notice an unpatched security vulnerability on the customer's router. What do you do?",[
     ["Inform the customer about the risk, offer to walk them through updating firmware, or provide the vendor guide.",0,"Demonstrates proactive ownership beyond the immediate ticket scope."],
     ["Ignore it because it wasn't the specific question they called about.",1,"Misses an opportunity for proactive safety support."],
-    ["Disconnect their router remotely without permission.",3,"Unauthorized disruption of customer network."]
+    ["Advise them to buy a new router brand immediately.",1,"Pushes hardware replacement when a simple firmware patch resolves the vulnerability."]
   ]],
   ["Ownership",2,"A customer asks you to explain a complex bill charge from last month. What do you do?",[
     ["Review itemized billing line by line with them, explaining each charge and credit clearly until they feel confident.",0,"Takes full ownership of customer clarity and financial transparency."],
@@ -344,7 +344,7 @@ const bank=[
   ["Ownership",2,"A software bug fix is scheduled for a future software release next month. How do you summarize this for the customer?",[
     ["Explain that the issue is confirmed by engineering, outline temporary workaround steps, and provide tracking for the update release.",0,"Validates the confirmed bug state, empowers the user with immediate workarounds, and sets release tracking."],
     ["Tell them there is no bug and they are imagining the issue.",3,"Gaslights the customer and denies software telemetry."],
-    ["Promise to rewrite the operating system codebase yourself tonight.",3,"Delivers an impossible personal claim."]
+    ["Promise that an emergency individual hotfix patch will be emailed to them within 2 hours.",2,"Overpromises engineering release capabilities."]
   ]],
 
   ["Security & safety",3,"A customer received a text asking them to click a link to verify their account or face account suspension. What do you advise?",[
@@ -354,8 +354,8 @@ const bank=[
   ]],
   ["Security & safety",3,"A caller states their device battery looks visibly swollen and is pushing the screen outward. What instructions do you give?",[
     ["Advise them to stop using and charging the device immediately, keep it away from heat, and take it to a service provider.",0,"Prioritizes physical fire/battery safety and proper hazardous component handling."],
-    ["Tell them to squeeze the screen back down into the enclosure carefully.",3,"Extremely hazardous advice that could puncture a swollen lithium-ion battery."],
-    ["Suggest putting the device into a freezer to reduce battery swelling.",2,"Unsafe DIY tip that causes internal condensation damage and chemical instability."]
+    ["Tell them to power down the device and place it in a cool room while waiting for a regular service slot.",2,"Plausible response, but misses advising against continued charging or hazardous handling."],
+    ["Suggest running a battery calibration utility in system settings.",2,"Keeps a physically hazardous component powered and charging under load."]
   ]],
   ["Security & safety",3,"A customer asking for help unlocking an account cannot pass primary identity verification steps. How do you handle this?",[
     ["Explain that strict security policies protect their privacy, and walk them through official self-service recovery options.",0,"Upholds account security standards while providing constructive alternative paths."],
@@ -365,7 +365,7 @@ const bank=[
   ["Security & safety",3,"A customer reports pop-ups claiming their computer is infected and instructing them to call a toll-free number. What do you explain?",[
     ["Explain these are web-based scam pop-ups, instruct them to clear browser caches, and advise never calling numbers in pop-ups.",0,"Correctly identifies tech support scam scareware and provides safe remediation."],
     ["Advise them to call the toll-free number displayed in the pop-up to verify if it's legitimate.",3,"Directs the customer into the hands of active fraudsters."],
-    ["Tell them their internal hard drive has been permanently destroyed by viruses.",2,"False and alarmist statement that validates scareware tactics."]
+    ["Tell them to install multiple third-party antivirus cleaners simultaneously.",2,"Can cause system instability without removing malicious web browser pop-up scripts."]
   ]],
   ["Security & safety",3,"A user calls asking to reset the password for an account belonging to their spouse, stating their spouse is unavailable. What do you do?",[
     ["Politely explain account privacy rules and state that the account owner must request recovery directly.",0,"Protects account privacy and adheres strictly to security protocols."],
@@ -405,21 +405,21 @@ const bank=[
   ["Security & safety",3,"A customer finds an unlabeled USB flash drive in a company parking lot. What should they do with it?",[
     ["Do not plug it into any device; surrender it to IT/Security for safe analysis.",0,"Protects against badUSB hardware payloads and malware auto-execution."],
     ["Plug it into a personal computer to see who owns it.",3,"Exposes hardware to malware/hardware payload attacks."],
-    ["Format the drive immediately without looking at files.",2,"Formatting can still trigger hardware payload execution."]
+    ["Run an quick antivirus scan on the drive after opening its folder structure.",2,"Opening folder structure can still execute malicious autorun/badUSB payloads."]
   ]],
   ["Security & safety",3,"A user asks if saving all passwords in a plain text file on their desktop is safe. What do you advise?",[
     ["Explain that plain text files are unencrypted and easily stolen by malware, and recommend using an encrypted password manager.",0,"Teaches credential encryption security hygiene."],
-    ["Agree that plain text files are safe if named 'Notes.txt'.",3,"Security through obscurity fails against basic file scanners."],
-    ["Suggest hiding the text file in the Recycle Bin.",2,"Unsafe and easily lost."]
+    ["Suggest hiding the text file in a deeply nested subfolder.",2,"Security through obscurity fails against basic file scanners."],
+    ["Advise locking the desktop folder with standard system user permissions.",1,"User-level permissions do not protect against local malware running under that user profile."]
   ]],
   ["Security & safety",3,"A customer reports their webcam light turns on randomly when no camera apps are open. What should they check immediately?",[
     ["Check active background app permissions, run malware scans, and review installed browser extensions.",0,"Addresses unauthorized camera access vulnerabilities and spy malware."],
     ["Cover it with tape and ignore software checks.",1,"Physical cover helps privacy, but misses underlying malware containment."],
-    ["Reinstall monitor power cables.",2,"Irrelevant for USB camera background capture."]
+    ["Reinstall monitor display drivers.",1,"Irrelevant for USB camera background capture."]
   ]],
   ["Security & safety",3,"A user receives an email attachment named 'Invoice.exe' from an unknown sender. What is your advice?",[
     ["Do not open or download the attachment; delete the email and report it as suspicious.",0,"Prevents execution of malicious executable email payloads."],
-    ["Rename the file extension to '.pdf' and open it.",3,"Extremely dangerous, still executes binary code."],
+    ["Download the file to an isolated folder and check properties before opening.",2,"Downloading executable payloads exposes local storage to potential execution risks."],
     ["Double-click it to see if it's an authentic invoice.",3,"Triggers immediate malware execution."]
   ]],
   ["Security & safety",3,"A customer notices their cloud account logged in from a country they have never visited. What immediate action should they take?",[
@@ -552,7 +552,7 @@ const bank=[
   ["Active listening",1,"A caller says, 'My monitor display turns off after 10 minutes of inactivity, but comes back when I move the mouse.' What is happening?",[
     ["Explain that this is normal system power-saving display sleep behavior, not a hardware fault.",0,"Correctly identifies normal operating system display sleep features."],
     ["Diagnose the monitor screen as defective and schedule a replacement.",2,"Misdiagnoses normal power management behavior as hardware failure."],
-    ["Tell them their mouse is causing dangerous electrical spikes.",3,"Absurd technical assertion."]
+    ["Instruct them to reflash monitor internal firmware.",2,"Unnecessary complex firmware operation for basic sleep behavior."]
   ]],
   ["Active listening",1,"A customer says, 'I hear a high-pitched whistling noise whenever I plug in my phone charger.' What should you note?",[
     ["Identify the whistling noise as potential coil whine or transformer defect in the power adapter, and recommend replacing the adapter safely.",0,"Catches acoustic power supply indicators before electrical failure."],
@@ -561,7 +561,7 @@ const bank=[
   ]],
   ["Active listening",1,"A customer says, 'My Wi-Fi drops every afternoon at 2:00 PM exactly.' What clue should you explore?",[
     ["Explore environmental timers, scheduled local network backups, or heavy appliance usage (like microwaves) at 2:00 PM.",0,"Listens to exact time recurrence to identify scheduled tasks or physical interference."],
-    ["Tell them internet routers take daily naps at 2 PM.",3,"Nonsensical explanation."],
+    ["Suggest replacing the computer operating system network stack.",2,"Misses the environmental time recurrence clue entirely."],
     ["Ignore the 2 PM pattern and replace the Wi-Fi router.",2,"Ignores explicit time pattern telemetry."]
   ]],
   ["Active listening",1,"A caller states, 'My tablet screen only rotates when I open the Photos app.' What is the diagnostic deduction?",[
@@ -572,7 +572,7 @@ const bank=[
   ["Active listening",1,"A customer says, 'My laptop fan sounds like a jet engine when I place it on my plush bed blanket.' What should you advise?",[
     ["Explain that soft blankets block bottom ventilation grilles, causing thermal buildup, and recommend using a flat hard surface.",0,"Identifies physical thermal intake blockages mentioned in user context."],
     ["Tell them to replace the internal laptop fan.",2,"Misdiagnoses physical ventilation blockage as mechanical fan failure."],
-    ["Suggest putting ice cubes under the laptop.",3,"Unsafe liquid damage hazard."]
+    ["Suggest lowering operating system display resolution to reduce fan noise.",1,"Unrelated to physical intake obstruction."]
   ]],
   ["Active listening",1,"A caller mentions, 'I can hear my own voice echoing back to me when talking to my friend on speakerphone.' Whose setup has the issue?",[
     ["Explain that the remote party's microphone is picking up the caller's speaker output, creating acoustic feedback on their end.",0,"Correctly analyzes acoustic echo loops based on speech path mechanics."],
