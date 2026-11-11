@@ -6,7 +6,7 @@
 @media(min-width:650px){.hero{grid-template-columns:1fr .8fr;align-items:center}.art{min-height:230px}}@media(max-width:430px){.hud{grid-template-columns:repeat(2,1fr)}.settings{grid-template-columns:1fr}.panel{padding:14px}}
 </style></head><body><main class="wrap">
 <div class="top"><div class="brand">⚔ TECHNICAL SUPPORT BATTLE</div><button class="sound" id="sound">♫ Sound: On</button></div>
-<section class="screen active" id="home"><div class="hero"><div><div class="kicker">AN ADVISOR SURVIVAL RPG</div><h1>Keep your cool.<br><span style="color:#ffd166">Save the day.</span></h1><p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p><div class="stats"><div class="stat"><b>100</b><span>Starting HP</span></div><div class="stat"><b>3</b><span>Choices</span></div><div class="stat"><b>112</b><span>Scenarios</span></div></div><button class="primary" id="start">ENTER THE DUNGEON →</button><p class="muted" style="font-size:11px">*112 individually authored scenarios with randomized answer lengths.</p></div><div class="art">🛡️⚔️</div></div><div class="panel" style="margin-top:14px"><div class="kicker">AUDIO SETTINGS</div><div class="settings"><label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label><label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label></div><p class="muted" style="font-size:12px">Retro-inspired interface sounds with dynamic fantasy battle music.</p></div></section>
+<section class="screen active" id="home"><div class="hero"><div><div class="kicker">AN ADVISOR SURVIVAL RPG</div><h1>Keep your cool.<br><span style="color:#ffd166">Save the day.</span></h1><p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p><div class="stats"><div class="stat"><b>100</b><span>Starting HP</span></div><div class="stat"><b>3</b><span>Choices</span></div><div class="stat"><b>112</b><span>Scenarios</span></div></div><button class="primary" id="start">ENTER THE DUNGEON →</button><p class="muted" style="font-size:11px">*112 audited scenarios with balanced answer length randomization.</p></div><div class="art">🛡️⚔️</div></div><div class="panel" style="margin-top:14px"><div class="kicker">AUDIO SETTINGS</div><div class="settings"><label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label><label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label></div><p class="muted" style="font-size:12px">Retro-inspired interface sounds with dynamic fantasy battle music.</p></div></section>
 <section class="screen" id="game"><div class="hud"><div class="stat"><span>FLOOR</span><b id="floor">1</b></div><div class="stat"><span>HP</span><b id="hp">100</b><div class="bar"><div class="fill" id="hpbar"></div></div></div><div class="stat"><span>SCORE</span><b id="score">0</b></div><div class="stat"><span>COMBO</span><b id="combo">×0</b></div></div><div class="panel"><div class="kicker" id="floorType">FLOOR 1</div><div class="enemy"><div class="monster" id="monster">🫧</div><div class="enemyinfo"><h2 id="enemyName">Confusion Slime</h2><p id="enemyDesc"></p><div class="bar"><div class="fill enemyfill" id="enemybar"></div></div><div class="meter"><span>Enemy vitality</span><span id="enemyHp"></span></div></div></div><div class="tag" id="skill">CLARIFICATION</div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="feedback hidden" id="feedback"></div><div class="controls"><button class="secondary" id="quit">End run</button><button class="primary hidden" id="next">Next encounter →</button></div></div></section>
 <section class="screen" id="end"><div class="panel"><div class="kicker">RUN COMPLETE</div><h1 id="endTitle">The dungeon claims another hero.</h1><p class="muted" id="endSub"></p><div class="report"><div class="stat"><b id="rScore">0</b><span>Final score</span></div><div class="stat"><b id="rFloor">1</b><span>Floor reached</span></div><div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div><div class="stat"><b id="rDefeats">0</b><span>Enemies defeated</span></div><div class="stat"><b id="rCombo">0</b><span>Best combo</span></div><div class="stat"><b id="rBest">0</b><span>Personal best</span></div></div><div class="kicker">ADVISOR SKILL REPORT</div><div id="skills"></div><div class="controls"><button class="primary" id="again">Fight again</button><button class="secondary" id="menu">Main menu</button></div></div></section><footer>TECHNICAL SUPPORT BATTLE · PROTOTYPE 0.1</footer></main>
 <script>
@@ -24,115 +24,115 @@ const enemies=[
 
 const bank=[
   ["Clarification",1,"A customer reports their phone battery is draining much faster since yesterday. They haven't noticed any app updates. What should you ask first?",[
-    ["Ask when they first noticed the change and check battery usage by app over the last 24 hours.",0,"Establishes a diagnostic timeline and isolates high-energy software tasks."],
-    ["Advise them to perform an immediate factory restore to clear system bugs right away without checking logs.",3,"Restoring a device is a drastic step that destroys user setup without isolated diagnosis."],
-    ["Suggest waiting a week for battery adaptation since recent updates occurred.",1,"Assumes an update occurred when the customer explicitly stated no changes were made."]
+    ["Advise them to check background app refresh settings and screen brightness before investigating recent usage logs.",1,"Prematurely suggests specific settings changes without first establishing what changed yesterday."],
+    ["Ask when they first noticed the change and check battery usage by app over the last 24 hours.",0,"Establishes a diagnostic timeline and isolates high-energy software tasks before making assumptions."],
+    ["Suggest restarting the device into safe mode right away to test background drain.",2,"Jumps to an aggressive troubleshooting step before gathering basic usage telemetry."]
   ]],
   ["Clarification",0,"A customer says, 'My screen is displaying strange colored lines.' What should you ask before offering troubleshooting steps?",[
-    ["Schedule an immediate hardware repair appointment.",2,"Jumps to repair before verifying if it might be a temporary software rendering issue."],
     ["Ask if lines appear across all apps, during boot, or after device drop/pressure.",0,"Differentiates software rendering glitches and specific app bugs from physical panel damage."],
-    ["Tell them to perform a force restart and observe if lines vanish.",1,"Standard step, but misses critical diagnostic context about potential hardware drops."]
+    ["Tell them to perform a force restart and observe if lines vanish.",1,"Standard step, but misses critical diagnostic context about potential hardware drops."],
+    ["Recommend bringing the device to a service center for immediate screen replacement.",2,"Jumps to repair before verifying if it might be a temporary software rendering issue."]
   ]],
   ["Clarification",0,"A customer says their cloud account storage is full, but they rarely take photos. What should you verify?",[
-    ["Advise them to delete all their photo albums immediately.",2,"Destructive advice that does not address the actual culprit filling storage."],
-    ["Tell them they must purchase the highest storage tier right now.",1,"Upsells tier upgrades without investigating current data allocation."],
-    ["Check storage management to see if backups, messages, or large documents consume space.",0,"Identifies actual storage consumers rather than guessing based on photo volume."]
+    ["Check storage management to see if backups, messages, or large documents consume space.",0,"Identifies actual storage consumers rather than guessing based on photo volume."],
+    ["Recommend purchasing an upgraded storage tier immediately to accommodate their files.",1,"Upsells tier upgrades without investigating current data allocation."],
+    ["Advise them to clear their browser cache and temporary internet files.",2,"Clears local browser cache, which does not impact cloud account storage capacity."]
   ]],
   ["Clarification",0,"A customer reports that their tablet app keeps closing unexpectedly. What should you clarify first?",[
     ["Ask if the issue affects one app or multiple apps, and check for error messages.",0,"Determines whether the issue is app-specific or systemic across the operating system."],
-    ["Instruct them to erase all content and settings on the device immediately.",3,"Extremely invasive first step without basic scope isolation."],
-    ["Tell them the app developer abandoned the software entirely.",2,"Unsubstantiated claim without checking app details or updates."]
+    ["Instruct them to clear the app cache and restart the tablet.",1,"Plausible action, but skips verifying whether multiple apps or system stability are involved."],
+    ["Suggest reinstalling the entire operating system to clear corrupted system files.",3,"Extremely invasive step without basic scope isolation."]
   ]],
   ["Clarification",0,"A customer says their internet router lights are 'blinking weirdly.' What should you ask?",[
-    ["Tell them to reset the router to factory defaults right now.",2,"Erases ISP configuration credentials unnecessarily."],
+    ["Suggest unplugging the power cable for ten seconds and plugging it back in.",1,"Standard power cycle advice, but misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."],
     ["Ask which specific icons or labels are blinking and note their exact color.",0,"Gathers precise telemetry from visual status LEDs."],
-    ["Suggest power cycling without noting which indicator LED signals an issue.",1,"Misses visual diagnostic details that isolate line failure from local Wi-Fi glitches."]
+    ["Recommend resetting the router to factory settings using a paperclip.",2,"Erases ISP configuration credentials unnecessarily before checking indicator meanings."]
   ]],
   ["Clarification",0,"A customer states that their smartwatch is 'not tracking exercise.' What diagnostic detail is needed?",[
-    ["Tell them to purchase a newer smartwatch model immediately.",1,"Premature replacement advice."],
-    ["Advise them to factory reset both phone and watch.",2,"Heavy step before checking simple sensor permission toggles."],
-    ["Clarify whether heart rate, GPS, or step count fails, and check permission settings.",0,"Zeroes in on specific hardware sensors and background app permissions."]
+    ["Clarify whether heart rate, GPS, or step count fails, and check permission settings.",0,"Zeroes in on specific hardware sensors and background app permissions."],
+    ["Suggest unpairing and re-pairing the watch to the phone.",1,"Valid reconnection step, but fails to isolate whether specific sensors or permissions are failing."],
+    ["Recommend purchasing a replacement fitness band immediately.",2,"Premature replacement advice without sensor isolation."]
   ]],
   ["Clarification",0,"A customer reports that their cloud photo library is 'not syncing.' What should you ask first?",[
     ["Ask about Wi-Fi connection status, low power mode, and available cloud storage.",0,"Targets common sync-paused states: power saver, network availability, and storage quotas."],
-    ["Tell them to sign out of their cloud account and sign back in.",2,"Can trigger unnecessary sync re-indexes without checking basic network status."],
-    ["Instruct them to clear local device storage cache immediately.",2,"Risks unsynced local data loss."]
+    ["Tell them to sign out of their cloud account and sign back in to force a refresh.",2,"Can trigger unnecessary sync re-indexes and potential conflicts without checking basic network status."],
+    ["Instruct them to clear local device storage cache to free up processing bandwidth.",2,"Risks unsynced local data loss before checking network connectivity."]
   ]],
   ["Clarification",0,"A customer states their account was 'hacked' because they received a password reset request email. What do you clarify?",[
-    ["Immediately lock the account and initiate full security lockout.",2,"Premature escalation without confirming if the user requested the email."],
+    ["Instruct them to click the link in the email immediately to secure their account access.",3,"Risks guiding them into a potential phishing link if unverified."],
     ["Ask if they requested the reset or if anyone else has physical device access.",0,"Distinguishes between malicious compromise and user-triggered verification emails."],
-    ["Tell them to click the link in the email immediately to secure access.",3,"Risks guiding them into a potential phishing link if unverified."]
+    ["Advise them to update their security questions and enable text message alerts.",1,"Good security advice, but skips clarifying whether the email was actually user-initiated."]
   ]],
   ["Clarification",0,"A customer says their wireless network speed dropped significantly after moving their desk to another room. What do you investigate?",[
     ["Check physical distance, wall materials, and 2.4GHz vs 5GHz Wi-Fi band selection.",0,"Addresses RF signal attenuation, wall absorption, and band range characteristics."],
-    ["Advise them to change their computer DNS server settings.",2,"Addresses name resolution rather than physical RF attenuation from new wall placement."],
-    ["Instruct them to call their Internet Service Provider to upgrade plans.",1,"Focuses on subscription speed rather than internal room distance interference."]
+    ["Suggest restarting their computer network adapter settings.",2,"Addresses local software binding rather than physical RF attenuation from new wall placement."],
+    ["Recommend calling their Internet Service Provider to request a higher bandwidth tier.",1,"Focuses on subscription speed rather than internal room distance interference."]
   ]],
   ["Clarification",0,"A customer reports that their wireless earbuds keep disconnecting during workouts. What context should you gather?",[
-    ["Instruct them to buy wired headphones immediately.",1,"Pushes product sales instead of isolating wireless variables."],
     ["Suggest resetting network settings on the phone right away.",2,"Heavy global network reset before isolating Bluetooth interference or range."],
-    ["Ask if disconnections occur in specific locations, during movement, or at range limits.",0,"Gathers environmental, motion, and wireless range variables."]
+    ["Ask if disconnections occur in specific locations, during movement, or at range limits.",0,"Gathers environmental, motion, and wireless range variables."],
+    ["Recommend placing the phone in an arm band instead of a pocket.",1,"Plausible ergonomic tip, but fails to gather comprehensive diagnostic interference data."]
   ]],
   ["Clarification",0,"A user says their desktop computer turns off completely without warning during intensive video rendering. What clarify question helps most?",[
     ["Ask if shutdown is instant like a pulled plug or orderly, and check fan noise.",0,"Distinguishes thermal overheating cuts from power supply trip failures or software shutdowns."],
-    ["Tell them to delete their video editing software project files.",2,"Destructive action without diagnosing hardware power or thermal state."],
-    ["Advise them to reinstall the operating system right away.",2,"Heavy software step when hardware thermal throttling or PSU cutouts are primary suspects."]
+    ["Suggest checking the software auto-save preferences and project settings.",2,"Focuses on application configuration when sudden shutdowns indicate hardware power or thermal events."],
+    ["Advise running a complete malware scan on the hard drive.",2,"Misdiagnoses hardware thermal or power cutouts as a virus infection."]
   ]],
   ["Clarification",0,"A customer says their email app is 'stuck sending.' What key details should you ask for first?",[
     ["Ask if large attachments are in Outbox and if receiving new mail works.",0,"Isolates outbound SMTP/attachment limits from inbound IMAP/POP server connectivity."],
-    ["Tell them to delete their email account from all connected devices.",2,"Heavy action before checking outbox payload size."],
-    ["Advise them to clear all email history folders right now.",2,"Risks local folder loss before checking Outbox queue status."]
+    ["Suggest restarting the email application and checking internet connectivity.",1,"Plausible troubleshooting step, but misses checking outbox payload size or authentication status."],
+    ["Advise removing and re-adding the email account profile.",2,"Drastic step that deletes local cache before checking simple outbox queue status."]
   ]],
   ["Clarification",0,"A customer mentions their device screen brightness changes by itself. What setting or factor should you clarify?",[
-    ["Recommend replacing the display panel assembly immediately.",2,"Treats automatic sensor adjustment as hardware failure."],
     ["Ask if Auto-Brightness is enabled and if changes occur across light levels.",0,"Identifies expected system display sensor behaviors."],
-    ["Instruct them to perform a full system reset.",2,"Overkills standard ambient sensor configuration toggles."]
+    ["Suggest adjusting the screen timeout duration in display settings.",2,"Addresses display sleep timing rather than automatic ambient brightness adaptation."],
+    ["Recommend replacing the display panel assembly due to sensor failure.",2,"Treats automatic sensor adjustment as hardware failure."]
   ]],
   ["Clarification",0,"A customer says their online payment was declined. What details do you ask to isolate the problem?",[
-    ["Ask if decline occurred on a specific site, error codes given, or bank texts sent.",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
     ["Instruct them to clear browser cookies and disable security settings.",2,"Potentially exposes browser sessions without identifying merchant/card payment status."],
-    ["Tell them to re-enter payment details ten times continuously.",1,"Can trigger bank fraud velocity locks."]
+    ["Ask if decline occurred on a specific site, error codes given, or bank texts sent.",0,"Isolates merchant payment gateway errors, bank fraud blocks, or card credential issues."],
+    ["Suggest trying a different web browser or switching to incognito mode.",1,"Plausible browser check, but skips verifying specific bank decline reasons or error codes."]
   ]],
   ["Clarification",0,"A customer reports their cellular phone signal shows 'No Service' inside their home basement. What should you verify?",[
     ["Ask if signal returns outdoors and whether Wi-Fi Calling is configured.",0,"Isolates building material RF attenuation and offers Wi-Fi coverage alternatives."],
-    ["Tell them to switch cellular carriers immediately.",1,"Drastic commercial recommendation before checking indoor coverage settings."],
-    ["Advise them to reset all phone network settings right away.",2,"Erases saved Wi-Fi passwords without checking baseline indoor signal attenuation."]
+    ["Advise them to toggle Airplane Mode on and off to refresh cellular registration.",1,"Standard quick fix, but misses evaluating structural building interference."],
+    ["Recommend switching cellular service providers immediately.",2,"Drastic commercial recommendation before checking indoor coverage settings."]
   ]],
   ["Clarification",0,"A customer states their microphone sounds 'muffled and quiet' to callers. What physical and software checks do you ask about?",[
-    ["Tell them to replace the device mainboard immediately.",3,"Grossly disproportionate response for mic mesh obstruction."],
     ["Ask if cases block mic ports and test voice memo recording quality.",0,"Checks physical port obstruction and isolates app-specific mic routing from hardware failure."],
-    ["Instruct them to reset system network settings.",1,"Unrelated to microphone audio capture."]
+    ["Suggest adjusting the call volume buttons on the side of the phone.",1,"Addresses ear speaker output volume rather than microphone input capture quality."],
+    ["Instruct them to perform a factory reset of the operating system.",3,"Grossly disproportionate response for potential mic mesh obstruction."]
   ]],
 
   ["Empathy",1,"A caller says, 'I've called support twice already today and spent an hour on hold! I am not explaining this all over again!' How do you respond?",[
-    ["I understand how frustrating hold times are. Let me review your notes to pick up where you left off.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."],
     ["I apologize, but I need you to summarize the problem again so I can check previous work.",2,"Forces customer repetition and shifts blame onto previous advisors."],
-    ["Please remain calm so that I can pull up your account and get to work.",1,"Telling an agitated customer to calm down invalidates their feelings and increases friction."]
+    ["Please remain calm so that I can pull up your account and get to work.",1,"Telling an agitated customer to calm down invalidates their feelings and increases friction."],
+    ["I understand how frustrating hold times are. Let me review your notes to pick up where you left off.",0,"Validates emotional frustration and takes immediate ownership using existing documentation."]
   ]],
   ["Empathy",1,"A customer lost unbacked-up photo memories due to a hardware failure. They are visibly upset and crying. How do you respond?",[
-    ["Remind them that backing up personal data is the user's sole responsibility.",3,"Cruel and blaming during a moment of distress."],
     ["Acknowledge how painful losing family photos is, express sympathy, and explain diagnostic steps.",0,"Shows genuine compassion while offering grounded support without false promises."],
-    ["Tell them not to worry because pictures are not important overall.",2,"Dismisses the customer's emotions and minimizes their loss."]
+    ["Remind them that backing up personal data is the user's sole responsibility.",3,"Cruel and blaming during a moment of distress."],
+    ["Suggest setting up cloud backups moving forward so this never happens again.",1,"Helpful prevention tip, but delivered prematurely before validating their immediate grief."]
   ]],
   ["Empathy",1,"A small business manager is frantic because their credit card reader app is failing during a busy lunch hour. How do you respond?",[
-    ["I know how critical this lunch rush is. Let's work together right now to process your payments.",0,"Recognizes business impact, validates urgency, and establishes immediate teamwork."],
     ["Please slow down; panicking will not fix software issues any faster.",2,"Patronizing tone that invalidates customer stress during a business crisis."],
-    ["Technical glitches happen often, so you should keep paper receipt backups.",1,"Unhelpful lecturing that avoids immediate problem-solving."]
+    ["I know how critical this lunch rush is. Let's work together right now to process your payments.",0,"Recognizes business impact, validates urgency, and establishes immediate teamwork."],
+    ["Technical glitches happen often, so you should keep paper receipt backups handy.",1,"Unhelpful lecturing that avoids immediate problem-solving."]
   ]],
   ["Empathy",1,"An elderly customer expresses anxiety about setting up a new smartphone because they are 'bad with technology.' How do you respond?",[
-    ["Tell them modern phones are so simple even a child can use them.",2,"Condescending remark that heightens the customer's feeling of inadequacy."],
     ["Offer to skip all customization so they do not get confused.",1,"Paternalistic approach that deprives the customer of learning their device."],
-    ["Reassure them we will go step-by-step at their pace, as learning takes time for everyone.",0,"Builds confidence, removes shame, and sets a comfortable support pace."]
+    ["Reassure them we will go step-by-step at their pace, as learning takes time for everyone.",0,"Builds confidence, removes shame, and sets a comfortable support pace."],
+    ["Tell them modern phones are so simple even a child can use them.",2,"Condescending remark that heightens the customer's feeling of inadequacy."]
   ]],
   ["Empathy",1,"A customer expresses frustration after trying to resolve an account billing issue online for 2 hours. How do you start?",[
-    ["You should have called us first instead of wasting 2 hours online.",2,"Blames the customer for attempting self-service."],
     ["I appreciate your effort online. Let's take over from here and review your billing options together.",0,"Validates customer effort and signals active partnership."],
-    ["Our website is very easy to use, so I am unsure what went wrong.",1,"Defends company tools while invalidating user experience."]
+    ["You should have called us first instead of wasting 2 hours online.",2,"Blames the customer for attempting self-service."],
+    ["Our billing portal is quite straightforward, so let me show you where to look.",1,"Defends company tools while invalidating user experience."]
   ]],
   ["Empathy",1,"A freelance designer caller is stressed because their graphics tablet stopped responding right before a client presentation. How do you respond?",[
-    ["You should not leave work to the last minute before presentations.",3,"Judgemental and unhelpful during a customer crisis."],
-    ["Do not stress, presentations are never that important anyway.",2,"Minimizes the professional stakes of the customer."],
-    ["I recognize how critical this presentation is. Let's run a targeted check to get pen input working.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."]
+    ["I recognize how critical this presentation is. Let's run a targeted check to get pen input working.",0,"Matches customer high-stakes urgency while focusing on rapid diagnostic checks."],
+    ["You should not leave work to the last minute before important client presentations.",3,"Judgemental and unhelpful during a customer crisis."],
+    ["Try presenting without the tablet today and fix it later this week.",1,"Impractical workaround ignoring the professional stakes."]
   ]],
   ["Empathy",1,"A customer is frustrated because a recent OS update moved several settings menus they used daily. How do you respond?",[
     ["I know navigation changes after updates are annoying. Let me show you where those settings moved.",0,"Acknowledges disruption caused by UI changes while guiding them clearly."],
@@ -140,55 +140,55 @@ const bank=[
     ["We recommend never updating software if you dislike interface changes.",1,"Bad security and maintenance guidance."]
   ]],
   ["Empathy",1,"A user is embarrassed because they fell for a phishing email and entered their personal information. How do you respond?",[
+    ["Phishing attacks are extremely sophisticated. Calling right now helps us secure your account fast.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."],
     ["How could you fall for such an obvious fake email link?",3,"Shames and humiliates the customer during a security incident."],
-    ["Do not worry, scammers rarely do anything with stolen information.",2,"False reassurance that delays critical security containment."],
-    ["Phishing attacks are extremely sophisticated. Calling right now helps us secure your account fast.",0,"Removes shame, validates prompt action, and focuses immediately on security containment."]
+    ["Do not worry, scammers rarely do anything with stolen information anyway.",2,"False reassurance that delays critical security containment."]
   ]],
   ["Empathy",1,"A caller states they spent all weekend trying to fix their computer setup instead of resting. How do you respond?",[
-    ["I am sorry technical issues consumed your weekend. Let's resolve this today so you can relax.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."],
-    ["Weekends are the best time to troubleshoot computer problems anyway.",2,"Dismisses the customer's frustration regarding lost personal time."],
-    ["You should have spent your weekend outdoors instead of touching computers.",1,"Inappropriate personal lifestyle commentary."]
+    ["Weekends are the best time to troubleshoot computer problems in peace anyway.",2,"Dismisses the customer's frustration regarding lost personal time."],
+    ["You should have spent your weekend outdoors instead of touching computers.",1,"Inappropriate personal lifestyle commentary."],
+    ["I am sorry technical issues consumed your weekend. Let's resolve this today so you can relax.",0,"Empathetically acknowledges lost personal time and focuses on swift resolution."]
   ]],
   ["Empathy",1,"A customer is visibly upset after failing to set up a smart home hub after hours of effort. How do you respond?",[
-    ["Smart home tech is simple, so you must have missed obvious instructions.",2,"Insulting and dismissive response."],
     ["Smart home setups can be tricky. Let's work together to get everything connected smoothly.",0,"Normalizes setup challenges and establishes collaborative support."],
-    ["You should return all your smart home devices to the store.",1,"Extremely unhelpful and avoids problem-solving."]
+    ["Smart home tech is simple, so you must have missed obvious instructions.",2,"Insulting and dismissive response."],
+    ["You should return all your smart home devices to the store for a refund.",1,"Extremely unhelpful and avoids problem-solving."]
   ]],
   ["Empathy",1,"A customer is anxious because their lost wallet contained their primary security verification card. What do you say?",[
     ["That must be stressful. Let's review alternative verification steps to keep your account safe.",0,"Validates anxiety and offers clear alternative support paths."],
-    ["You really should take better care of your personal wallet.",3,"Blaming and disrespectful."],
-    ["Well, without that card there is nothing anyone can do for you.",2,"Inaccurate and dismissive of recovery procedures."]
+    ["You really should take better care of your personal wallet and cards.",3,"Blaming and disrespectful."],
+    ["Well, without that card there is nothing anyone can do for your account today.",2,"Inaccurate and dismissive of recovery procedures."]
   ]],
   ["Empathy",1,"A parent calls distressed because their child accidentally made $300 in in-app purchases. How do you handle their call?",[
     ["I know unexpected charges are alarming. Let's review refund policies and set up purchase controls.",0,"Relieves financial panic, addresses review, and provides preventive steps."],
     ["You should have set a passcode before giving your phone to a child.",2,"Reprimands parent during stressful financial event."],
-    ["In-app purchases are always non-refundable, so checking is pointless.",2,"False policy claim that heightens panic."]
+    ["In-app purchases are generally non-refundable, so checking is pointless.",2,"False policy claim that heightens panic."]
   ]],
   ["Empathy",1,"A customer whose device repair was delayed twice calls in tears because they need it for medical appointments. What do you say?",[
-    ["Delays happen in repair centers, so you just have to wait.",2,"Cold and indifferent to human impact."],
-    ["We do not prioritize medical calls over regular hardware repairs.",1,"Unsympathetic policy enforcement."],
-    ["I am so sorry for these delays when you need your device for medical care. I am escalating tracking.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."]
+    ["I am so sorry for these delays when you need your device for medical care. I am escalating tracking.",0,"Deeply empathetic, acknowledges health impact, and commits to active escalation."],
+    ["Delays happen in repair centers frequently, so you just have to wait.",2,"Cold and indifferent to human impact."],
+    ["We do not prioritize medical calls over regular hardware repair queues.",1,"Unsympathetic policy enforcement."]
   ]],
   ["Empathy",1,"A customer is frustrated because an app interface update changed their keyboard layout settings. What is your response?",[
     ["It is disorienting when familiar typing layouts shift. Let me guide you to the setting to switch back.",0,"Validates user muscle-memory frustration and provides direct resolution."],
-    ["Change is good for you, try learning the new layout.",2,"Patronizing and unhelpful."],
-    ["Nobody uses the old keyboard layout anyway.",2,"Invalidates user preference."]
+    ["Change is good for you, try learning the new layout format.",2,"Patronizing and unhelpful."],
+    ["Nobody uses the old keyboard layout anymore anyway.",2,"Invalidates user preference."]
   ]],
   ["Empathy",1,"A remote worker is panicked because their internet drops every time they start an important team call. How do you start?",[
-    ["Why don't you work from a coffee shop instead today?",1,"Impractical workaround ignoring technical support duty."],
-    ["I understand how critical call connectivity is for remote work. Let's run a targeted diagnostic.",0,"Validates workplace pressure and sets a collaborative action plan."],
-    ["If your internet drops, that is your provider's fault, not ours.",2,"Deflects responsibility before checking local device network settings."]
+    ["Why don't you work from a local coffee shop instead today?",1,"Impractical workaround ignoring technical support duty."],
+    ["If your internet drops during calls, that is your provider's fault, not ours.",2,"Deflects responsibility before checking local device network settings."],
+    ["I understand how critical call connectivity is for remote work. Let's run a targeted diagnostic.",0,"Validates workplace pressure and sets a collaborative action plan."]
   ]],
   ["Empathy",1,"A customer's legacy software project won't open after an OS upgrade. They are worried weeks of work are gone. How do you open?",[
     ["I know how terrifying potential work loss feels. Let me assist in locating backups and compatibility modes.",0,"Directly acknowledges fear of data loss and offers concrete diagnostic paths."],
     ["Upgrading your OS without checking software compatibility was a mistake.",2,"Lecturing and unhelpful."],
-    ["Just restart your entire project from scratch.",3,"Insensitive and catastrophic advice."]
+    ["Just restart your entire project from scratch to be safe.",3,"Insensitive and catastrophic advice."]
   ]],
 
   ["Troubleshooting",1,"A laptop connects to home Wi-Fi but fails to load web pages. Other devices on the same network browse normally. What is the best next step?",[
     ["Restart the home Wi-Fi router immediately to refresh all network connections.",1,"Disrupts all connected network users unnecessarily when one device is affected."],
-    ["Forget the saved Wi-Fi network and re-enter the network password.",2,"Focuses on network authentication when connection is already established."],
-    ["Test with a different web browser or check proxy settings to isolate application issues.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."]
+    ["Test with a different web browser or check proxy settings to isolate application issues.",0,"Isolates software/browser issues since local Wi-Fi connection works on other hardware."],
+    ["Forget the saved Wi-Fi network and re-enter the network password.",2,"Focuses on network authentication when connection is already established."]
   ]],
   ["Troubleshooting",0,"A Bluetooth mouse cursor is stuttering and freezing on screen. Battery level reports 85%. What should you check?",[
     ["Replace the mouse batteries immediately regardless of the charge reading.",1,"Ignores verified sensor telemetry without testing easier connection variables."],
@@ -196,19 +196,19 @@ const bank=[
     ["Reinstall the computer's entire graphics driver stack.",2,"Disproportionate troubleshooting step for a simple peripheral tracking issue."]
   ]],
   ["Troubleshooting",0,"A customer's wireless video call is lagging badly, but speed tests show high download bandwidth. What should you investigate?",[
-    ["Check upload bandwidth, Wi-Fi latency or packet loss, and local network congestion.",0,"Recognizes video conferencing relies heavily on upload stability and low latency."],
     ["Tell them to purchase a higher download tier from their internet provider.",1,"Focuses on download speed when upload latency is the typical bottleneck."],
+    ["Check upload bandwidth, Wi-Fi latency or packet loss, and local network congestion.",0,"Recognizes video conferencing relies heavily on upload stability and low latency."],
     ["Reinstall the computer graphics card drivers.",2,"Misdiagnoses network transmission issues as hardware rendering."]
   ]],
   ["Troubleshooting",0,"An external monitor connected via HDMI displays 'No Signal' after an OS update. What do you check first?",[
+    ["Verify physical cable seating, test display input toggles, and check display settings.",0,"Starts with quick physical and software detection checks before deep driver work."],
     ["Instruct user to open computer casing and check graphics card seating.",2,"Plausible hardware step but overly invasive before basic external cable/input verification."],
-    ["Tell them to purchase a new HDMI cable immediately.",1,"Recommends purchasing hardware before checking input source toggles."],
-    ["Verify physical cable seating, test display input toggles, and check display settings.",0,"Starts with quick physical and software detection checks before deep driver work."]
+    ["Tell them to purchase a new HDMI cable immediately.",1,"Recommends purchasing hardware before checking input source toggles."]
   ]],
   ["Troubleshooting",0,"An application freezes every time a user clicks the 'Export PDF' button. Other functions work normally. What is the best step?",[
+    ["Check file destination permissions, folder storage space, or export a smaller sample.",0,"Isolates specific export function and storage permissions."],
     ["Uninstall and reinstall the operating system immediately.",3,"Grossly disproportionate action for isolated app export errors."],
-    ["Advise clearing the web browser cache.",1,"Does not address local file export permissions or document complexity."],
-    ["Check file destination permissions, folder storage space, or export a smaller sample.",0,"Isolates specific export function and storage permissions."]
+    ["Advise clearing the web browser cache.",1,"Does not address local file export permissions or document complexity."]
   ]],
   ["Troubleshooting",0,"A web browser displays certificate security errors on every HTTPS website visited. What simple system check should you perform?",[
     ["Check if the computer's system date and time are set correctly.",0,"System clock mismatch is primary cause of universal HTTPS certificate validation failures."],
@@ -221,8 +221,8 @@ const bank=[
     ["Tell them laptops are designed to drain 100% battery overnight.",1,"Inaccurate description of sleep state power consumption."]
   ]],
   ["Troubleshooting",0,"A laptop's keyboard types wrong characters (e.g., pressing 'q' produces 'w'). What is the most likely simple fix?",[
-    ["Replace the internal keyboard hardware assembly.",2,"Drastic step before checking software input layout preferences."],
     ["Check if keyboard input language layout was changed in system settings.",0,"Targets input language layout mismatches, common cause of shifted character mapping."],
+    ["Replace the internal keyboard hardware assembly.",2,"Drastic step before checking software input layout preferences."],
     ["Run a full antivirus system scan.",1,"Misattributes input mapping setting changes to malware."]
   ]],
   ["Troubleshooting",0,"A user's computer screen is turned upside down. What is the most likely cause and fix?",[
@@ -241,9 +241,9 @@ const bank=[
     ["The operating system requires a dedicated driver update for front ports.",1,"Front and rear USB controllers share core host drivers."]
   ]],
   ["Troubleshooting",0,"A desktop monitor flickers randomly only when heavy graphics apps run. What should you test?",[
+    ["Monitor GPU temperatures, check display drivers, and verify GPU power cables.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."],
     ["Replace the monitor power cable.",1,"Standard cable issues cause continuous flickering rather than load-dependent flickering."],
-    ["Format the hard drive.",2,"Disproportionate action for graphics driver/thermal issues."],
-    ["Monitor GPU temperatures, check display drivers, and verify GPU power cables.",0,"Focuses on GPU thermal throttling, power stability under load, and driver state."]
+    ["Format the hard drive.",2,"Disproportionate action for graphics driver/thermal issues."]
   ]],
   ["Troubleshooting",0,"A wireless printer prints garbage symbols and endless blank pages. What is the probable fix?",[
     ["Cancel print jobs, clear spooler queue, and reinstall correct vendor driver.",0,"Resolves corrupted spooler queues and incorrect generic driver command mapping."],
@@ -268,18 +268,18 @@ const bank=[
 
   ["Ownership",2,"You need 10 minutes to research a rare error code. The customer is waiting on the line. How should you set expectations?",[
     ["Put them on hold immediately without explaining research duration.",2,"Leaves customer uninformed on hold, creating anxiety and frustration."],
-    ["Tell them it will take 30 seconds while you look through the database.",1,"Sets unrealistic expectation likely to be broken."],
-    ["Explain what you are researching, offer a 10-minute hold or callback, and give a check-in time.",0,"Gives customer control of time while setting accurate, transparent expectations."]
+    ["Explain what you are researching, offer a 10-minute hold or callback, and give a check-in time.",0,"Gives customer control of time while setting accurate, transparent expectations."],
+    ["Tell them it will take 30 seconds while you look through the database.",1,"Sets unrealistic expectation likely to be broken."]
   ]],
   ["Ownership",2,"You promised a callback at 3:00 PM, but your investigation takes longer. It is now 2:55 PM. What should you do?",[
+    ["Call at 3:00 PM as promised to give a progress update and new callback time.",0,"Maintains trust by honoring commitments even when answers are not ready."],
     ["Delay calling until 3:30 PM to give a complete resolution in one call.",2,"Breaks promised timeframe, causing customer to feel forgotten."],
-    ["Send an automated template email stating case remains open.",1,"Impersonal alternative to direct promised phone check-in."],
-    ["Call at 3:00 PM as promised to give a progress update and new callback time.",0,"Maintains trust by honoring commitments even when answers are not ready."]
+    ["Send an automated template email stating case remains open.",1,"Impersonal alternative to direct promised phone check-in."]
   ]],
   ["Ownership",2,"You realize a step you provided 5 minutes ago caused the customer's printer configuration to reset. How do you proceed?",[
+    ["Acknowledge the mistake candidly, apologize, and guide them through restoring configuration.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."],
     ["Blame printer manufacturer software for failing to handle commands.",2,"Deflects personal responsibility and erodes trust in guidance."],
-    ["Pretend reset was a mandatory diagnostic requirement all along.",1,"Deceptive communication to cover up advisor misstep."],
-    ["Acknowledge the mistake candidly, apologize, and guide them through restoring configuration.",0,"Demonstrates integrity, takes responsibility, and resolves induced issue."]
+    ["Pretend reset was a mandatory diagnostic requirement all along.",1,"Deceptive communication to cover up advisor misstep."]
   ]],
   ["Ownership",2,"A customer's issue was resolved, but they are anxious it will recur after hanging up. What is the best closing?",[
     ["Review the fix, provide reference articles, and explain how to contact us if needed.",0,"Reinforces self-help knowledge, provides reassurance, and establishes clear contact paths."],
@@ -287,9 +287,9 @@ const bank=[
     ["Offer to stay on the line for two hours monitoring usage.",1,"Unrealistic resource expenditure violating queue efficiency."]
   ]],
   ["Ownership",2,"An advisor promised a replacement part by Friday, but shipping was delayed to Monday. How do you handle their call?",[
+    ["Acknowledge shipping delay, apologize for inaccurate timeline, and provide tracking.",0,"Owns organizational mistake, delivers accurate expectations, and provides tracking."],
     ["Blame shipping carrier entirely and state it is out of our hands.",2,"Deflects accountability and leaves customer unsupported."],
-    ["Tell the customer Friday was never a guaranteed delivery date.",1,"Argues semantics with disappointed customer."],
-    ["Acknowledge shipping delay, apologize for inaccurate timeline, and provide tracking.",0,"Owns organizational mistake, delivers accurate expectations, and provides tracking."]
+    ["Tell the customer Friday was never a guaranteed delivery date.",1,"Argues semantics with disappointed customer."]
   ]],
   ["Ownership",2,"You promised to send a setup document via email after your call ended, but your shift is over. What do you do?",[
     ["Send the document before logging off to ensure customer promise is fulfilled.",0,"Demonstrates personal accountability and commitment to service."],
@@ -307,9 +307,9 @@ const bank=[
     ["Break instructions down into single steps and verify completion together.",0,"Adapts communication style to customer needs and guides interactively."]
   ]],
   ["Ownership",2,"You notice an ongoing service outage alert matching the customer's reported issue. What do you inform them?",[
+    ["Inform them of active outage, estimated resolution time, and tracking options.",0,"Provides transparent outage status updates, setting accurate expectations."],
     ["Hide outage information and attempt 30 minutes of useless troubleshooting.",2,"Wastes customer time and causes frustration when outage is known."],
-    ["Tell them local equipment issues caused the service disruption.",2,"False technical claim deflecting official outage telemetry."],
-    ["Inform them of active outage, estimated resolution time, and tracking options.",0,"Provides transparent outage status updates, setting accurate expectations."]
+    ["Tell them local equipment issues caused the service disruption.",2,"False technical claim deflecting official outage telemetry."]
   ]],
   ["Ownership",2,"A customer asks a question about a peripheral brand you are unfamiliar with. How do you respond?",[
     ["Guess technical specifications based on similar models without verifying.",2,"Risk delivering inaccurate setup instructions."],
@@ -333,8 +333,8 @@ const bank=[
   ]],
   ["Ownership",2,"During troubleshooting, you notice an unpatched security vulnerability on the customer's router. What do you do?",[
     ["Ignore it because it was not their specific support question.",1,"Misses opportunity for proactive safety support."],
-    ["Advise buying a new router brand immediately.",1,"Pushes hardware replacement when firmware patch resolves vulnerability."],
-    ["Inform customer of risk, offer firmware update steps, or provide vendor guide.",0,"Demonstrates proactive ownership beyond immediate ticket scope."]
+    ["Inform customer of risk, offer firmware update steps, or provide vendor guide.",0,"Demonstrates proactive ownership beyond immediate ticket scope."],
+    ["Advise buying a new router brand immediately.",1,"Pushes hardware replacement when firmware patch resolves vulnerability."]
   ]],
   ["Ownership",2,"A customer asks you to explain a complex bill charge from last month. What do you do?",[
     ["Tell them to read printed invoice footnotes themselves.",2,"Dismissive customer service."],
@@ -348,9 +348,9 @@ const bank=[
   ]],
 
   ["Security & safety",3,"A customer received a text asking them to click a link to verify their account or face suspension. What do you advise?",[
+    ["Warn them it is phishing, advise against clicking links, and check official settings.",0,"Prioritizes account security and prevents credential harvesting."],
     ["Tell them to click the link to see if the webpage looks authentic.",3,"Exposes customer directly to phishing scams and credential theft."],
-    ["Suggest replying to text message with 'STOP' to verify sender.",2,"Replying to spam text messages confirms phone number is active."],
-    ["Warn them it is phishing, advise against clicking links, and check official settings.",0,"Prioritizes account security and prevents credential harvesting."]
+    ["Suggest replying to text message with 'STOP' to verify sender.",2,"Replying to spam text messages confirms phone number is active."]
   ]],
   ["Security & safety",3,"A caller states their device battery looks visibly swollen and is pushing the screen outward. What instructions do you give?",[
     ["Tell them to power down and place in cool room awaiting regular slot.",2,"Plausible response, but misses advising against continued charging."],
