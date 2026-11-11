@@ -1,14 +1,261 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><title>Technical Support Battle</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><title>Technical Support Battle v1.1.0</title>
 <style>
-:root{--bg:#111827;--p:#1e293b;--line:#40516d;--ink:#f8fafc;--muted:#b5c1d5;--gold:#ffd166;--green:#86efac;--red:#fca5a5}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#30415e,#111827 65%);color:var(--ink);font:16px/1.5 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:18px 14px 40px}button{font:inherit;cursor:pointer}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.brand,.kicker{font-size:12px;font-weight:900;letter-spacing:.12em;color:#7dd3fc}.panel{background:linear-gradient(145deg,#26364f,#1b273b);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 15px 40px #0005}.screen{display:none}.screen.active{display:block}h1{font-size:clamp(32px,8vw,52px);line-height:1.02;margin:8px 0 12px}.muted{color:var(--muted)}.hero{display:grid;gap:16px}.art{min-height:180px;border:1px solid #617493;border-radius:16px;background:radial-gradient(circle,#526b91,#26364f 65%);display:grid;place-items:center;font-size:75px}.primary,.secondary,.sound{border-radius:12px;padding:12px 16px;font-weight:800}.primary{border:0;background:linear-gradient(135deg,#ffdb7c,#ffad62);color:#2a2116}.secondary,.sound{background:#30415e;color:var(--ink);border:1px solid #526582}.stats,.hud,.report{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.stat{background:#142033;border:1px solid var(--line);border-radius:11px;padding:10px}.stat b{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.settings label{font-size:12px;color:var(--muted)}input{width:100%;accent-color:var(--gold)}.hud{grid-template-columns:repeat(4,1fr);margin:0 0 12px}.hud .stat{padding:8px}.bar{height:8px;background:#0c1422;border-radius:10px;overflow:hidden;margin-top:5px}.fill{height:100%;background:linear-gradient(90deg,#67dca0,#b6ef8d);width:100%}.enemyfill{background:linear-gradient(90deg,#ff7885,#ffb36b)}.enemy{display:flex;gap:13px;align-items:center;margin:14px 0}.monster{width:72px;height:72px;flex:0 0 72px;border-radius:16px;background:#334764;display:grid;place-items:center;font-size:40px}.enemyinfo{flex:1;min-width:0}.enemyinfo h2{margin:0}.enemyinfo p,.meter{font-size:12px;color:var(--muted);margin:2px 0}.meter{display:flex;justify-content:space-between}.tag{display:inline-block;background:#334764;color:#7dd3fc;padding:4px 9px;border-radius:18px;font-size:11px;font-weight:850}.question{font-size:17px;margin:16px 0}.choices{display:grid;gap:9px}.choice{width:100%;display:flex;gap:10px;text-align:left;background:#17243a;color:var(--ink);border:1px solid #4a5d7a;border-radius:12px;padding:13px;line-height:1.45}.choice:disabled{opacity:1}.choice.best{background:#18392e;border-color:var(--green)}.choice.wrong{background:#432a32;border-color:var(--red)}.choice.dim{opacity:.6}.letter{flex:0 0 26px;height:26px;border-radius:8px;background:#354a68;display:grid;place-items:center;color:var(--gold);font-weight:900}.feedback{margin-top:13px;padding:14px;border:1px solid var(--line);background:#142033;border-radius:12px}.feedback p{font-size:13px}.controls{display:flex;gap:9px;margin-top:14px}.controls button{flex:1}.hidden{display:none!important}.report{grid-template-columns:repeat(2,1fr)}.weakrow{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin:9px 0}.weakbar{height:6px;background:#0d1728;border-radius:8px;overflow:hidden;margin-top:4px}.weakbar i{display:block;height:100%;background:#7dd3fc}footer{text-align:center;color:#8291aa;font-size:11px;margin-top:20px}
-@media(min-width:650px){.hero{grid-template-columns:1fr .8fr;align-items:center}.art{min-height:230px}}@media(max-width:430px){.hud{grid-template-columns:repeat(2,1fr)}.settings{grid-template-columns:1fr}.panel{padding:14px}}
+:root{
+  --bg:#0f172a;--p:#1e293b;--panel:#1c2436;--line:#334155;--ink:#f8fafc;--muted:#94a3b8;
+  --gold:#f59e0b;--gold-glow:rgba(245,158,11,0.3);--green:#10b981;--red:#ef4444;--accent:#38bdf8;
+  --stone:#283548;--dungeon-border:#475569;
+}
+*{box-sizing:border-box;user-select:none}
+body{
+  margin:0;background:radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 70%, #070a12 100%);
+  color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  min-height:100vh;display:flex;flex-direction:column;
+}
+.wrap{max-width:900px;margin:0 auto;padding:16px 14px 30px;width:100%;flex:1;display:flex;flex-direction:column}
+button{font:inherit;cursor:pointer}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;background:rgba(15,23,42,0.7);padding:8px 14px;border-radius:12px;border:1px solid var(--line);backdrop-filter:blur(6px)}
+.brand{font-size:13px;font-weight:900;letter-spacing:.14em;color:var(--accent);display:flex;align-items:center;gap:8px}
+.ver-tag{background:#3b82f622;color:#38bdf8;border:1px solid #38bdf844;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:700}
+.panel{background:linear-gradient(165deg, #1e293b 0%, #111827 100%);border:1px solid var(--dungeon-border);border-radius:16px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.4}
+.screen{display:none}.screen.active{display:block}
+h1{font-size:clamp(28px,6vw,46px);line-height:1.05;margin:8px 0 12px;font-weight:900}
+.muted{color:var(--muted)}
+.hero{display:grid;gap:16px}
+.art{min-height:200px;border:1px solid #475569;border-radius:16px;background:radial-gradient(circle at center,#1e293b,#0f172a);display:grid;place-items:center;font-size:80px;box-shadow:inset 0 0 40px #000;position:relative}
+.art::after{content:"🏮";position:absolute;top:10px;right:14px;font-size:24px;filter:drop-shadow(0 0 10px #f59e0b)}
+.primary,.secondary,.sound{border-radius:10px;padding:12px 18px;font-weight:800;transition:all .15s ease}
+.primary{border:1px solid #f59e0b;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0f172a;box-shadow:0 4px 15px rgba(245,158,11,0.3);text-shadow:0 1px 0 rgba(255,255,255,0.3)}
+.primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,158,11,0.4)}
+.secondary,.sound{background:#1e293b;color:var(--ink);border:1px solid #475569}
+.secondary:hover,.sound:hover{background:#334155;border-color:#64748b}
+.stats,.hud,.report{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.stat{background:rgba(15,23,42,0.6);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px;color:var(--ink)}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.settings label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+input[type=range]{width:100%;accent-color:var(--gold)}
+.hud{grid-template-columns:repeat(4,1fr);margin:0 0 12px}
+.hud .stat{padding:8px 10px;background:rgba(15,23,42,0.8);border-color:#334155}
+
+/* REDESIGNED BATTLE ARENA */
+.battle-arena{
+  background:linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  border:1px solid #334155;border-radius:16px;padding:16px;margin-bottom:14px;
+  position:relative;box-shadow:inset 0 0 30px rgba(0,0,0,0.8);
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;min-height:220px;
+  overflow:hidden;
+}
+.arena-bg-texture{
+  position:absolute;inset:0;opacity:0.15;pointer-events:none;
+  background-image:radial-gradient(#64748b 1px, transparent 1px);
+  background-size:16px 16px;
+}
+.lantern{position:absolute;top:10px;font-size:20px;filter:drop-shadow(0 0 8px #f59e0b);animation:lanternSway 3s ease-in-out infinite alternate}
+.lantern.left{left:16px}.lantern.right{right:16px;animation-delay:-1.5s}
+@keyframes lanternSway{0%{transform:rotate(-4deg)}100%{transform:rotate(4deg)}}
+
+.char-card{
+  display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;
+  background:rgba(15,23,42,0.65);border:1px solid #334155;border-radius:14px;padding:12px;
+  backdrop-filter:blur(4px);box-shadow:0 8px 24px rgba(0,0,0,0.4);width:100%;
+}
+.char-card.advisor-card{border-color:rgba(56,189,248,0.4)}
+.char-card.enemy-card{border-color:rgba(239,68,68,0.4)}
+
+.hp-wrapper{width:100%;margin-bottom:8px}
+.hp-meta{display:flex;justify-content:space-between;align-size:11px;font-weight:700;margin-bottom:4px;font-size:12px}
+.hp-meta span:first-child{color:var(--muted)}
+.hp-meta span:last-child{color:var(--ink)}
+
+.bar-bg{height:12px;background:#090d16;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);position:relative}
+.fill-bar{height:100%;transition:width .4s ease-out;width:100%}
+.player-fill{background:linear-gradient(90deg,#10b981,#34d399)}
+.enemy-fill{background:linear-gradient(90deg,#ef4444,#f87171)}
+
+.char-sprite{
+  font-size:52px;line-height:1;margin:8px 0;position:relative;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,0.5));
+  transition:transform .2s ease;
+}
+.char-name{font-weight:800;font-size:14px;text-align:center;color:var(--ink);margin-top:2px}
+.char-tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:2px;font-weight:700}
+.enemy-card .char-tag{color:#f87171}
+
+/* Floating damage numbers */
+.damage-popup{
+  position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);
+  font-size:24px;font-weight:900;pointer-events:none;z-index:20;
+  animation:floatUp 1.2s ease-out forwards;
+  text-shadow:0 2px 8px rgba(0,0,0,0.9);
+}
+.damage-popup.hit-enemy{color:#f87171;border-color:#ef4444}
+.damage-popup.hit-player{color:#fb7185}
+.damage-popup.crit{color:#f59e0b;font-size:32px;letter-spacing:1px;text-shadow:0 0 12px rgba(245,158,11,0.8), 0 2px 4px #000}
+
+@keyframes floatUp{
+  0%{opacity:0;transform:translate(-50%, 10px) scale(0.6)}
+  20%{opacity:1;transform:translate(-50%, -10px) scale(1.2)}
+  80%{opacity:1;transform:translate(-50%, -30px) scale(1)}
+  100%{opacity:0;transform:translate(-50%, -45px) scale(0.9)}
+}
+
+/* Animations for sprite hits */
+.shake-target{animation:shakeAnim .4s ease-in-out}
+@keyframes shakeAnim{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px) rotate(-3deg)}
+  40%{transform:translateX(8px) rotate(3deg)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}
+
+.tag{display:inline-block;background:#1e293b;color:var(--accent);padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;border:1px solid #334155;margin-bottom:10px}
+.question{font-size:16px;line-height:1.5;margin:10px 0 16px;font-weight:600;color:#f1f5f9}
+.choices{display:grid;gap:10px}
+.choice{
+  width:100%;display:flex;gap:12px;align-items:flex-start;text-align:left;
+  background:#172033;color:var(--ink);border:1px solid #334155;border-radius:12px;
+  padding:12px 14px;line-height:1.45;transition:all .15s ease;
+}
+.choice:not(:disabled):hover{background:#1e2d4a;border-color:#475569;transform:translateY(-1px)}
+.choice:disabled{cursor:default}
+.choice.best{background:rgba(16,185,129,0.15);border-color:var(--green);color:#e2e8f0}
+.choice.wrong{background:rgba(239,68,68,0.15);border-color:var(--red);color:#e2e8f0}
+.choice.dim{opacity:.45}
+.letter{
+  flex:0 0 28px;height:28px;border-radius:8px;background:#24324d;display:grid;place-items:center;
+  color:var(--gold);font-weight:900;font-size:13px;border:1px solid rgba(255,255,255,0.08);margin-top:1px;
+}
+.feedback{margin-top:16px;padding:16px;border:1px solid var(--line);background:rgba(15,23,42,0.85);border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.feedback h3{margin:0 0 8px;font-size:16px}
+.feedback p{font-size:13px;margin:6px 0;line-height:1.5}
+.controls{display:flex;gap:10px;margin-top:16px}
+.controls button{flex:1}
+.hidden{display:none!important}
+.report{grid-template-columns:repeat(2,1fr)}
+.weakrow{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin:9px 0}
+.weakbar{height:6px;background:#0d1728;border-radius:8px;overflow:hidden;margin-top:4px}
+.weakbar i{display:block;height:100%;background:var(--accent)}
+footer{text-align:center;color:#64748b;font-size:12px;margin-top:24px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05)}
+
+@media(min-width:650px){.hero{grid-template-columns:1fr .8fr;align-items:center}.art{min-height:230px}}
+@media(max-width:550px){
+  .battle-arena{grid-template-columns:1fr;gap:10px;min-height:auto}
+  .hud{grid-template-columns:repeat(2,1fr)}
+  .settings{grid-template-columns:1fr}
+  .panel{padding:14px}
+  .char-sprite{font-size:42px}
+}
 </style></head><body><main class="wrap">
-<div class="top"><div class="brand">⚔ TECHNICAL SUPPORT BATTLE</div><button class="sound" id="sound">♫ Sound: On</button></div>
-<section class="screen active" id="home"><div class="hero"><div><div class="kicker">AN ADVISOR SURVIVAL RPG</div><h1>Keep your cool.<br><span style="color:#ffd166">Save the day.</span></h1><p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p><div class="stats"><div class="stat"><b>100</b><span>Starting HP</span></div><div class="stat"><b>3</b><span>Choices</span></div><div class="stat"><b>112</b><span>Scenarios</span></div></div><button class="primary" id="start">ENTER THE DUNGEON →</button><p class="muted" style="font-size:11px">*112 audited scenarios with strict 38/37/37 answer length balancing.</p></div><div class="art">🛡️⚔️</div></div><div class="panel" style="margin-top:14px"><div class="kicker">AUDIO SETTINGS</div><div class="settings"><label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label><label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label></div><p class="muted" style="font-size:12px">Retro-inspired interface sounds with dynamic fantasy battle music.</p></div></section>
-<section class="screen" id="game"><div class="hud"><div class="stat"><span>FLOOR</span><b id="floor">1</b></div><div class="stat"><span>HP</span><b id="hp">100</b><div class="bar"><div class="fill" id="hpbar"></div></div></div><div class="stat"><span>SCORE</span><b id="score">0</b></div><div class="stat"><span>COMBO</span><b id="combo">×0</b></div></div><div class="panel"><div class="kicker" id="floorType">FLOOR 1</div><div class="enemy"><div class="monster" id="monster">🫧</div><div class="enemyinfo"><h2 id="enemyName">Confusion Slime</h2><p id="enemyDesc"></p><div class="bar"><div class="fill enemyfill" id="enemybar"></div></div><div class="meter"><span>Enemy vitality</span><span id="enemyHp"></span></div></div></div><div class="tag" id="skill">CLARIFICATION</div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="feedback hidden" id="feedback"></div><div class="controls"><button class="secondary" id="quit">End run</button><button class="primary hidden" id="next">Next encounter →</button></div></div></section>
-<section class="screen" id="end"><div class="panel"><div class="kicker">RUN COMPLETE</div><h1 id="endTitle">The dungeon claims another hero.</h1><p class="muted" id="endSub"></p><div class="report"><div class="stat"><b id="rScore">0</b><span>Final score</span></div><div class="stat"><b id="rFloor">1</b><span>Floor reached</span></div><div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div><div class="stat"><b id="rDefeats">0</b><span>Enemies defeated</span></div><div class="stat"><b id="rCombo">0</b><span>Best combo</span></div><div class="stat"><b id="rBest">0</b><span>Personal best</span></div></div><div class="kicker">ADVISOR SKILL REPORT</div><div id="skills"></div><div class="controls"><button class="primary" id="again">Fight again</button><button class="secondary" id="menu">Main menu</button></div></div></section><footer>TECHNICAL SUPPORT BATTLE · PROTOTYPE 0.1</footer></main>
+<div class="top">
+  <div class="brand">⚔ TECHNICAL SUPPORT BATTLE <span class="ver-tag">v1.1.0</span></div>
+  <button class="sound" id="sound">♫ Sound: On</button>
+</div>
+
+<section class="screen active" id="home">
+  <div class="hero">
+    <div>
+      <div class="kicker" style="color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em;">AN ADVISOR SURVIVAL RPG</div>
+      <h1>Keep your cool.<br><span style="color:var(--gold)">Save the day.</span></h1>
+      <p class="muted">Customers become monsters. Your judgment is your weapon. How deep can you make it into the dungeon?</p>
+      <div class="stats">
+        <div class="stat"><b>100</b><span>Starting HP</span></div>
+        <div class="stat"><b>3</b><span>Choices</span></div>
+        <div class="stat"><b>112</b><span>Scenarios</span></div>
+      </div>
+      <button class="primary" id="start">ENTER THE DUNGEON →</button>
+      <p class="muted" style="font-size:11px;margin-top:10px">*112 audited scenarios across 7 categories with balanced choice lengths.</p>
+    </div>
+    <div class="art">🛡️⚔️</div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <div class="kicker" style="color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.1em;">AUDIO SETTINGS</div>
+    <div class="settings">
+      <label>Music volume<input id="musicVol" type="range" min="0" max="100" value="25"></label>
+      <label>Sound effects<input id="sfxVol" type="range" min="0" max="100" value="65"></label>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:8px">Atmospheric fantasy synth soundtrack with sound effects.</p>
+  </div>
+</section>
+
+<section class="screen" id="game">
+  <div class="hud">
+    <div class="stat"><span>FLOOR</span><b id="floor">1</b></div>
+    <div class="stat"><span>HP</span><b id="hp">100</b><div class="bar-bg" style="margin-top:4px"><div class="fill-bar player-fill" id="hpbar"></div></div></div>
+    <div class="stat"><span>SCORE</span><b id="score">0</b></div>
+    <div class="stat"><span>COMBO</span><b id="combo">×0</b></div>
+  </div>
+
+  <div class="panel">
+    <div class="kicker" id="floorType" style="color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:8px">FLOOR 1</div>
+    
+    <!-- REDESIGNED JAPANESE DUNGEON-INSPIRED BATTLE ARENA -->
+    <div class="battle-arena" id="battleArena">
+      <div class="arena-bg-texture"></div>
+      <div class="lantern left">🏮</div>
+      <div class="lantern right">🏮</div>
+      
+      <!-- ADVISOR (LEFT) -->
+      <div class="char-card advisor-card" id="advisorCard">
+        <div class="hp-wrapper">
+          <div class="hp-meta"><span>ADVISOR HP</span><span id="advisorHpNum">100/100</span></div>
+          <div class="bar-bg"><div class="fill-bar player-fill" id="advisorHpBar"></div></div>
+        </div>
+        <div class="char-sprite" id="advisorSprite">🧑‍💻</div>
+        <div class="char-name">Support Advisor</div>
+        <div class="char-tag">PLAYER</div>
+      </div>
+
+      <!-- ENEMY (RIGHT) -->
+      <div class="char-card enemy-card" id="enemyCard">
+        <div class="hp-wrapper">
+          <div class="hp-meta"><span id="enemyTagLabel">ENEMY HP</span><span id="enemyHpNum">1/1</span></div>
+          <div class="bar-bg"><div class="fill-bar enemy-fill" id="enemyHpBar"></div></div>
+        </div>
+        <div class="char-sprite" id="monster">🫧</div>
+        <div class="char-name" id="enemyName">Confusion Slime</div>
+        <div class="char-tag" id="enemyTypeTag">NORMAL ENCOUNTER</div>
+      </div>
+    </div>
+
+    <div class="tag" id="skill">CLARIFICATION</div>
+    <div class="question" id="question"></div>
+    <div class="choices" id="choices"></div>
+    <div class="feedback hidden" id="feedback"></div>
+    <div class="controls">
+      <button class="secondary" id="quit">End run</button>
+      <button class="primary hidden" id="next">Next encounter →</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="end">
+  <div class="panel">
+    <div class="kicker" style="color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.1em;">RUN COMPLETE</div>
+    <h1 id="endTitle">The dungeon claims another hero.</h1>
+    <p class="muted" id="endSub"></p>
+    <div class="report">
+      <div class="stat"><b id="rScore">0</b><span>Final score</span></div>
+      <div class="stat"><b id="rFloor">1</b><span>Floor reached</span></div>
+      <div class="stat"><b id="rAccuracy">0%</b><span>Accuracy</span></div>
+      <div class="stat"><b id="rDefeats">0</b><span>Enemies defeated</span></div>
+      <div class="stat"><b id="rCombo">0</b><span>Best combo</span></div>
+      <div class="stat"><b id="rBest">0</b><span>Personal best</span></div>
+    </div>
+    <div class="kicker" style="color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.1em;margin-top:14px">ADVISOR SKILL REPORT</div>
+    <div id="skills"></div>
+    <div class="controls" style="margin-top:18px">
+      <button class="primary" id="again">Fight again</button>
+      <button class="secondary" id="menu">Main menu</button>
+    </div>
+  </div>
+</section>
+
+<footer>TECHNICAL SUPPORT BATTLE · v1.1.0</footer>
+</main>
 <script>
 "use strict";
 const $=id=>document.getElementById(id),
@@ -591,30 +838,147 @@ const bank=[
   ],"Q112"]
 ];
 
-const state={floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,used:[],wrong:{},seen:{},q:null,enemy:null,enemyHp:0,enemyMax:0,locked:false,sound:true,ctx:null,timer:null,musicMode:"normal",step:0,lastPickId:null};
-function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id).classList.add("active")}
-function audio(){if(!state.sound)return null;try{state.ctx ||= new (window.AudioContext||window.webkitAudioContext)();if(state.ctx.state==="suspended")state.ctx.resume();return state.ctx}catch(e){return null}}
-function tone(f,d=.12,v=.05,delay=0,type="square"){const c=audio();if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(.0001,c.currentTime+delay);g.gain.linearRampToValueAtTime(v*(+$("sfxVol").value)/100,c.currentTime+delay+.01);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+delay+d);o.connect(g);g.connect(c.destination);o.start(c.currentTime+delay);o.stop(c.currentTime+delay+d+.02)}
-function fx(k){if(!state.sound)return;const a={click:[[500,.05]],good:[[660,.1],[880,.16]],bad:[[190,.17],[130,.2]],hit:[[110,.1],[75,.16]],heal:[[440,.1],[660,.1],[880,.2]],win:[[523,.12],[659,.12],[784,.22]],defeat:[[392,.2],[330,.2],[220,.35]]}[k]||[[440,.1]];a.forEach((n,i)=>tone(n[0],n[1],.05,i*.085))}
-const tunes={normal:[262,330,392,330,294,349,440,349],elite:[220,262,330,262,196,247,294,247],boss:[147,175,220,175,131,165,196,165],danger:[196,233,262,233,175,208,233,208]};
-function stopMusic(){if(state.timer){clearInterval(state.timer);state.timer=null}}
-function music(mode){stopMusic();state.musicMode=mode;if(!state.sound||+$("musicVol").value===0)return;state.step=0;state.timer=setInterval(()=>{const c=audio();if(!c)return;const f=tunes[mode][state.step++%tunes[mode].length],o=c.createOscillator(),g=c.createGain();o.type="triangle";o.frequency.value=f;g.gain.setValueAtTime(.0001,c.currentTime);g.gain.linearRampToValueAtTime(.016*(+$("musicVol").value)/100,c.currentTime+.04);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.4);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.42)},470)}
-$("sound").onclick=()=>{state.sound=!state.sound;$("sound").textContent=state.sound?"♫ Sound: On":"♫ Sound: Off";if(state.sound){audio();music(state.musicMode);fx("click")}else stopMusic()};
-$("musicVol").oninput=()=>{if(+$("musicVol").value===0)stopMusic();else if(state.sound)music(state.musicMode)};
+const state=
 
-function pick(){
-  let candidates = bank.filter(q => !state.used.includes(q[4]));
-  if(candidates.length === 0){
-    state.used = [];
-    candidates = bank.filter(q => q[4] !== state.lastPickId);
-    if(candidates.length === 0) candidates = bank;
+const state={
+  floor:1,hp:100,score:0,combo:0,bestCombo:0,correct:0,answered:0,defeats:0,
+  used:[],wrong:{},seen:{},q:null,enemy:null,enemyHp:0,enemyMax:0,locked:false,
+  sound:true,ctx:null,timer:null,musicMode:"normal",step:0,lastPickId:null,
+  ultraCategories:[],ultraIndex:0
+};
+
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id).classList.add("active")}
+
+/* RICHER ATMOSPHERIC SYNTHESIZED SOUNDTRACK & AUDIO SYSTEM */
+function audio(){
+  if(!state.sound) return null;
+  try{
+    state.ctx ||= new (window.AudioContext||window.webkitAudioContext)();
+    if(state.ctx.state==="suspended") state.ctx.resume();
+    return state.ctx;
+  }catch(e){return null}
+}
+
+function tone(f,d=.12,v=.05,delay=0,type="sine"){
+  const c=audio();if(!c)return;
+  try{
+    const o=c.createOscillator(),g=c.createGain();
+    o.type=type;o.frequency.value=f;
+    const vol = (v * (+$("sfxVol").value)/100);
+    g.gain.setValueAtTime(.0001,c.currentTime+delay);
+    g.gain.linearRampToValueAtTime(vol,c.currentTime+delay+.01);
+    g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+delay+d);
+    o.connect(g);g.connect(c.destination);
+    o.start(c.currentTime+delay);
+    o.stop(c.currentTime+delay+d+.02);
+  }catch(e){}
+}
+
+function fx(k){
+  if(!state.sound)return;
+  const a={
+    click:[[523,.05,"sine"]],
+    good:[[523,.08,"triangle"],[659,.1,"triangle"],[784,.14,"sine"]],
+    crit:[[523,.08,"sine"],[659,.08,"sine"],[784,.12,"sine"],[1046,.25,"triangle"]],
+    bad:[[220,.12,"sawtooth"],[174,.18,"sawtooth"]],
+    hit:[[130,.08,"square"],[90,.14,"square"]],
+    heal:[[392,.1,"sine"],[523,.1,"sine"],[659,.1,"sine"],[784,.2,"sine"]],
+    win:[[523,.1,"triangle"],[659,.1,"triangle"],[784,.1,"triangle"],[1046,.3,"sine"]],
+    defeat:[[330,.2,"sawtooth"],[261,.2,"sawtooth"],[196,.35,"sawtooth"]]
+  }[k]||[[440,.1,"sine"]];
+  a.forEach((n,i)=>tone(n[0],n[1],.06,i*.07,n[2]||"sine"));
+}
+
+/* Layered Synthesized Audio Track Generator */
+const synthScales={
+  normal: [261.63, 293.66, 329.63, 392.00, 440.00, 523.25], // C major / A minor ambient
+  boss: [146.83, 164.81, 174.61, 220.00, 246.94, 293.66],   # D minor suspenseful
+  danger: [130.81, 138.59, 164.81, 174.61, 207.65, 220.00], # Dark chromatic tension
+  ultra: [110.00, 130.81, 146.83, 164.81, 196.00, 220.00]   # Epic deep scale
+};
+
+function stopMusic(){if(state.timer){clearInterval(state.timer);state.timer=null}}
+
+function music(mode){
+  stopMusic();
+  state.musicMode=mode;
+  if(!state.sound||+$("musicVol").value===0) return;
+  state.step=0;
+  
+  const scale = synthScales[mode] || synthScales.normal;
+  state.timer = setInterval(()=>{
+    const c = audio();
+    if(!c) return;
+    const volRatio = (+$("musicVol").value)/100;
+    const step = state.step++;
+    
+    // Main ambient pad (soft sine/triangle chord progression)
+    const root = scale[step % scale.length];
+    const fifth = scale[(step + 2) % scale.length];
+    
+    [root, fifth].forEach((freq, idx)=>{
+      try{
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = idx === 0 ? "sine" : "triangle";
+        o.frequency.value = freq;
+        const now = c.currentTime;
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.linearRampToValueAtTime(0.012 * volRatio, now + 0.15);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
+        o.connect(g); g.connect(c.destination);
+        o.start(now); o.stop(now + 0.72);
+      }catch(e){}
+    });
+    
+    // Occasional chime on 4th beat
+    if(step % 4 === 0){
+      try{
+        const chimeFreq = scale[(step * 3) % scale.length] * 2;
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = "sine";
+        o.frequency.value = chimeFreq;
+        const now = c.currentTime;
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.linearRampToValueAtTime(0.018 * volRatio, now + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+        o.connect(g); g.connect(c.destination);
+        o.start(now); o.stop(now + 0.92);
+      }catch(e){}
+    }
+  }, 650);
+}
+
+$("sound").onclick=()=>{
+  state.sound=!state.sound;
+  $("sound").textContent=state.sound?"♫ Sound: On":"♫ Sound: Off";
+  if(state.sound){audio();music(state.musicMode);fx("click")}else stopMusic();
+};
+$("musicVol").oninput=()=>{
+  if(+$("musicVol").value===0) stopMusic();
+  else if(state.sound) music(state.musicMode);
+};
+
+/* QUESTION PICKING LOGIC */
+function pick(categoryConstraint = null){
+  let pool = bank;
+  if(categoryConstraint){
+    pool = bank.filter(q => q[0] === categoryConstraint);
   }
+  
+  let candidates = pool.filter(q => !state.used.includes(q[4]));
+  if(candidates.length === 0){
+    // Reset pool for category if exhausted
+    candidates = pool.filter(q => q[4] !== state.lastPickId);
+    if(candidates.length === 0) candidates = pool;
+  }
+  
   let weights = candidates.map(q => {
     let qId = q[4];
     let misses = state.wrong[qId] || 0;
     let plays = state.seen[qId] || 0;
     return 1 + Math.min(2.5, misses * 0.9) - Math.min(0.8, plays * 0.1);
   });
+  
   let sum = weights.reduce((a, b) => a + b, 0);
   let r = Math.random() * sum;
   let idx = 0;
@@ -628,12 +992,39 @@ function pick(){
   return chosen;
 }
 
+/* ENCOUNTER SETUP */
 function foe(f){
-  let isUltra = f % 50 === 0;
-  let isRegularBoss = f % 10 === 0 && !isUltra;
-  let template = isUltra ? enemies[3] : isRegularBoss ? enemies[3] : enemies[(f - 1) % 2];
-  let hitsRequired = isUltra ? 10 : isRegularBoss ? 5 : 1;
-  return {...template, ultra: isUltra, boss: isRegularBoss || isUltra, baseHp: hitsRequired};
+  let isUltra = (f % 50 === 0);
+  let isRegularBoss = (f % 10 === 0 && !isUltra);
+  
+  if(isUltra){
+    return {
+      name: "Master Escalation Dragon",
+      emoji: "🐲",
+      desc: "An Ultra Boss! Requires 7 hits across all 7 skill categories.",
+      ultra: true,
+      boss: true,
+      baseHp: 7
+    };
+  } else if(isRegularBoss){
+    return {
+      name: "Escalation Dragon",
+      emoji: "🐉",
+      desc: "A Boss encounter! Requires exactly 3 hits to defeat.",
+      ultra: false,
+      boss: true,
+      baseHp: 3
+    };
+  } else {
+    // Normal encounter: Pick randomly from ALL 4 enemy types
+    let enemyTemplate = enemies[Math.floor(Math.random() * enemies.length)];
+    return {
+      ...enemyTemplate,
+      ultra: false,
+      boss: false,
+      baseHp: 1
+    };
+  }
 }
 
 function startRun(startFloor = 1){
@@ -653,7 +1044,9 @@ function startRun(startFloor = 1){
     enemyHp: 0,
     enemyMax: 0,
     locked: false,
-    lastPickId: null
+    lastPickId: null,
+    ultraCategories: [],
+    ultraIndex: 0
   });
   show("game");
   audio();
@@ -670,21 +1063,45 @@ function load(){
     state.enemy = foe(state.floor);
     state.enemyMax = state.enemy.baseHp;
     state.enemyHp = state.enemyMax;
+    
+    // If Ultra Boss, set up randomized sequence of all 7 categories
+    if(state.enemy.ultra){
+      state.ultraCategories = [...skills].sort(() => Math.random() - 0.5);
+      state.ultraIndex = 0;
+    }
   }
 
-  state.q = pick();
+  // Question Selection:
+  if(state.enemy.ultra){
+    // Pick question from the current Ultra Boss category (exactly 1 from each of the 7 skills)
+    let currentCat = state.ultraCategories[state.ultraIndex];
+    state.q = pick(currentCat);
+  } else {
+    // Pick question from ALL 7 advisor skill categories randomly
+    state.q = pick(null);
+  }
+
+  // Update UI Elements
   $("floor").textContent = state.floor;
   $("hp").textContent = state.hp;
   $("hpbar").style.width = state.hp + "%";
+  $("advisorHpNum").textContent = `${state.hp}/100`;
+  $("advisorHpBar").style.width = state.hp + "%";
+
   $("score").textContent = state.score;
   $("combo").textContent = "×" + state.combo;
-  $("floorType").textContent = `FLOOR ${state.floor} · ${state.enemy.ultra ? "ULTRA BOSS" : state.enemy.boss ? "BOSS" : "ENCOUNTER"}`;
+  
+  let floorTagText = `FLOOR ${state.floor} · ` + (state.enemy.ultra ? "ULTRA BOSS (7 HP)" : state.enemy.boss ? "BOSS ENCOUNTER (3 HP)" : "NORMAL ENCOUNTER");
+  $("floorType").textContent = floorTagText;
+  
   $("monster").textContent = state.enemy.emoji;
   $("enemyName").textContent = state.enemy.name;
-  $("enemyDesc").textContent = state.enemy.desc;
-  $("enemyHp").textContent = `${state.enemyHp} / ${state.enemyMax}`;
-  $("enemybar").style.width = (state.enemyHp / state.enemyMax * 100) + "%";
-  $("skill").textContent = state.q[0].toUpperCase();
+  $("enemyHpNum").textContent = `${state.enemyHp} / ${state.enemyMax}`;
+  $("enemyHpBar").style.width = (state.enemyHp / state.enemyMax * 100) + "%";
+  $("enemyTagLabel").textContent = state.enemy.ultra ? "ULTRA BOSS HP" : state.enemy.boss ? "BOSS HP" : "ENEMY HP";
+  $("enemyTypeTag").textContent = state.enemy.ultra ? "ULTRA BOSS" : state.enemy.boss ? "BOSS" : "NORMAL ENCOUNTER";
+
+  $("skill").textContent = state.q[0].toUpperCase() + (state.enemy.ultra ? ` (${state.ultraIndex + 1}/7 CATEGORY)` : "");
   $("question").textContent = state.q[2];
 
   let rawChoices = state.q[3];
@@ -698,17 +1115,36 @@ function load(){
     l.className = "letter";
     l.textContent = "ABC"[i];
     let t = document.createElement("span");
+    t.style.flex = "1";
     t.textContent = item.choice[0];
     b.append(l, t);
     b.onclick = () => answer(item.choice);
     $("choices").append(b);
   });
 
-  let mode = state.enemy.boss ? "boss" : state.hp <= 35 ? "danger" : "normal";
+  let mode = state.enemy.ultra ? "ultra" : state.enemy.boss ? "boss" : state.hp <= 35 ? "danger" : "normal";
   if(mode !== state.musicMode) music(mode);
 }
 
 function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+/* DAMAGE & CRITICAL HIT FEEDBACK SYSTEM */
+function showPopup(text, isCrit, isPlayerTarget){
+  const popup = document.createElement("div");
+  popup.className = `damage-popup ${isCrit ? "crit" : isPlayerTarget ? "hit-player" : "hit-enemy"}`;
+  popup.textContent = text;
+  
+  const targetCard = isPlayerTarget ? $("advisorCard") : $("enemyCard");
+  targetCard.appendChild(popup);
+  
+  // Trigger hit animation
+  const sprite = isPlayerTarget ? $("advisorSprite") : $("monster");
+  sprite.classList.remove("shake-target");
+  void sprite.offsetWidth; // retrigger reflow
+  sprite.classList.add("shake-target");
+  
+  setTimeout(() => popup.remove(), 1200);
+}
 
 function answer(choice){
   if(state.locked) return;
@@ -730,16 +1166,39 @@ function answer(choice){
   });
 
   let title, detail;
+  let isCrit = false;
+
   if(best){
     state.correct++;
     state.combo++;
     state.bestCombo = Math.max(state.bestCombo, state.combo);
+    
+    // 18% Critical Hit Chance
+    isCrit = Math.random() < 0.18;
+    
+    // Critical hit deals exact 1 HP damage (never more than 1 HP), but awards +50 bonus score!
     let hit = 1;
     state.enemyHp = Math.max(0, state.enemyHp - hit);
-    state.score += 100 + Math.min(100, (state.combo-1)*15) + Math.max(0, state.floor-1)*5;
-    title = "Strongest response";
-    detail = `Accurate judgment landed a successful hit! ${choice[2]}`;
-    fx("good");
+    
+    let bonusScore = isCrit ? 50 : 0;
+    state.score += 100 + Math.min(100, (state.combo-1)*15) + Math.max(0, state.floor-1)*5 + bonusScore;
+    
+    if(state.enemy.ultra){
+      state.ultraIndex++;
+    }
+    
+    // Feedback visual damage floating popup
+    if(isCrit){
+      showPopup("-1 HP CRITICAL! (+50 BONUS)", true, false);
+      fx("crit");
+    } else {
+      showPopup("-1 HP DAMAGE", false, false);
+      fx("good");
+    }
+
+    title = isCrit ? "⚡ CRITICAL HIT!" : "Strongest response";
+    detail = `${isCrit ? "CRITICAL HIT! (+50 bonus score). " : ""}Accurate judgment landed 1 hit! ${choice[2]}`;
+    
     if(state.enemyHp === 0){
       state.defeats++;
       state.score += state.enemy.ultra ? 1000 : state.enemy.boss ? 500 : 250;
@@ -757,27 +1216,36 @@ function answer(choice){
       }
     }
   } else {
+    // Incorrect answer: deals 0 damage to enemy!
     let loss = damage[choice[1]] || 15;
     state.hp = Math.max(0, state.hp - loss);
     state.combo = 0;
     state.wrong[qId] = (state.wrong[qId] || 0) + 1;
     state.wrong[q[0]] = (state.wrong[q[0]] || 0) + 1;
-    title = choice[1] === 1 ? "A small misstep" : choice[1] === 2 ? "A costly misstep" : "Critical mistake";
-    detail = `Counterattack: −${loss} HP. ${choice[2]}`;
+    
+    // Feedback visual damage on player
+    showPopup(`0 DMG (TAKEN -${loss} HP)`, false, true);
     fx("bad");
+
+    title = choice[1] === 1 ? "A small misstep" : choice[1] === 2 ? "A costly misstep" : "Critical mistake";
+    detail = `Answer dealt 0 damage. Enemy counterattacked: −${loss} HP. ${choice[2]}`;
   }
 
+  // Refresh stats UI
   $("hp").textContent = state.hp;
   $("hpbar").style.width = state.hp + "%";
+  $("advisorHpNum").textContent = `${state.hp}/100`;
+  $("advisorHpBar").style.width = state.hp + "%";
+
   $("score").textContent = state.score;
   $("combo").textContent = "×" + state.combo;
-  $("enemyHp").textContent = `${state.enemyHp} / ${state.enemyMax}`;
-  $("enemybar").style.width = (state.enemyHp / state.enemyMax * 100) + "%";
+  $("enemyHpNum").textContent = `${state.enemyHp} / ${state.enemyMax}`;
+  $("enemyHpBar").style.width = (state.enemyHp / state.enemyMax * 100) + "%";
 
   let altExplanations = q[3].filter(c => c[1] !== 0).map(c => `<li><b>“${safe(c[0])}”</b>: ${safe(c[2])}</li>`).join("");
 
   $("feedback").innerHTML = `
-    <h3>${title}</h3>
+    <h3 style="color:${isCrit ? 'var(--gold)' : 'var(--ink)'}">${title}</h3>
     <p><b>Your choice:</b> ${safe(choice[0])}</p>
     <p>${safe(detail)}</p>
     <p><b>Why the strongest response works:</b> ${safe(bestChoice[2])}</p>
@@ -802,7 +1270,7 @@ function answer(choice){
       load();
     };
   } else {
-    $("next").textContent = "Next question (Enemy surviving) →";
+    $("next").textContent = state.enemy.ultra ? `Next Category (${state.ultraIndex + 1}/7) →` : "Next question (Enemy surviving) →";
     $("next").classList.remove("hidden");
     $("next").onclick = () => {
       load();
@@ -845,9 +1313,10 @@ if(new URLSearchParams(location.search).get("qa")==="1"){
   let q = document.createElement("div");
   q.className = "panel";
   q.style.marginTop = "12px";
-  q.innerHTML = '<b>Developer QA</b><p class="muted" style="font-size:12px">Hidden test shortcuts</p><button class="secondary" id="qaBoss">Jump to floor 10</button> <button class="secondary" id="qaClear">Clear high score</button>';
+  q.innerHTML = '<b>Developer QA</b><p class="muted" style="font-size:12px">Hidden test shortcuts</p><button class="secondary" id="qaBoss">Floor 10 (Boss)</button> <button class="secondary" id="qaUltra">Floor 50 (Ultra Boss)</button> <button class="secondary" id="qaClear">Clear high score</button>';
   $("home").append(q);
   $("qaBoss").onclick = () => startRun(10);
+  $("qaUltra").onclick = () => startRun(50);
   $("qaClear").onclick = () => { localStorage.removeItem("tsb_best_score"); localStorage.removeItem("tsb_best_floor"); alert("Saved high score cleared."); };
 }
 </script></body></html>
